@@ -930,7 +930,7 @@ label,
   overflow: hidden;
 }
 
-/* Cursor parallax: JS eases --px / --py (-1…1) on the panel; each layer moves by its own depth */
+/* Cursor parallax: JS eases --px / --py (-1…1) on the panel */
 .hero__panel {
   --px: 0;
   --py: 0;
@@ -946,14 +946,10 @@ label,
   will-change: transform;
 }
 
-.hero__layer--bg {
-  inset: -3%;
-  transform: translate3d(calc(var(--px) * -14px), calc(var(--py) * -10px), 0);
-}
-
+/* Only the app card follows the cursor; the photo stays still. */
 .hero__layer--card {
-  transform: translate3d(calc(var(--px) * 36px), calc(var(--py) * 24px), 0)
-    rotateX(calc(var(--py) * -5deg)) rotateY(calc(var(--px) * 7deg));
+  transform: translate3d(calc(var(--px) * 14px), calc(var(--py) * 9px), 0)
+    rotateX(calc(var(--py) * -2deg)) rotateY(calc(var(--px) * 2.5deg));
 }
 
 .hero__bg {
@@ -964,8 +960,6 @@ label,
   object-fit: cover;
   object-position: center 75%;
   opacity: 0.55;
-  transform: scale(1.06);
-  animation: hero-drift 24s var(--ease-in-out) infinite alternate;
 }
 
 .hero__card {
@@ -1009,15 +1003,6 @@ label,
   opacity: 0.07;
   mix-blend-mode: overlay;
   pointer-events: none;
-}
-
-@keyframes hero-drift {
-  from {
-    transform: scale(1.06) translate3d(0, 0, 0);
-  }
-  to {
-    transform: scale(1.1) translate3d(-1.2%, -1%, 0);
-  }
 }
 
 @keyframes hero-card {

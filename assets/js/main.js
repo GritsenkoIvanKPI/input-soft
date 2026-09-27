@@ -148,7 +148,7 @@
 
   const hero = $('[data-hero]');
 
-  /* ---------- Hero: background follows the cursor (eased parallax) ---------- */
+  /* ---------- Hero: app card follows the cursor (slow, eased parallax) ---------- */
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (hero && finePointer && !reduceMotion) {
     const target = { x: 0, y: 0 };
@@ -157,8 +157,8 @@
     const tick = () => {
       const tx = target.x;
       const ty = target.y;
-      current.x += (tx - current.x) * 0.06;
-      current.y += (ty - current.y) * 0.06;
+      current.x += (tx - current.x) * 0.035;
+      current.y += (ty - current.y) * 0.035;
       hero.style.setProperty('--px', current.x.toFixed(4));
       hero.style.setProperty('--py', current.y.toFixed(4));
       const settled = Math.abs(tx - current.x) < 0.001 && Math.abs(ty - current.y) < 0.001;
