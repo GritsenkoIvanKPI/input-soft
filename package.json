@@ -1,0 +1,13 @@
+{
+  "name": "input-soft-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node serve.mjs",
+    "screenshot": "node screenshot.mjs",
+    "audit": "node audit.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^25.2.1"
+  }
+}

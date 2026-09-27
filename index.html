@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INPUT SOFT | Aviation Software Solutions</title>
+  <meta name="description" content="A web platform for companies in the aviation industry: helps optimize resources, reduce costs, collect and analyze data from all ground handling operations.">
+  <meta name="theme-color" content="#0b0d16">
+  <meta property="og:title" content="INPUT SOFT | Aviation Software Solutions">
+  <meta property="og:description" content="Management platform for airport operations — resource and data management for airports, airlines and ground handlers.">
+  <meta property="og:image" content="assets/img/gen/hero-apron.jpg">
+  <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/brand/is-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/gen/hero-apron.jpg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- ============ Icon sprite (single stroke system: 24px grid, 1.5 stroke) ============ -->
+<svg class="sr-only" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-forecast" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M7.5 17l3-3 2 2 4-4"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M4 12h16"/></symbol>
+  <symbol id="i-calculator" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7h7M8.5 11h.5M11.75 11h.5M15 11h.5M8.5 14.5h.5M11.75 14.5h.5M15 14.5h.5M8.5 18h.5M11.75 18h.5M15 18h.5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-4M12 16V7M17 16v-7"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0M15.5 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c1.8.8 3 2.9 3 5.7"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9.5 2.5h5"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m11 3 1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9zM18.5 15l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1-4.4A8.5 8.5 0 1 1 20.5 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 18.5v-13A2.5 2.5 0 0 1 6.5 3H20v13H6.5A2.5 2.5 0 0 0 4 18.5 2.5 2.5 0 0 0 6.5 21H20M9 7.5h6"/></symbol>
+  <symbol id="i-devices" viewBox="0 0 24 24"><rect x="2.5" y="4" width="13" height="10" rx="1.5"/><path d="M6.5 18h5M9 14v4"/><rect x="17.5" y="8" width="4.5" height="12" rx="1.2"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9.5 3v3M14.5 3v3M9.5 18v3M14.5 18v3M3 9.5h3M3 14.5h3M18 9.5h3M18 14.5h3"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5zM3 12.5l9 5 9-5M3 17l9 5 9-5"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 17.9 9a4.8 4.8 0 0 1-.4 9.5z"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2.5M19.5 14h.5v2.5M14 17.5V20h2.5M19.5 20h.5"/></symbol>
+  <symbol id="i-nfc" viewBox="0 0 24 24"><path d="M6 8.5a5 5 0 0 1 0 7M10 6a9 9 0 0 1 0 12M14 3.5a13 13 0 0 1 0 17M18 5.5a11 11 0 0 1 0 13"/></symbol>
+  <symbol id="i-satellite" viewBox="0 0 24 24"><path d="m13 7-4-4-4 4 4 4M17 11l4 4-4 4-4-4M8 12l4 4 6-6-4-4zM16 8l3-3M9 21a6 6 0 0 0-6-6"/></symbol>
+  <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M12 12c-2-2.7-3.6-4-5-4a4 4 0 0 0 0 8c1.4 0 3-1.3 5-4zm0 0c2 2.7 3.6 4 5 4a4 4 0 0 0 0-8c-1.4 0-3 1.3-5 4z"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3.3 17a9 9 0 1 1 17.4 0M12 14l4-4"/><circle cx="12" cy="14" r="1.2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10zM2 21c0-3 1.9-5.4 5.2-6"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3.5 14v-2a8.5 8.5 0 0 1 17 0v2"/><rect x="3.5" y="14" width="4" height="6" rx="1.5"/><rect x="16.5" y="14" width="4" height="6" rx="1.5"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v8a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2zM9 6v12"/><path d="M13 10h4M13 14h3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 7 3v5.5c0 4.3-3 8-7 9.5-4-1.5-7-5.2-7-9.5V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.25v.01M12 17v-6.5M12 13.5a2.5 2.5 0 0 1 5 0V17"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.5 3H13a4 4 0 0 0-4 4v3H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7.5a1 1 0 0 1 1-1h1z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.3 6.7v.01"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ Navigation ============ -->
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="INPUT SOFT — home">
+      <img src="assets/img/brand/logo-white.png" alt="INPUT SOFT" width="148" height="15">
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <div class="nav__item" data-dropdown>
+        <button class="nav__link" type="button" aria-expanded="false" aria-controls="mega-solutions">
+          Solutions <svg class="icon"><use href="#i-chevron-down"/></svg>
+        </button>
+        <div class="mega" id="mega-solutions">
+          <div class="mega__col">
+            <span class="mega__label">Solutions</span>
+            <a class="mega__item" href="resource-management.html">
+              <span class="icon-tile"><svg class="icon"><use href="#i-users"/></svg></span>
+              <span><span class="mega__title">Resource Management</span><span class="mega__desc">Resource planning, staff rostering and real-time planning</span></span>
+            </a>
+            <a class="mega__item" href="data-management.html">
+              <span class="icon-tile"><svg class="icon"><use href="#i-database"/></svg></span>
+              <span><span class="mega__title">Data Management</span><span class="mega__desc">Flight services, invoicing and GSE control</span></span>
+            </a>
+            <a class="mega__item" href="calculations-on-demand.html">
+              <span class="icon-tile"><svg class="icon"><use href="#i-timer"/></svg></span>
+              <span><span class="mega__title">Calculations on Demand</span><span class="mega__desc">Resource modelling, delivered within 48 hours</span></span>
+            </a>
+            <a class="mega__item" href="flightprint.html">
+              <span class="icon-tile"><svg class="icon"><use href="#i-plane"/></svg></span>
+              <span><span class="mega__title">FlightPrint</span><span class="mega__desc">The operational impact of your schedule</span></span>
+            </a>
+          </div>
+          <div class="mega__col">
+            <span class="mega__label">Case studies</span>
+            <a class="mega__case" href="case-studies/foxtrot-aviation-services.html">
+              <strong>Foxtrot Aviation Services</strong>
+              RFP modeling and planning with INPUT SOFT RMS
+            </a>
+            <a class="mega__case" href="case-studies/iag-transform.html">
+              <strong>IAG Transform</strong>
+              Hub capacity validation with FlightPrint
+            </a>
+          </div>
+        </div>
+      </div>
+      <a class="nav__link" href="about.html">About Us</a>
+      <a class="nav__link" href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a class="btn btn--secondary btn--sm" href="#contact">Get in touch</a>
+      <button class="btn btn--primary btn--sm" type="button" data-modal-open>Request a demo</button>
+    </div>
+
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-burger>
+      <svg class="icon"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+  <div class="mobile-menu__group">
+    <span class="eyebrow">Solutions</span>
+    <a class="mobile-menu__sub" href="resource-management.html"><span class="icon-tile"><svg class="icon"><use href="#i-users"/></svg></span>Resource Management</a>
+    <a class="mobile-menu__sub" href="data-management.html"><span class="icon-tile"><svg class="icon"><use href="#i-database"/></svg></span>Data Management</a>
+    <a class="mobile-menu__sub" href="calculations-on-demand.html"><span class="icon-tile"><svg class="icon"><use href="#i-timer"/></svg></span>Calculations on Demand</a>
+    <a class="mobile-menu__sub" href="flightprint.html"><span class="icon-tile"><svg class="icon"><use href="#i-plane"/></svg></span>FlightPrint</a>
+  </div>
+  <div class="mobile-menu__group">
+    <a class="mobile-menu__link" href="about.html">About Us <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+    <a class="mobile-menu__link" href="#contact">Contact <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+  </div>
+  <div class="mobile-menu__actions">
+    <button class="btn btn--primary btn--lg" type="button" data-modal-open>Request a demo</button>
+    <a class="btn btn--secondary btn--lg" href="#contact">Get in touch</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============ 1. Hero ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__panel" data-hero>
+      <div class="hero__media" aria-hidden="true">
+        <div class="hero__layer hero__layer--bg">
+          <img class="hero__bg" src="assets/img/gen/hero-apron.jpg" alt="" width="1376" height="768">
+        </div>
+        <div class="hero__layer hero__layer--card">
+          <div class="hero__card">
+            <img src="assets/img/product/rms-realtime.jpg" alt="" width="1600" height="902">
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__content">
+        <h1 class="hero__title h-xxl load load-1" id="hero-title">One platform for <br>airport operations</h1>
+
+        <a class="hero__announce load load-2" href="#innovation">
+          <span class="pill pill--accent">New</span>
+          <span>Meet Tango AI<span class="hero__announce-more"> and next-gen capabilities</span></span>
+          <svg class="icon"><use href="#i-arrow-right"/></svg>
+        </a>
+
+        <p class="hero__lead load load-3">Receive all services and features with one provider — resource and data management for airports, airlines and ground handlers.</p>
+
+        <div class="hero__actions load load-4">
+          <button class="btn btn--primary btn--lg" type="button" data-modal-open>
+            Request a demo <svg class="icon"><use href="#i-arrow-right"/></svg>
+          </button>
+          <a class="btn btn--glass btn--lg" href="#solutions">Explore solutions</a>
+        </div>
+      </div>
+
+      <a class="hero__pill load load-5" href="#how-it-works">
+        <span class="hero__pill-muted">Sustainable. Automated. Efficient.</span>
+        See how it works
+        <span class="hero__pill-icon"><svg class="icon"><use href="#i-arrow-down"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ Featured in ============ -->
+  <section class="section--tight" aria-label="Featured in">
+    <div class="container">
+      <div class="logo-strip">
+        <p class="logo-strip__label eyebrow">Featured in</p>
+        <div class="marquee" data-marquee>
+          <div class="marquee__track">
+            <div class="marquee__item"><img src="assets/img/logos/forbes.png" alt="Forbes"></div>
+            <div class="marquee__item"><img src="assets/img/logos/reuters.png" alt="Reuters"></div>
+            <div class="marquee__item"><img src="assets/img/logos/fastcompany.png" alt="Fast Company"></div>
+            <div class="marquee__item"><img src="assets/img/logos/skift.png" alt="Skift"></div>
+            <div class="marquee__item"><img class="is-tall" src="assets/img/logos/business-traveller.png" alt="Business Traveller"></div>
+            <div class="marquee__item"><img class="is-tall" src="assets/img/logos/fte.png" alt="Future Travel Experience"></div>
+            <div class="marquee__item"><img src="assets/img/logos/lastampa.png" alt="La Stampa"></div>
+            <div class="marquee__item"><img src="assets/img/logos/repubblica.png" alt="la Repubblica"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. Key features ============ -->
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-head section-head--center rv">
+        <span class="eyebrow">Key features</span>
+        <h2 class="h-xl" id="features-title">Discover the power of digitalization in airports</h2>
+        <p class="lead">Optimize resources, reduce costs, collect and analyze data from all ground handling processes — and pay only depending on the number of flights.</p>
+      </div>
+
+      <div class="tiles tiles--4">
+        <article class="feature rv">
+          <span class="icon-tile"><svg class="icon"><use href="#i-forecast"/></svg></span>
+          <span class="feature__index">01</span>
+          <h3 class="feature__title">Planning and forecasting</h3>
+          <p class="feature__text">Efficient scheduling of human, GSE and fixed resources. AI-based scenarios for improved utilization of work shifts.</p>
+        </article>
+        <article class="feature rv rv-d1">
+          <span class="icon-tile"><svg class="icon"><use href="#i-scan"/></svg></span>
+          <span class="feature__index">02</span>
+          <h3 class="feature__title">Data collection</h3>
+          <p class="feature__text">Real-time tracking of ground handling services and GSE via QR/NFC scanning — every task and status captured directly from the ramp.</p>
+        </article>
+        <article class="feature rv rv-d2">
+          <span class="icon-tile"><svg class="icon"><use href="#i-calculator"/></svg></span>
+          <span class="feature__index">03</span>
+          <h3 class="feature__title">Accounting and budgeting</h3>
+          <p class="feature__text">Automatic calculation of the cost of received or provided ground handling services. Simple budgeting and invoicing.</p>
+        </article>
+        <article class="feature rv rv-d3">
+          <span class="icon-tile"><svg class="icon"><use href="#i-chart"/></svg></span>
+          <span class="feature__index">04</span>
+          <h3 class="feature__title">Reporting and analyzing</h3>
+          <p class="feature__text">Customized reporting and analysis of data collected from all company activities connected to ground handling operations.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. Solutions ============ -->
+  <section class="section" id="solutions" aria-labelledby="solutions-title">
+    <div class="container solutions" data-solutions>
+      <div class="solutions__aside">
+        <span class="eyebrow rv">Solutions</span>
+        <div class="solutions__head rv">
+          <h2 class="solutions__title h-xl" id="solutions-title">Software suites for <br>ground operations</h2>
+          <p class="text-muted">For airports, airlines and ground handlers.</p>
+        </div>
+
+        <!-- To add a solution: add an <li class="sol-nav"> here and a matching <article class="sol-card"> in .solutions__stack (same data-sol key). -->
+        <ul class="solutions__list">
+          <li class="sol-nav is-active" data-sol="rms">
+            <button class="sol-nav__btn" type="button">Resource Management</button>
+            <div class="sol-nav__body"><div class="sol-nav__inner">
+              <p>Predictive planning, automated rostering and real-time task execution for staff, equipment and GSE — connected with airport systems and staff tools.</p>
+              <div class="tag-list"><span class="tag">Resource Planning</span><span class="tag">Staff Rostering</span><span class="tag">Real-time Planning</span></div>
+              <a class="link" href="resource-management.html">Explore Resource Management <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            </div></div>
+          </li>
+          <li class="sol-nav" data-sol="dms">
+            <button class="sol-nav__btn" type="button">Data Management</button>
+            <div class="sol-nav__body"><div class="sol-nav__inner">
+              <p>Accurate data capture from the ramp, contract-based billing and equipment control — eliminating paper logs and revenue leakage.</p>
+              <div class="tag-list"><span class="tag">Flight Services</span><span class="tag">Invoicing</span><span class="tag">GSE Control</span></div>
+              <a class="link" href="data-management.html">Explore Data Management <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            </div></div>
+          </li>
+          <li class="sol-nav" data-sol="cod">
+            <button class="sol-nav__btn" type="button">Calculations on Demand</button>
+            <div class="sol-nav__body"><div class="sol-nav__inner">
+              <p>Precise resource management insights, with a comprehensive report delivered within 48 hours of receiving all necessary data.</p>
+              <div class="tag-list"><span class="tag">Budgeting</span><span class="tag">SLA &amp; RFPs</span><span class="tag">Seasonal changes</span></div>
+              <a class="link" href="calculations-on-demand.html">Explore Calculations on Demand <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            </div></div>
+          </li>
+          <li class="sol-nav" data-sol="fp">
+            <button class="sol-nav__btn" type="button">FlightPrint</button>
+            <div class="sol-nav__body"><div class="sol-nav__inner">
+              <p>The operational impact of your schedule, before a single aircraft moves — workload peaks and resource demand for ramp and passenger processing.</p>
+              <div class="tag-list"><span class="tag">35+ metrics</span><span class="tag">BI integration</span><span class="tag">Hub validation</span></div>
+              <a class="link" href="flightprint.html">Explore FlightPrint <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            </div></div>
+          </li>
+        </ul>
+
+        <p class="solutions__note rv">
+          <svg class="icon"><use href="#i-layers"/></svg>
+          All modules can be used independently, combined, or customized into tailored packages.
+        </p>
+      </div>
+
+      <div class="solutions__stack">
+        <article class="sol-card sol-card--rms rv" data-sol-card="rms">
+          <div class="sol-card__head">
+            <h3 class="h-md">Resource Management</h3>
+            <p>Predictive planning, automated rostering and real-time task execution for staff, equipment and GSE.</p>
+            <div class="tag-list"><span class="tag">Resource Planning</span><span class="tag">Staff Rostering</span><span class="tag">Real-time Planning</span></div>
+            <a class="link" href="resource-management.html">Learn more<span class="sr-only"> about Resource Management</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+          <div class="sol-card__media"><img src="assets/img/product/rms-shiftplan.jpg" alt="Resource Management shift plan with tasks assigned across the day" width="1600" height="901" loading="lazy"></div>
+        </article>
+        <article class="sol-card sol-card--dms rv" data-sol-card="dms">
+          <div class="sol-card__head">
+            <h3 class="h-md">Data Management</h3>
+            <p>Accurate data capture from the ramp, contract-based billing and equipment control.</p>
+            <div class="tag-list"><span class="tag">Flight Services</span><span class="tag">Invoicing</span><span class="tag">GSE Control</span></div>
+            <a class="link" href="data-management.html">Learn more<span class="sr-only"> about Data Management</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+          <div class="sol-card__media"><img src="assets/img/product/dm-flight-service.jpg" alt="Data Management flight services timeline with turnaround statuses" width="1600" height="901" loading="lazy"></div>
+        </article>
+        <article class="sol-card sol-card--cod rv" data-sol-card="cod">
+          <div class="sol-card__head">
+            <h3 class="h-md">Calculations on Demand</h3>
+            <p>Precise resource management insights, delivered within 48 hours of receiving all necessary data.</p>
+            <div class="tag-list"><span class="tag">Budgeting</span><span class="tag">SLA &amp; RFPs</span><span class="tag">Seasonal changes</span></div>
+            <a class="link" href="calculations-on-demand.html">Learn more<span class="sr-only"> about Calculations on Demand</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+          <div class="sol-card__media"><img src="assets/img/product/rms-schedule.jpg" alt="Flight schedule load analysis with peak hours by day" width="1600" height="901" loading="lazy"></div>
+        </article>
+        <article class="sol-card sol-card--fp rv" data-sol-card="fp">
+          <div class="sol-card__head">
+            <h3 class="h-md">FlightPrint</h3>
+            <p>The operational impact of your schedule, before a single aircraft moves.</p>
+            <div class="tag-list"><span class="tag">35+ metrics</span><span class="tag">BI integration</span><span class="tag">Hub validation</span></div>
+            <a class="link" href="flightprint.html">Learn more<span class="sr-only"> about FlightPrint</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+          <div class="sol-card__media"><img src="assets/img/product/calc-analytics.jpg" alt="FlightPrint dashboard with flights, worked hours and paid hours by aircraft type" width="1600" height="1000" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. Intelligent Ground Operations ============ -->
+  <section class="section innovation" id="innovation" aria-labelledby="innovation-title">
+    <div class="container">
+      <div class="section-head section-head--center rv">
+        <span class="eyebrow">Next-gen capabilities</span>
+        <h2 class="h-xl" id="innovation-title">Intelligent Ground Operations with AI</h2>
+        <p class="lead">Three new capabilities that turn operational data into decisions — before disruptions hit the ramp.</p>
+      </div>
+
+      <div class="cards-3">
+        <article class="ai-card rv">
+          <div class="ai-card__media"><img src="assets/img/gen/ai-tango.jpg" alt="" width="1200" height="896" loading="lazy"></div>
+          <div class="ai-card__body">
+            <div class="ai-card__title">
+              <span class="icon-tile"><svg class="icon"><use href="#i-message"/></svg></span>
+              <h3 class="h-sm">Tango AI</h3>
+            </div>
+            <p>An AI chat assistant that accelerates everyday tasks inside the system, helping users interpret data and turn raw numbers into clear decisions.</p>
+          </div>
+        </article>
+        <article class="ai-card rv rv-d1">
+          <div class="ai-card__media"><img src="assets/img/gen/ai-predictive.jpg" alt="" width="1200" height="896" loading="lazy"></div>
+          <div class="ai-card__body">
+            <div class="ai-card__title">
+              <span class="icon-tile"><svg class="icon"><use href="#i-trend"/></svg></span>
+              <h3 class="h-sm">Predictive Algorithm</h3>
+            </div>
+            <p>Forecasts flight delays and anticipates passenger, baggage, and cargo volumes, giving teams time to reallocate resources before disruptions hit the ramp.</p>
+          </div>
+        </article>
+        <article class="ai-card rv rv-d2">
+          <div class="ai-card__media"><img src="assets/img/gen/ai-knowledge.jpg" alt="" width="1200" height="896" loading="lazy"></div>
+          <div class="ai-card__body">
+            <div class="ai-card__title">
+              <span class="icon-tile"><svg class="icon"><use href="#i-book"/></svg></span>
+              <h3 class="h-sm">AI Knowledge Base</h3>
+            </div>
+            <p>Lets staff search internal documentation and find the right procedures instantly, eliminating manual searches through endless manuals.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. Getting started (light) ============ -->
+  <section class="section section--light" id="how-it-works" aria-labelledby="steps-title">
+    <div class="container">
+      <div class="section-head section-head--split rv">
+        <div>
+          <span class="eyebrow">How it works</span>
+          <h2 class="h-xl" id="steps-title">We are simplifying the process of getting started</h2>
+        </div>
+        <p class="lead">Whichever solution you choose, you only need four steps to get started — and our team guides you through each of them during demo and implementation.</p>
+      </div>
+
+      <div class="steps" data-steps>
+        <ol class="steps__list">
+          <li class="step is-active">
+            <button class="step__btn" type="button" aria-expanded="true">
+              <span class="step__num">01</span><span class="step__title">Upload your parameters and flight schedule</span>
+            </button>
+            <div class="step__body"><div class="step__inner">
+              <p>Enter your parameters, rules and work shift limitations, then upload a flight schedule — or we will connect you to any available schedule platform.</p>
+            </div></div>
+            <span class="step__progress" aria-hidden="true"></span>
+          </li>
+          <li class="step">
+            <button class="step__btn" type="button" aria-expanded="false">
+              <span class="step__num">02</span><span class="step__title">Automatically receive plans, rosters and records</span>
+            </button>
+            <div class="step__body"><div class="step__inner">
+              <p>Get a ready-made flight plan, shift plan and roster for all your employees, or capture every service directly from the ramp. Change any parameter and calculate any number of what-if scenarios.</p>
+            </div></div>
+            <span class="step__progress" aria-hidden="true"></span>
+          </li>
+          <li class="step">
+            <button class="step__btn" type="button" aria-expanded="false">
+              <span class="step__num">03</span><span class="step__title">Control your operations in real time</span>
+            </button>
+            <div class="step__body"><div class="step__inner">
+              <p>Receive real-time flight schedule updates about any delays and share updated assignments and tasks with your employees in our app or via WhatsApp.</p>
+            </div></div>
+            <span class="step__progress" aria-hidden="true"></span>
+          </li>
+          <li class="step">
+            <button class="step__btn" type="button" aria-expanded="false">
+              <span class="step__num">04</span><span class="step__title">Review analytics and make decisions based on actual data</span>
+            </button>
+            <div class="step__body"><div class="step__inner">
+              <p>Receive analytical reports with FTE, heads, paid and worked hours and more. Download them, send them automatically to colleagues or other software, or tailor them with our experts.</p>
+            </div></div>
+            <span class="step__progress" aria-hidden="true"></span>
+          </li>
+        </ol>
+
+        <div class="steps__stage rv">
+          <div class="steps__frame is-active"><img src="assets/img/product/rms-rules.jpg" alt="Planning rules and parameters set-up" width="1600" height="899" loading="lazy"></div>
+          <div class="steps__frame"><img src="assets/img/product/rms-roster.jpg" alt="Automatically generated roster for all employees" width="1600" height="900" loading="lazy"></div>
+          <div class="steps__frame">
+            <img src="assets/img/product/rms-flightplan.jpg" alt="Real-time flight plan with live task updates" width="1600" height="902" loading="lazy">
+            <div class="steps__phone"><img src="assets/img/product/app-app-rms-accept-task.jpg" alt="Mobile app: accept an updated task" width="375" height="812" loading="lazy"></div>
+          </div>
+          <div class="steps__frame"><img src="assets/img/product/analytics-dashboard.jpg" alt="Analytical report with flights, FTE and worked hours" width="1600" height="896" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. Packages / key specifications ============ -->
+  <section class="section" id="specifications" aria-labelledby="specs-title">
+    <div class="container">
+      <div class="section-head section-head--split rv">
+        <div>
+          <span class="eyebrow">Packages &amp; key specifications</span>
+          <h2 class="h-xl" id="specs-title">Independent modules or tailored packages</h2>
+        </div>
+        <p class="lead">Our software suites revolutionize the approach to resource and data management of ground handling operations — on one platform, with one provider.</p>
+      </div>
+
+      <div class="tiles tiles--4">
+        <div class="spec rv"><span class="icon-tile"><svg class="icon"><use href="#i-devices"/></svg></span><div><h3 class="spec__title">Web, iOS and Android</h3><p class="spec__text">User-friendly web platform plus apps for personal phones and tablets.</p></div></div>
+        <div class="spec rv rv-d1"><span class="icon-tile"><svg class="icon"><use href="#i-cpu"/></svg></span><div><h3 class="spec__title">AI/ML calculations</h3><p class="spec__text">Automatic calculation by pre-set scenarios and our own AI/ML algorithms.</p></div></div>
+        <div class="spec rv rv-d2"><span class="icon-tile"><svg class="icon"><use href="#i-layers"/></svg></span><div><h3 class="spec__title">One provider</h3><p class="spec__text">All services and all features on a single platform.</p></div></div>
+        <div class="spec rv rv-d3"><span class="icon-tile"><svg class="icon"><use href="#i-cloud"/></svg></span><div><h3 class="spec__title">Cloud agnostic</h3><p class="spec__text">Runs on AWS, Azure or Google Cloud.</p></div></div>
+        <div class="spec rv"><span class="icon-tile"><svg class="icon"><use href="#i-qr"/></svg></span><div><h3 class="spec__title">QR code for GSE</h3><p class="spec__text">Collect the start and end of every operation with GSE by scanning a QR code.</p></div></div>
+        <div class="spec rv rv-d1"><span class="icon-tile"><svg class="icon"><use href="#i-nfc"/></svg></span><div><h3 class="spec__title">NFC service tracking</h3><p class="spec__text">Automatic collection of information about services using NFC tags.</p></div></div>
+        <div class="spec rv rv-d2"><span class="icon-tile"><svg class="icon"><use href="#i-satellite"/></svg></span><div><h3 class="spec__title">Satellite data</h3><p class="spec__text">Used by the Real-Time Planning module for live operations.</p></div></div>
+        <div class="spec rv rv-d3"><span class="icon-tile"><svg class="icon"><use href="#i-gauge"/></svg></span><div><h3 class="spec__title">High-speed processing</h3><p class="spec__text">Large-scale datasets processed in seconds, not hours.</p></div></div>
+        <div class="spec rv"><span class="icon-tile"><svg class="icon"><use href="#i-infinity"/></svg></span><div><h3 class="spec__title">Unlimited users</h3><p class="spec__text">An unlimited number of users and employees.</p></div></div>
+        <div class="spec rv rv-d1"><span class="icon-tile"><svg class="icon"><use href="#i-globe"/></svg></span><div><h3 class="spec__title">Remote station scaling</h3><p class="spec__text">Easily scale to manage remote stations from one place.</p></div></div>
+        <div class="spec rv rv-d2"><span class="icon-tile"><svg class="icon"><use href="#i-leaf"/></svg></span><div><h3 class="spec__title">Lower costs and footprint</h3><p class="spec__text">Lower infrastructure costs and a lower carbon footprint.</p></div></div>
+        <div class="spec rv rv-d3"><span class="icon-tile"><svg class="icon"><use href="#i-headset"/></svg></span><div><h3 class="spec__title">Support in your time zone</h3><p class="spec__text">Customer support tailored to your time zone.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. Key metrics + case studies ============ -->
+  <section class="section" id="impact" aria-labelledby="impact-title">
+    <div class="container">
+      <div class="section-head rv">
+        <span class="eyebrow">Key metrics</span>
+        <h2 class="h-xl" id="impact-title">Measurable impact on the ramp</h2>
+      </div>
+
+      <!-- To add a case study: duplicate a .bento__media tile and point its .case-chip to the new page. -->
+      <div class="bento">
+        <div class="metric rv">
+          <div>
+            <p class="metric__pre">Up to</p>
+            <p class="metric__value"><span data-count="20">20</span><span class="accent">%</span></p>
+            <p class="metric__label">improvement in employee utilization through high-precision scheduling</p>
+          </div>
+          <span class="metric__source"><svg class="icon"><use href="#i-users"/></svg>Resource Management</span>
+        </div>
+        <div class="metric rv rv-d1">
+          <div>
+            <p class="metric__value"><span data-count="250">250</span>K<span class="accent">+</span></p>
+            <p class="metric__label">individual tasks assigned in a single calculation — hours of planning turned into seconds</p>
+          </div>
+          <span class="metric__source"><svg class="icon"><use href="#i-gauge"/></svg>Resource Management</span>
+        </div>
+        <div class="bento__media bento__media--a rv rv-d2">
+          <img src="assets/img/gen/case-ramp-agent.jpg" alt="Ground handling agent checking tasks on a tablet next to an aircraft" width="896" height="1200" loading="lazy">
+          <a class="case-chip" href="case-studies/foxtrot-aviation-services.html">
+            <span class="case-chip__text">
+              <span class="case-chip__label">Case study</span>
+              <span class="case-chip__title">How Foxtrot Aviation Services streamlined RFP modeling</span>
+            </span>
+            <svg class="icon"><use href="#i-arrow-right"/></svg>
+          </a>
+        </div>
+        <div class="bento__media bento__media--b rv">
+          <img src="assets/img/gen/case-hub-planning.jpg" alt="Network planners reviewing hub schedules in an operations room" width="896" height="1200" loading="lazy">
+          <a class="case-chip" href="case-studies/iag-transform.html">
+            <span class="case-chip__text">
+              <span class="case-chip__label">Case study</span>
+              <span class="case-chip__title">How IAG Transform automates hub capacity validation</span>
+            </span>
+            <svg class="icon"><use href="#i-arrow-right"/></svg>
+          </a>
+        </div>
+        <div class="metric rv rv-d1">
+          <div>
+            <p class="metric__value"><span data-count="60">60</span><span class="accent">%</span></p>
+            <p class="metric__label">less time on RFP and SLA preparation, with results delivered within 48 hours</p>
+          </div>
+          <span class="metric__source"><svg class="icon"><use href="#i-timer"/></svg>Calculations on Demand</span>
+        </div>
+        <div class="metric rv rv-d1">
+          <div>
+            <p class="metric__pre">Up to</p>
+            <p class="metric__value">$<span data-count="110">110</span><span class="accent">K</span></p>
+            <p class="metric__label">saved per month by identifying resource leakage and optimizing daily allocation</p>
+          </div>
+          <span class="metric__source"><svg class="icon"><use href="#i-trend"/></svg>Resource Management</span>
+        </div>
+        <div class="metric rv rv-d2">
+          <div>
+            <p class="metric__value"><span data-count="100">100</span><span class="accent">%</span></p>
+            <p class="metric__label">of services delivered on the ramp captured — no completed task goes unbilled</p>
+          </div>
+          <span class="metric__source"><svg class="icon"><use href="#i-database"/></svg>Data Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. About the company ============ -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about">
+        <figure class="about__media rv">
+          <img src="assets/img/photo/marshaller.jpg" alt="Aircraft marshaller guiding a plane on the apron at night" width="1920" height="1287" loading="lazy">
+          <figcaption class="about__quote">
+            <span class="eyebrow">Our mission</span>
+            <p>Replace legacy, paper-based processes with a unified, sustainable and highly efficient digital ecosystem.</p>
+          </figcaption>
+        </figure>
+
+        <div class="about__body">
+          <span class="eyebrow rv">About INPUT SOFT</span>
+          <h2 class="h-lg rv" id="about-title">Built in close cooperation with industry experts and end-users</h2>
+          <p class="rv">We provide innovative digital solutions for airports, airlines and ground handling providers — helping organizations of all sizes boost operational efficiency, minimize human error and adapt to evolving industry demands.</p>
+          <p class="rv">Developed together with aviation experts, our platform keeps your operations reliable, scalable and future-ready.</p>
+          <div class="facts rv">
+            <div class="fact"><span class="fact__value">50+</span><span class="fact__label">years of combined experience of the core team</span></div>
+            <div class="fact"><span class="fact__value">2</span><span class="fact__label">offices — USA and Ukraine</span></div>
+          </div>
+          <a class="link rv" href="about.html">More about us <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+        </div>
+      </div>
+
+      <div class="backers">
+        <div class="backers__head rv">
+          <span class="eyebrow">We are backed by</span>
+        </div>
+        <div class="backers__grid rv">
+          <div class="backer"><img src="assets/img/logos/google-startups.png" alt="Google for Startups" loading="lazy"></div>
+          <div class="backer"><img src="assets/img/logos/amadeus.png" alt="Amadeus" loading="lazy"></div>
+          <div class="backer"><img src="assets/img/logos/techstars.png" alt="Techstars" loading="lazy"></div>
+          <div class="backer"><img class="is-tall" src="assets/img/logos/sigma.png" alt="Sigma Software" loading="lazy"></div>
+          <div class="backer"><img class="is-tall" src="assets/img/logos/usf.png" alt="Ukrainian Startup Fund" loading="lazy"></div>
+          <div class="backer"><img class="is-tall" src="assets/img/logos/eu.png" alt="Funded by the European Union" loading="lazy"></div>
+          <div class="backer"><img class="is-tall" src="assets/img/logos/seeds-of-bravery.png" alt="Seeds of Bravery" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. CTA + contact form ============ -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="cta">
+        <img class="cta__bg" src="assets/img/gen/cta-glass.jpg" alt="" width="1584" height="672" loading="lazy">
+        <div class="cta__copy rv">
+          <span class="eyebrow">Get in touch</span>
+          <h2 class="cta__title h-xl" id="contact-title">Simplify your airport ground operations</h2>
+          <p class="lead">Ready to see the difference? Schedule a personalized demo and discover how we can streamline your resource and data management.</p>
+          <div class="cta__contacts">
+            <a href="mailto:info@inputsoft.net"><svg class="icon"><use href="#i-mail"/></svg>info@inputsoft.net</a>
+          </div>
+        </div>
+
+        <!-- Single lead form. It is cloned into the "Request a demo" modal by main.js. -->
+        <form class="form-card rv rv-d1" data-lead-form novalidate>
+          <div class="form-card__head">
+            <h3>Get in touch with our team</h3>
+            <p>Fill out the form, and our experts will contact you shortly to discuss your needs.</p>
+          </div>
+          <div class="form-grid">
+            <div class="field field--full"><label for="f-name">Full name <span>*</span></label><input class="input" id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-email">Business email <span>*</span></label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-phone">Phone</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="f-company">Company <span>*</span></label><input class="input" id="f-company" name="company" autocomplete="organization" required></div>
+            <div class="field">
+              <label for="f-solution">Select a solution <span>*</span></label>
+              <select class="input select" id="f-solution" name="solution" required>
+                <option value="" disabled selected>Choose</option>
+                <option>Resource Management</option>
+                <option>Data Management</option>
+                <option>Calculations on Demand</option>
+                <option>FlightPrint</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field field--full"><label for="f-question">Your question</label><textarea class="input" id="f-question" name="question" rows="3"></textarea></div>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="consent" required>
+            <span>I understand that data from this form will be used to answer my questions, organize a software demonstration, or help me. See our <a href="privacy-policy.html">Privacy Policy</a>.</span>
+          </label>
+          <button class="btn btn--ink btn--lg" type="submit">Submit request <svg class="icon"><use href="#i-arrow-right"/></svg></button>
+          <p class="form-status form-status--ok" role="status" data-form-ok><svg class="icon"><use href="#i-check-circle"/></svg><span>Thank you! Our specialists will contact you shortly.</span></p>
+          <p class="form-status form-status--error" role="alert" data-form-error><svg class="icon"><use href="#i-alert"/></svg><span>Please fill in all required fields and accept the privacy terms.</span></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/brand/logo-white.png" alt="INPUT SOFT" width="150" height="15" loading="lazy">
+        <p>Management platform for airport operations — resource and data management for airports, airlines and ground handlers.</p>
+        <div class="socials">
+          <a href="#" aria-label="INPUT SOFT on LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
+          <a href="#" aria-label="INPUT SOFT on Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
+          <a href="#" aria-label="INPUT SOFT on Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Solutions">
+        <span class="footer__title">Solutions</span>
+        <a href="resource-management.html">Resource Management</a>
+        <a href="data-management.html">Data Management</a>
+        <a href="calculations-on-demand.html">Calculations on Demand</a>
+        <a href="flightprint.html">FlightPrint</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <span class="footer__title">Company</span>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="#contact">Contact</a>
+        <a href="dei-commitment.html">DEI commitment</a>
+      </nav>
+      <div class="footer__col">
+        <span class="footer__title">Offices</span>
+        <address class="footer__address"><strong>USA</strong>16192 Coastal Highway<br>Lewes, Delaware, 19958</address>
+        <address class="footer__address"><strong>Ukraine</strong>Yaroslavska St, 58<br>Kyiv, 04071</address>
+      </div>
+      <div class="footer__col">
+        <span class="footer__title">Security</span>
+        <div class="badges">
+          <img src="assets/img/brand/badge-code-security.png" alt="Code security verified by Sigma Software" width="52" height="52" loading="lazy">
+          <img src="assets/img/brand/badge-security-expert.png" alt="Checked by Security Expert Group" width="52" height="52" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2026 INPUT SOFT. All rights reserved</p>
+      <div class="footer__legal">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="dei-commitment.html">DEI commitment</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ Request a demo modal ============ -->
+<div class="modal" id="demo-modal" role="dialog" aria-modal="true" aria-label="Request a demo" data-modal>
+  <div class="modal__backdrop" data-modal-close></div>
+  <div class="modal__dialog" data-modal-slot>
+    <button class="modal__close" type="button" aria-label="Close" data-modal-close><svg class="icon"><use href="#i-close"/></svg></button>
+  </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

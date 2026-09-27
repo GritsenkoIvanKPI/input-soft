@@ -1,0 +1,19 @@
+# Dependencies / OS
+node_modules
+.DS_Store
+
+# Working files
+temporary screenshots/
+*.tmp.mjs
+
+# Client source materials and references (kept local, not published)
+Бриф_INPUTE SOFT.txt
+texts.txt
+style/
+images/
+inputsoft-images/
+PlatformScreenshots/
+retool.com_.png
+retool.com2.png
+GEMINI_IMAGE_GENERATION.md
+SKILL canvas.md
