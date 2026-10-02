@@ -1,6 +1,8 @@
 // Layout audit: single-word lines, text overlap, clipped boxes, horizontal overflow. Usage: node audit.mjs [device name or width]
 import puppeteer from 'puppeteer';
 
+const SITE = process.env.SITE_URL || 'http://localhost:3003';
+
 const DEVICES = [
   ['iPhone SE (1st)', 320, 568], ['Galaxy S8', 360, 740], ['iPhone SE', 375, 667],
   ['iPhone 14', 390, 844], ['Pixel 7', 412, 915], ['iPhone Plus', 414, 896],
@@ -88,7 +90,7 @@ for (const [name, w, h] of DEVICES) {
   if (p) await p.close();
   p = await b.newPage();
   await p.setViewport({ width: w, height: h, isMobile: w < 900 && h > w, hasTouch: w < 1024 });
-  await p.goto('http://localhost:3001', { waitUntil: 'networkidle0' });
+  await p.goto(SITE, { waitUntil: 'networkidle0' });
   await p.evaluate(() => document.fonts.ready);
   const states = [
     ['page (all accordions open)', 'body', () => {

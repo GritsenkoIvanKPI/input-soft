@@ -8,7 +8,7 @@
   // After layout, finds lines that hold a single word and joins that word to its neighbour
   // with a non-breaking space, re-measuring until every line has 2+ words (or no join fits).
   // Re-runs on resize from the original text, so it adapts to every screen width.
-  const wrapSelector = 'h1, h2, h3, h4, p, li, figcaption, address, label, .step__title, .case-chip__title, .mega__title, .mega__desc, .mega__case, .fact__label, .check > span, .link, .hero__announce > span';
+  const wrapSelector = 'h1, h2, h3, h4, p, li:not(.step):not(.sol-nav), figcaption, address, label, .step__title, .case-chip__title, .mega__title, .mega__desc, .mega__case, .fact__label, .check > span, .link, .hero__announce > span';
   const NBSP = '\u00A0';
   const originals = new Map(); // text node -> original data
 
@@ -65,6 +65,12 @@
     nodes.forEach((n) => { if (!originals.has(n)) originals.set(n, n.data); });
     const width = el.getBoundingClientRect().width;
     if (!width) return;
+    // Balanced wrapping can leave a lone word that no join can fix; fall back to normal wrapping first.
+    const hasSingle = () => {
+      const lines = groupLines(measureWords(nodes));
+      return lines.length > 1 && lines.some((l) => l.words.filter((w) => w.real && !w.part).length + l.words.filter((w) => w.part).length === 1);
+    };
+    if (hasSingle()) el.classList.add('wrap-greedy');
     const skip = new Set();
     for (let pass = 0; pass < 12; pass++) {
       const words = measureWords(nodes);
@@ -74,6 +80,12 @@
       const i = lines.findIndex((l, idx) => l.words.filter((w) => w.real).length === 1 && !skip.has(idx));
       if (i === -1) return;
       const word = lines[i].words.find((w) => w.real);
+      if (word.part) {
+        // the lone piece is the tail of a hyphenated word: make its hyphen non-breaking, then re-measure
+        const d = word.node.data;
+        word.node.data = d.slice(0, word.start) + d.slice(word.start, word.end).replace(/-/g, '\u2011') + d.slice(word.end);
+        continue;
+      }
       const all = words.filter((w) => !w.part);
       const at = all.indexOf(word);
       // prefer pulling the previous word down; for the first line, pull the next word up
@@ -90,6 +102,7 @@
 
   const fixAllLines = () => {
     originals.forEach((data, node) => { node.data = data; });
+    $$('.wrap-greedy').forEach((el) => el.classList.remove('wrap-greedy'));
     $$(wrapSelector).forEach(fixElement);
   };
   window.fixLineBreaks = fixAllLines; // re-run after injecting new content
@@ -144,34 +157,6 @@
     burger.addEventListener('click', () => setMenu(burger.getAttribute('aria-expanded') !== 'true'));
     $$('a, button', mobileMenu).forEach((el) => el.addEventListener('click', () => setMenu(false)));
     window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenu(false); });
-  }
-
-  const hero = $('[data-hero]');
-
-  /* ---------- Hero: app card follows the cursor (slow, eased parallax) ---------- */
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (hero && finePointer && !reduceMotion) {
-    const target = { x: 0, y: 0 };
-    const current = { x: 0, y: 0 };
-    let raf = 0;
-    const tick = () => {
-      const tx = target.x;
-      const ty = target.y;
-      current.x += (tx - current.x) * 0.035;
-      current.y += (ty - current.y) * 0.035;
-      hero.style.setProperty('--px', current.x.toFixed(4));
-      hero.style.setProperty('--py', current.y.toFixed(4));
-      const settled = Math.abs(tx - current.x) < 0.001 && Math.abs(ty - current.y) < 0.001;
-      raf = settled ? 0 : requestAnimationFrame(tick);
-    };
-    const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect();
-      target.x = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
-      target.y = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
-      kick();
-    });
-    hero.addEventListener('pointerleave', () => { target.x = 0; target.y = 0; kick(); });
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -249,6 +234,8 @@
         bar.style.animation = '';
       });
       frames.forEach((f, n) => f.classList.toggle('is-active', n === current));
+      const counter = $('[data-step-current]', steps);
+      if (counter) counter.textContent = String(current + 1);
     };
     const schedule = () => {
       clearTimeout(timer);
@@ -257,6 +244,10 @@
     };
 
     items.forEach((item, n) => $('.step__btn', item).addEventListener('click', () => { show(n); schedule(); }));
+    const prev = $('[data-step-prev]', steps);
+    const next = $('[data-step-next]', steps);
+    if (prev) prev.addEventListener('click', () => { show(current - 1); schedule(); });
+    if (next) next.addEventListener('click', () => { show(current + 1); schedule(); });
     steps.addEventListener('mouseenter', () => { clearTimeout(timer); steps.classList.add('is-paused'); });
     steps.addEventListener('mouseleave', () => { steps.classList.remove('is-paused'); if (started) { show(current); schedule(); } });
 

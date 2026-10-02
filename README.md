@@ -1,6 +1,6 @@
 # INPUT SOFT — website
 
-Marketing website for INPUT SOFT, a management platform for airport ground operations.
+Marketing website for INPUT SOFT, a Management Platform for Airport Operations.
 Static HTML/CSS/JS, no build step.
 
 ## Structure
@@ -14,10 +14,10 @@ Static HTML/CSS/JS, no build step.
 
 ```bash
 npm install          # installs Puppeteer for the tooling below
-PORT=3001 npm run dev   # serves the site at http://localhost:3001 (default port 3000)
+PORT=3003 npm run dev   # serves the site at http://localhost:3003 (default port 3000)
 ```
 
 ## Tooling
 
 - `node screenshot.mjs <url> [label]` — full-page screenshot into `temporary screenshots/`
-- `node audit.mjs [device|width]` — checks 14 device sizes for single-word lines, text overlap, clipped boxes and horizontal overflow (expects the dev server on port 3001)
+- `node audit.mjs [device|width]` — checks 14 device sizes for single-word lines, text overlap, clipped boxes and horizontal overflow (expects the dev server at http://localhost:3003, override with SITE_URL)
