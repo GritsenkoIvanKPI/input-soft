@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "node serve.mjs",
-    "build": "node build-pages.mjs",
+    "pages": "node build-pages.mjs",
     "screenshot": "node screenshot.mjs",
     "audit": "node audit.mjs"
   },
