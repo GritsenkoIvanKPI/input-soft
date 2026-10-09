@@ -186,7 +186,8 @@ const pages = [
     },
     impact: {
       eyebrow: 'Results',
-      heading: 'We don’t just deliver numbers — we drive strategic efficiency that boosts your bottom line',
+      heading: 'We don’t just deliver numbers — <br class="br-lg">we drive strategic efficiency <br class="br-lg">that boosts your bottom line',
+      wide: true,
       items: [
         { pre: 'Up to', value: '100K', title: 'Substantial cost reduction', text: 'Save up to 100K per month in payroll for your new potential stations with our calculations and predictions.' },
         { value: '60%', title: 'Accelerated RFP & SLA preparation', text: 'Cut your contract planning time by 60%. Get all the required data and precise operational modeling within 48 hours to enter commercial negotiations or launch new stations with total confidence.' },
@@ -496,7 +497,7 @@ ${rows}
 const impact = (p) => `  <!-- ============ Impact ============ -->
   <section class="section" aria-labelledby="impact-title">
     <div class="container">
-      <div class="section-head rv">
+      <div class="section-head${p.impact.wide ? ' section-head--wide' : ''} rv">
         <span class="eyebrow">${p.impact.eyebrow}</span>
         <h2 class="h-xl" id="impact-title">${p.impact.heading}</h2>
       </div>
