@@ -8,7 +8,7 @@
   // After layout, finds lines that hold a single word and joins that word to its neighbour
   // with a non-breaking space, re-measuring until every line has 2+ words (or no join fits).
   // Re-runs on resize from the original text, so it adapts to every screen width.
-  const wrapSelector = 'h1, h2, h3, h4, p, li:not(.step):not(.sol-nav), figcaption, address, label, .step__title, .case-chip__title, .mega__title, .mega__desc, .mega__case, .fact__label, .check > span, .link, .hero__announce > span';
+  const wrapSelector = 'h1, h2, h3, h4, p, li:not(.step):not(.sol-nav):not(.checklist li), dd, .cs-table__row > span, .checklist li > span, figcaption, address, label, .step__title, .case-chip__title, .mega__title, .mega__desc, .mega__case, .fact__label, .check > span, .link, .hero__announce > span';
   const NBSP = '\u00A0';
   const originals = new Map(); // text node -> original data
 

@@ -5,7 +5,9 @@ Static HTML/CSS/JS, no build step.
 
 ## Structure
 
-- `index.html` — home page
+- `index.html` — home page (also the source of the shared header, icons, contact form and footer)
+- `resource-management.html`, `data-management.html`, `calculations-on-demand.html`, `flightprint.html` — solution pages, **generated** by `build-pages.mjs`
+- `build-pages.mjs` — content and templates for the solution pages; run `node build-pages.mjs` after editing it or the shared parts of `index.html`
 - `assets/css/styles.css` — shared design system (tokens, components, sections)
 - `assets/js/main.js` — shared behaviour (nav, dropdown, reveal, parallax, steps, forms, line-break fixer)
 - `assets/img/` — brand, logos, product screenshots, photos and generated imagery

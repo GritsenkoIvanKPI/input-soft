@@ -11,6 +11,16 @@ const DEVICES = [
   ['Desktop', 1440, 900], ['Wide', 1920, 1080],
 ];
 const only = process.argv[2];
+// SWEEP=1 checks a fine grid of widths instead of the named devices (every 10px across phone sizes).
+if (process.env.SWEEP) {
+  const widths = [];
+  for (let w = 320; w <= 480; w += 10) widths.push(w);
+  for (let w = 520; w <= 1000; w += 40) widths.push(w);
+  widths.push(1024, 1060, 1100, 1140, 1200, 1280, 1366, 1440, 1536, 1680, 1920);
+  DEVICES.length = 0;
+  widths.forEach((w) => DEVICES.push([`w${w}`, w, w < 500 ? 780 : 900]));
+  DEVICES.push(['landscape-667', 667, 375], ['landscape-740', 740, 360], ['landscape-932', 932, 430]);
+}
 
 const audit = (rootSel) => {
   const root = document.querySelector(rootSel) || document.body;
