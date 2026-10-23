@@ -428,6 +428,65 @@ const casePages = [
   },
 ];
 
+/* ------------------------------------------------------------ legal pages */
+const legalPages = [
+  {
+    key: 'legal',
+    file: 'privacy-policy.html',
+    metaTitle: 'Privacy Policy | INPUT SOFT',
+    metaDesc: 'How INPUT SOFT collects, uses, discloses and protects your personal information, and the choices you can make.',
+    title: 'Privacy Policy',
+    lead: 'INPUT SOFT has created this Privacy Policy to demonstrate our commitment to your privacy and the protection of your information. As part of the normal operation of services, we collect and, in some instances, disclose information about you. To better protect your privacy we provide this notice explaining our information practices and the choices you can make about the way your information is collected and used.',
+    sections: [
+      { id: 'information-we-collect', title: 'Information INPUT SOFT Collects', body: [
+        'Our site’s registration form requires users to give us contact information (like your name and email address), unique identifiers (like your password). Certain information, such as passwords and e-mail addresses, is collected to, among other things, verify your identity and for use as account numbers in our record system.',
+        'Our site uses cookies to keep track of your use of our site. Cookies are stored on your computer and are not stored on the InputSoft site anywhere. We use cookies to deliver content specific to your interests and to recognize you when you visit our site. In the future, if you decide to purchase any value-added services we offer, then we will need to collect certain financial information, such as your credit card number, credit card expiration date, and billing address (“Financial Information”). Financial Information that is collected is used to check your qualifications for registration, to bill you for products and services, and for other purposes. We do not share Financial Information with outside parties except to the extent necessary to provide you with the value-added service.',
+      ] },
+      { id: 'use-of-information', title: 'Our Use of Your Information', body: [
+        'We use customer contact information from the registration form, “Book a demo” and “Contact Us” forms to send you information about INPUT SOFT. Your contact information is also used to contact you when necessary. Your IP address is also used to help identify you and to gather broad demographic information. Finally, we may use your IP address to help protect ourselves and our partners from fraud. We use demographic and profile data to tailor your experience at our site, showing you content that we think you might be interested in, and displaying the content according to your preferences.',
+      ] },
+      { id: 'disclosure', title: 'Our Disclosure of Your Information', body: [
+        'We never use or share the personally identifiable information provided to us online in ways unrelated to the ones described in this Privacy Policy without also providing you an opportunity to opt-out or otherwise prohibit such unrelated uses.',
+        'INPUT SOFT will never sell or rent for consideration any personally identifiable information about you or your business to any third party without first receiving your permission.',
+        'In no event, will INPUT SOFT disclose any of your Financial Information.',
+        'INPUT SOFT cannot ensure that all of your personally identifiable information will never be disclosed in ways not described in this Privacy Policy. For example, we may be required to disclose personally identifiable information to the government or by court order under certain circumstances, or other situations may arise requiring such disclosure. Also, you authorize us to disclose any information about you to law enforcement or other government officials as we, in our sole discretion, believe necessary or appropriate. This site may contain links to other sites. InputSoft is not responsible for the privacy practices or the content of such Websites.',
+      ] },
+      { id: 'your-rights', title: 'Your Rights', body: [
+        'You have the right to access personal information that INPUT SOFT processes about you. You can request from us information about:',
+        { list: [
+          'The personal data we hold about you.',
+          'The categories of personal data concerned.',
+          'The purposes of the processing.',
+          'Details to whom your personal data has/will be disclosed.',
+          'How long we retain your personal data.',
+          'If we did not collect the data directly from you, information about the source.',
+        ] },
+        'You may also request from us the following:',
+        { list: [
+          'That we update any incomplete or inaccurate data about you.',
+          'Request that we delete your personal data in accordance with EU GDPR.',
+        ] },
+        'You may request our action with your rights by emailing us at <a href="mailto:info@inputsoft.net">info@inputsoft.net</a>. To ensure your data is protected, if we receive a request from you to exercise your rights, we will ask you to verify your identity before acting on the request.',
+      ] },
+      { id: 'international-transfers', title: 'International Transfers', body: [
+        'Your personal data may be processed outside the EU by us or the third parties we use. Where these transfers take place, we will ensure the same high standard of protection for your personal data at all times.',
+      ] },
+      { id: 'security', title: 'Security and Safeguarding Measures', body: [
+        'All personal data collected is transferred and stored securely, using industry-standard encryption protocols, and approved transfer mechanisms. Please note, however, that we cannot guarantee that the measures we maintain will guarantee the security of the information. Our team is trained on the importance of Privacy and Data Protection and will adhere to our internal policies.',
+      ] },
+      { id: 'retention', title: 'How Long We Retain Your Data', body: [
+        'INPUT SOFT only retains personal information for as long as is necessary. For further details on our data retention periods please contact us. Where you have consented to us to use your details for direct marketing, we will keep this data until you notify us or otherwise withdraw your consent.',
+      ] },
+      { id: 'other-websites', title: 'Links to Other Web Sites', body: [
+        'Our services may contain links to other websites not controlled or operated by INPUT SOFT. These links do not imply that we endorse these third-party sites. We recommend reviewing those sites directly for information on their privacy policies.',
+      ] },
+      { id: 'cookies', title: 'Cookies', body: [
+        'A ‘cookie’ is a small text file sent from a website and stored on the user’s computer by the user’s web browser. Upon visiting a site that uses cookies, a cookie is downloaded onto your computer or mobile device. The next time you visit that site, your device will remember useful information such as preferences, visited pages, or logging in options.',
+      ] },
+    ],
+  },
+];
+
 // HTML-escape ampersands in all content strings (e.g. "SLA negotiations & RFPs")
 const escapeDeep = (v) => {
   if (typeof v === 'string') return v.replace(/&(?!amp;|#)/g, '&amp;');
@@ -437,6 +496,7 @@ const escapeDeep = (v) => {
 };
 pages.forEach((p, i) => { pages[i] = escapeDeep(p); });
 casePages.forEach((p, i) => { casePages[i] = escapeDeep(p); });
+legalPages.forEach((p, i) => { legalPages[i] = escapeDeep(p); });
 
 /* ---------------------------------------------------------------- templates */
 const icon = (name) => `<svg class="icon"><use href="#i-${name}"/></svg>`;
@@ -678,6 +738,38 @@ const csQuote = (p) => `  <!-- ============ Client quote ============ -->
     </div>
   </section>`;
 
+/* ---------------------------------------------------------- legal templates */
+const legalHero = (p) => `  <!-- ============ Legal page header ============ -->
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero__panel hero__panel--page hero__panel--legal">
+      <div class="hero__content">
+        <p class="page-hero__crumb eyebrow load load-1">Legal</p>
+        <h1 class="hero__title h-xxl load load-2" id="page-title">${p.title}</h1>
+        <p class="page-hero__lead lead load load-3">${p.lead}</p>
+      </div>
+    </div>
+  </section>`;
+
+const legalBody = (p) => `  <!-- ============ Policy ============ -->
+  <section class="section" aria-label="${p.title}">
+    <div class="container legal">
+      <nav class="legal__toc" aria-label="Sections">
+        <span class="eyebrow">Contents</span>
+        <ol>
+${p.sections.map((sec, i) => `          <li><a href="#${sec.id}" data-toc="${sec.id}"><span>${String(i + 1).padStart(2, '0')}</span>${sec.title}</a></li>`).join('\n')}
+        </ol>
+      </nav>
+      <article class="legal__article">
+${p.sections.map((sec, i) => `        <section class="legal__section" id="${sec.id}">
+          <h2 class="h-md"><span class="legal__num">${String(i + 1).padStart(2, '0')}</span>${sec.title}</h2>
+${sec.body.map((b) => (typeof b === 'string' ? `          <p>${b}</p>` : `          <ul class="legal__list">
+${b.list.map((li) => `            <li>${li}</li>`).join('\n')}
+          </ul>`)).join('\n')}
+        </section>`).join('\n')}
+      </article>
+    </div>
+  </section>`;
+
 /* -------------------------------------------------------------------- build */
 const index = await readFile('index.html', 'utf8');
 const mainStart = index.indexOf('<main id="main">');
@@ -693,6 +785,7 @@ const must = (html, from, to) => {
 
 const all = [
   ...pages.map((p) => ({ ...p, ogImage: p.hero.src, current: [`<a class="mega__item" href="${p.file}">`, `<a class="mobile-menu__sub" href="${p.file}">`], body: [hero(p), cards(p), details(p), impact(p), caseStudy(p)] })),
+  ...legalPages.map((p) => ({ ...p, ogImage: 'assets/img/gen/hero-apron.jpg', current: [], body: [legalHero(p), legalBody(p)] })),
   ...casePages.map((p) => ({ ...p, ogImage: p.photo.src, current: [`<a class="mega__case" href="${p.file}">`, `<a class="mobile-menu__sub" href="${p.file}">`], body: [csHero(p), csProfile(p), csStory(p), csResults(p), csQuote(p)] })),
 ];
 
@@ -716,8 +809,10 @@ for (const p of all) {
   const sel = t.indexOf('id="f-solution"');
   const selEnd = t.indexOf('</select>', sel);
   let block = t.slice(sel, selEnd);
-  block = must(block, '<option value="" disabled selected>Choose</option>', '<option value="" disabled>Choose</option>');
-  block = must(block, `<option>${p.option}</option>`, `<option selected>${p.option}</option>`);
+  if (p.option) {
+    block = must(block, '<option value="" disabled selected>Choose</option>', '<option value="" disabled>Choose</option>');
+    block = must(block, `<option>${p.option}</option>`, `<option selected>${p.option}</option>`);
+  }
   t = t.slice(0, sel) + block + t.slice(selEnd);
 
   await writeFile(p.file, `${h}<main id="main">\n\n${p.body.filter(Boolean).join('\n\n')}\n\n${t}`);

@@ -159,6 +159,21 @@
     window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenu(false); });
   }
 
+  /* ---------- Legal pages: highlight the section in view ---------- */
+  const tocLinks = $$('[data-toc]');
+  if (tocLinks.length && 'IntersectionObserver' in window) {
+    const setActive = (id) => tocLinks.forEach((a) => {
+      const on = a.dataset.toc === id;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    tocLinks.forEach((a) => { const sec = document.getElementById(a.dataset.toc); if (sec) io.observe(sec); });
+    setActive(tocLinks[0].dataset.toc);
+  }
+
   /* ---------- Reveal on scroll ---------- */
   const revealEls = $$('.rv');
   if ('IntersectionObserver' in window && !reduceMotion) {

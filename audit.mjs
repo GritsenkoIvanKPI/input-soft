@@ -100,6 +100,8 @@ for (const [name, w, h] of DEVICES) {
   if (p) await p.close();
   p = await b.newPage();
   await p.setViewport({ width: w, height: h, isMobile: w < 900 && h > w, hasTouch: w < 1024 });
+  // pretend consent was given so the cookie banner doesn't sit over the page; it is audited as its own state below
+  await p.evaluateOnNewDocument(() => { try { localStorage.setItem('inputsoft-cookie-consent', JSON.stringify({ analytics: false, marketing: false, personalization: false, v: 1 })); } catch {} });
   await p.goto(SITE, { waitUntil: 'networkidle0' });
   await p.evaluate(() => document.fonts.ready);
   const states = [
@@ -107,6 +109,8 @@ for (const [name, w, h] of DEVICES) {
       document.querySelectorAll('.rv').forEach((e) => e.classList.add('is-in'));
       document.querySelectorAll('.step, .sol-nav').forEach((e) => e.classList.add('is-active'));
     }],
+    ['cookie banner', '[data-cc-banner]', () => { const el = document.querySelector('[data-cc-banner]'); el.inert = false; el.classList.add('is-open'); }],
+    ['cookie preferences', '[data-cc-prefs]', () => { const el = document.querySelector('[data-cc-prefs]'); el.inert = false; el.classList.add('is-open'); }],
     ['demo modal', '[data-modal]', () => { document.querySelector('[data-modal]').classList.add('is-open'); }],
   ];
   if (w < 1024) states.push(['mobile menu', '[data-mobile-menu]', () => { document.querySelector('[data-mobile-menu]').classList.add('is-open'); }]);
@@ -121,7 +125,7 @@ for (const [name, w, h] of DEVICES) {
     if (res.pageOverflow > 0) issues.push('PAGE OVERFLOW ' + res.pageOverflow + 'px');
     const filtered = issues;
     if (filtered.length) { console.log(`\n== ${name} ${w}×${h} — ${state}`); filtered.forEach((s) => console.log('  ' + s)); total += filtered.length; }
-    await p.evaluate(() => { document.querySelector('[data-modal]').classList.remove('is-open'); document.querySelector('[data-mobile-menu]').classList.remove('is-open'); document.querySelector('.mega').classList.remove('is-open'); });
+    await p.evaluate(() => { document.querySelector('[data-modal]').classList.remove('is-open'); document.querySelectorAll('[data-cc-banner], [data-cc-prefs]').forEach((el) => el.classList.remove('is-open')); document.querySelector('[data-mobile-menu]').classList.remove('is-open'); document.querySelector('.mega').classList.remove('is-open'); });
   }
 }
 console.log(`\nTOTAL ISSUES: ${total}`);

@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/consent.js" defer></script>
 </head>
 <body>
 
@@ -399,6 +400,7 @@
       <div class="footer__legal">
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="dei-commitment.html">DEI commitment</a>
+        <button class="footer__cookie" type="button" data-cc-settings>Cookie settings</button>
       </div>
     </div>
   </div>
@@ -409,6 +411,62 @@
   <div class="modal__backdrop" data-modal-close></div>
   <div class="modal__dialog" data-modal-slot>
     <button class="modal__close" type="button" aria-label="Close" data-modal-close><svg class="icon"><use href="#i-close"/></svg></button>
+  </div>
+</div>
+
+<!-- ============ Cookie consent (behaviour in assets/js/consent.js) ============ -->
+<div class="cc-banner" role="region" aria-label="Cookie consent" data-cc-banner inert>
+  <p class="cc-banner__text">By clicking <strong>“Accept All Cookies”</strong>, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href="privacy-policy.html">Privacy Policy</a> for more information.</p>
+  <div class="cc-banner__actions">
+    <button class="cc-link" type="button" data-cc-open-prefs>Preferences</button>
+    <button class="btn btn--secondary btn--sm" type="button" data-cc-deny>Deny</button>
+    <button class="btn btn--primary btn--sm" type="button" data-cc-accept>Accept</button>
+  </div>
+  <button class="cc-close" type="button" aria-label="Close and deny optional cookies" data-cc-deny><svg class="icon"><use href="#i-close"/></svg></button>
+</div>
+
+<div class="modal cc-prefs" role="dialog" aria-modal="true" aria-labelledby="cc-title" data-cc-prefs inert>
+  <div class="modal__backdrop" data-cc-dismiss></div>
+  <div class="modal__dialog cc-prefs__dialog">
+    <button class="modal__close" type="button" aria-label="Close" data-cc-dismiss><svg class="icon"><use href="#i-close"/></svg></button>
+    <h2 class="cc-prefs__title" id="cc-title">Privacy Preference Center</h2>
+    <p class="cc-prefs__intro">When you visit websites, they may store or retrieve data in your browser. This storage is often necessary for the basic functionality of the website. The storage may be used for marketing, analytics, and personalization of the site, such as storing your preferences. Privacy is important to us, so you have the option of disabling certain types of storage that may not be necessary for the basic functioning of the website. Blocking categories may impact your experience on the website.</p>
+    <div class="cc-prefs__bulk">
+      <button class="btn btn--outline-ink btn--sm" type="button" data-cc-deny>Reject all cookies</button>
+      <button class="btn btn--outline-ink btn--sm" type="button" data-cc-accept>Allow all cookies</button>
+    </div>
+    <h3 class="cc-prefs__subtitle">Manage Consent Preferences by Category</h3>
+    <div class="cc-prefs__cats">
+      <div class="cc-cat">
+        <div class="cc-cat__head">
+          <span class="cc-cat__title">Essential</span>
+          <span class="cc-cat__always">Always active</span>
+        </div>
+        <p>These items are required to enable basic website functionality.</p>
+      </div>
+      <div class="cc-cat">
+        <label class="cc-cat__head" for="cc-marketing">
+          <span class="cc-cat__title">Marketing</span>
+          <input class="cc-switch" type="checkbox" id="cc-marketing" data-cc-category="marketing">
+        </label>
+        <p>These items are used to deliver advertising that is more relevant to you and your interests. They may also be used to limit the number of times you see an advertisement and measure the effectiveness of advertising campaigns. Advertising networks usually place them with the website operator’s permission.</p>
+      </div>
+      <div class="cc-cat">
+        <label class="cc-cat__head" for="cc-personalization">
+          <span class="cc-cat__title">Personalization</span>
+          <input class="cc-switch" type="checkbox" id="cc-personalization" data-cc-category="personalization">
+        </label>
+        <p>These items allow the website to remember choices you make (such as your user name, language, or the region you are in) and provide enhanced, more personal features. For example, a website may provide you with local weather reports or traffic news by storing data about your current location.</p>
+      </div>
+      <div class="cc-cat">
+        <label class="cc-cat__head" for="cc-analytics">
+          <span class="cc-cat__title">Analytics</span>
+          <input class="cc-switch" type="checkbox" id="cc-analytics" data-cc-category="analytics">
+        </label>
+        <p>These items help the website operator understand how its website performs, how visitors interact with the site, and whether there may be technical issues. This storage type usually doesn’t collect information that identifies a visitor.</p>
+      </div>
+    </div>
+    <button class="btn btn--ink btn--lg cc-prefs__save" type="button" data-cc-save>Confirm my preferences and close</button>
   </div>
 </div>
 
