@@ -536,7 +536,7 @@ const hero = (p) => `  <!-- ============ Page hero ============ -->
   </section>`;
 
 const cards = (p) => `  <!-- ============ Overview cards ============ -->
-  <section class="section" aria-labelledby="overview-title">
+  <section class="section section--alt" aria-labelledby="overview-title">
     <div class="container">
       <div class="section-head section-head--center rv">
         <span class="eyebrow">${p.cards.eyebrow}</span>
@@ -585,7 +585,7 @@ ${rows}
 };
 
 const impact = (p) => `  <!-- ============ Impact ============ -->
-  <section class="section" aria-labelledby="impact-title">
+  <section class="section section--alt" aria-labelledby="impact-title">
     <div class="container">
       <div class="section-head${p.impact.wide ? ' section-head--wide' : ''} rv">
         <span class="eyebrow">${p.impact.eyebrow}</span>
@@ -683,7 +683,7 @@ const csBlock = (label, title, b, ic, mod, d) => `        <article class="cs-blo
         </article>`;
 
 const csStory = (p) => `  <!-- ============ Challenge & solution ============ -->
-  <section class="section section--tight" aria-label="Challenge and solution">
+  <section class="section section--alt" aria-label="Challenge and solution">
     <div class="container">
       <div class="cs-story">
 ${csBlock('01', 'Challenge', p.challenge, 'alert', 'challenge', '')}
@@ -727,7 +727,7 @@ ${r.wins.map((w, i) => `        <div class="benefit rv${delay(i)}">
 };
 
 const csQuote = (p) => `  <!-- ============ Client quote ============ -->
-  <section class="section section--tight" aria-label="Client quote">
+  <section class="section section--alt" aria-label="Client quote">
     <div class="container">
       <figure class="cs-quote rv">
         <blockquote>
