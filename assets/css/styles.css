@@ -4001,6 +4001,128 @@ label.cc-cat__head {
   color: var(--brand-yellow);
 }
 
+/* ==========================================================================
+   Accent blocks — one or two per page in brand blue or yellow; the page background stays dark
+   ========================================================================== */
+
+/* Blue panel: the section's container becomes a rounded brand-blue panel */
+.section--panel-blue > .container {
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - var(--gutter) * 2);
+  max-width: var(--container);
+  padding: clamp(2.5rem, 1.5rem + 4vw, 5.5rem) clamp(1.25rem, 0.5rem + 3.5vw, 4rem);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background:
+    radial-gradient(70% 90% at 100% 0%, rgba(81, 141, 210, 0.45), transparent 60%),
+    radial-gradient(60% 80% at 0% 100%, rgba(250, 184, 34, 0.1), transparent 70%),
+    linear-gradient(135deg, #24438a 0%, #1b2f66 45%, #141f48 100%);
+  box-shadow: inset 0 0 0 1px rgba(236, 234, 226, 0.12), var(--shadow-2);
+}
+
+.section--panel-blue > .container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--grain);
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.section--panel-blue .eyebrow,
+.section--panel-blue .benefit__pre {
+  color: rgba(236, 234, 226, 0.72);
+}
+
+.section--panel-blue .lead {
+  color: rgba(236, 234, 226, 0.82);
+}
+
+.section--panel-blue .tiles,
+.section--panel-blue .tiles > *,
+.section--panel-blue .cs-table,
+.section--panel-blue .cs-table__row {
+  border-color: rgba(236, 234, 226, 0.14);
+}
+
+.section--panel-blue .benefit {
+  background: rgba(8, 12, 32, 0.32);
+}
+
+.section--panel-blue .benefit:hover,
+.section--panel-blue .cs-table__row:not(.cs-table__row--head):hover {
+  background: rgba(8, 12, 32, 0.5);
+}
+
+.section--panel-blue .benefit__text,
+.section--panel-blue .cs-table__row {
+  color: rgba(236, 234, 226, 0.8);
+}
+
+/* Yellow metric tile */
+.metric--yellow {
+  background: var(--brand-yellow);
+  color: var(--ink);
+}
+
+.metric--yellow:hover {
+  background: var(--brand-yellow-hover);
+}
+
+.metric--yellow .metric__pre,
+.metric--yellow .metric__label,
+.metric--yellow .metric__source {
+  color: rgba(16, 19, 31, 0.72);
+}
+
+.metric--yellow .metric__value,
+.metric--yellow .metric__value .accent,
+.metric--yellow .metric__source .icon {
+  color: var(--ink);
+}
+
+/* Yellow case study banner */
+.case-banner--yellow {
+  background: var(--brand-yellow);
+  box-shadow: none;
+}
+
+.case-banner--yellow .case-banner__body {
+  color: var(--ink);
+}
+
+.case-banner--yellow .eyebrow {
+  color: rgba(16, 19, 31, 0.65);
+}
+
+/* Yellow client quote */
+.cs-quote--yellow {
+  max-width: none;
+  padding: clamp(1.75rem, 1rem + 3.5vw, 4.5rem);
+  border-left: 0;
+  border-radius: var(--r-xl);
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(255, 255, 255, 0.28), transparent 70%),
+    var(--brand-yellow);
+  color: var(--ink);
+  box-shadow: var(--shadow-2);
+}
+
+.cs-quote--yellow blockquote {
+  max-width: 56rem;
+}
+
+.cs-quote--yellow figcaption {
+  color: rgba(16, 19, 31, 0.72);
+}
+
+.cs-quote--yellow figcaption strong {
+  color: var(--ink);
+}
+
 /* ---------- 19. Footer ---------- */
 .footer {
   padding-top: var(--sp-10);

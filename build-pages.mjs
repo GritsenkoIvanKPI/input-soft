@@ -585,7 +585,7 @@ ${rows}
 };
 
 const impact = (p) => `  <!-- ============ Impact ============ -->
-  <section class="section" aria-labelledby="impact-title">
+  <section class="section section--panel-blue" aria-labelledby="impact-title">
     <div class="container">
       <div class="section-head${p.impact.wide ? ' section-head--wide' : ''} rv">
         <span class="eyebrow">${p.impact.eyebrow}</span>
@@ -609,12 +609,12 @@ const caseStudy = (p) => {
   return `  <!-- ============ Case study ============ -->
   <section class="section section--tight" aria-labelledby="case-title">
     <div class="container">
-      <div class="case-banner rv">
+      <div class="case-banner case-banner--yellow rv">
         <div class="case-banner__media"><img src="${c.img}" alt="${c.alt}" width="896" height="1200" loading="lazy"></div>
         <div class="case-banner__body">
           <span class="eyebrow">Case study</span>
           <h2 class="h-lg" id="case-title">${p.caseTitle || c.title}</h2>
-          <a class="btn btn--secondary" href="${c.href}">Read the case study ${icon('arrow-right')}</a>
+          <a class="btn btn--ink" href="${c.href}">Read the case study ${icon('arrow-right')}</a>
         </div>
       </div>
     </div>
@@ -708,7 +708,7 @@ ${r.table.map(([m, b, a, i]) => `        <div class="cs-table__row" role="row">
 ${r.note ? `      <p class="cs-note lead rv">${r.note}</p>\n` : ''}` : '';
   const winsHead = r.table && r.winsHeading ? `      <h3 class="cs-wins-title h-lg rv">${r.winsHeading}</h3>\n` : '';
   return `  <!-- ============ Results ============ -->
-  <section class="section" id="results" aria-labelledby="results-title">
+  <section class="section section--panel-blue" id="results" aria-labelledby="results-title">
     <div class="container">
       <div class="section-head rv">
         <span class="eyebrow">Results</span>
@@ -729,7 +729,7 @@ ${r.wins.map((w, i) => `        <div class="benefit rv${delay(i)}">
 const csQuote = (p) => `  <!-- ============ Client quote ============ -->
   <section class="section section--tight" aria-label="Client quote">
     <div class="container">
-      <figure class="cs-quote rv">
+      <figure class="cs-quote cs-quote--yellow rv">
         <blockquote>
           ${p.quote.text.map((t) => `<p>${t}</p>`).join('\n          ')}
         </blockquote>
