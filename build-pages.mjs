@@ -33,6 +33,36 @@ const pages = [
     details: {
       rows: [
         {
+          title: 'Resource Planning Module',
+          list: [
+            ['Fully automated planning:', 'Automatically allocate human, technical (GSE) and airport resources, such as check-in desks, parking stands and baggage belts.'],
+            ['Predictive scheduling:', 'Our algorithms calculate the optimal number of shifts and staff, ensuring the right personnel are in place at the right time.'],
+            ['Instant schedule generation:', 'Assign tasks based on flight schedules, available resources and staff qualifications to ensure seamless operations.'],
+            ['eGSE scheduling:', 'Schedule GSE and eGSE usage and charging based on workload and shift requirements for efficient resource management.'],
+          ],
+          media: shot('rms-flightplan.jpg', 'Resource planning: flights on a timeline with the tasks and resources required for each turnaround'),
+        },
+        {
+          title: 'Staff Rostering Module',
+          list: [
+            ['Effortless rostering:', 'Automatically generate staff rosters based on flight schedules and shift requirements.'],
+            ['Smart task allocation:', 'Create work schedules, tasks and ready-to-go rosters with a single click.'],
+            ['Flexible planning:', 'Customize parameters for various “what-if” scenarios, enabling quick adjustments to evolving needs — with vacations, sick leave and personal requests taken into account.'],
+            ['Seamless distribution:', 'Download reports or send roster schedules directly to employees via the INPUT SOFT app or WhatsApp.'],
+          ],
+          media: shot('rms-roster.jpg', 'Staff roster with employees, contracts and assigned shifts', 900),
+        },
+        {
+          title: 'Real-Time Planning Module',
+          list: [
+            ['Flight data feed:', 'Integration with existing databases (AODB, AOCC, etc.) or a direct connection to the satellite ADS-B data feed for real-time updates.'],
+            ['Instant flight updates:', 'Receive immediate notifications on schedule changes, ensuring seamless operations.'],
+            ['Seamless task assignment:', 'Automatically reassign tasks in case of delays and notify employees via the app or WhatsApp for fast communication.'],
+            ['Optimized ground handling:', 'Save valuable time through real-time adjustments, improving operational efficiency and overall performance.'],
+          ],
+          media: shot('rms-realtime.jpg', 'Real-time planning: live staff timeline with task statuses and delayed flights'),
+        },
+        {
           title: 'Gain total visibility over your operations',
           list: [
             ['', 'Visual dashboards turn your daily operational data into clear statistics, so you can track performance trends and evaluate execution quality across all flights.'],
@@ -61,12 +91,11 @@ const pages = [
       heading: 'Measurable impact of INPUT SOFT RMS',
       items: [
         { pre: 'Up to', value: '$110K', title: 'Cost recovery', text: 'Save up to $110K per month by identifying resource leakage and optimizing daily allocation.' },
-        { value: '20%', title: 'Operational productivity', text: 'Drive a 20% increase in staff utilization through high-precision scheduling and reduced idle time.' },
+        { pre: 'Up to', value: '20%', title: 'Operational productivity', text: 'Drive up to a 20% increase in staff utilization through high-precision scheduling and reduced idle time.' },
         { value: '100K+', title: 'Enterprise-scale performance', text: 'Built for major hubs, the system processes 100K+ flights per planning cycle with zero lag.' },
         { value: '250K+', title: 'High-speed calculation', text: 'Automate the assignment of 250K+ individual tasks in a single calculation, turning hours of manual planning into seconds.' },
       ],
     },
-    caseStudy: 'foxtrot',
   },
   {
     key: 'dms',
@@ -115,7 +144,7 @@ const pages = [
             'Complete mandatory pre-shift GSE inspections and record engine hours, mileage, fuel levels and any other required information directly via mobile checklists before operating any asset.',
             'Analyze logged equipment data on the web platform to track vehicle availability, automatically predict maintenance needs based on real usage and export the GSE reports.',
           ],
-          media: shot('dm-gse.jpg', 'GSE control: equipment list with inspection statuses and usage data'),
+          media: shot('dm-gse-inspection.jpg', 'GSE control: inspection checklist for loading equipment with fuel level, leakage, wheels and brakes checks'),
         },
         {
           title: 'Mobile app: built for the ramp',
@@ -150,7 +179,7 @@ const pages = [
     metaDesc: 'Precise resource modelling for RFPs, SLA negotiations, budgeting and seasonal changes, with a comprehensive report delivered within 48 hours.',
     kind: 'Service',
     title: 'Calculations on Demand',
-    lead: 'Operational planning means tight deadlines and high stakes. We simulate your exact needs for staff, technical assets, and fixed infrastructure (like check-in desks and gates) during critical transitions.',
+    lead: 'Calculations on Demand gives you clear, data-driven insights to refine resource planning and boost operational efficiency. Simply send us your operational data, and we’ll deliver a complete, action-ready report within 48 hours to power your next strategic decision.',
     hero: shot('calc-analytics.jpg', 'Calculation report with flights, worked hours and paid hours by aircraft type', 1000),
     cards: {
       eyebrow: 'Use cases',
@@ -170,7 +199,7 @@ const pages = [
         {
           title: 'Flight Schedule',
           text: ['A complete list of all arrivals and departures. We accept any standard daily or seasonal formats (such as Excel, CSV, or IATA SSIM codes).'],
-          media: shot('rms-schedule.jpg', 'Flight schedule overview with movements, passengers and peak hours', 901),
+          media: shot('rms-schedule-list.jpg', 'Imported flight schedule: list of arrivals and departures with airline, flight number and linked flights', 900),
         },
         {
           title: 'Planning Rules & Labor Parameters',
@@ -195,6 +224,7 @@ const pages = [
       ],
     },
     caseStudy: 'foxtrot',
+    caseTitle: 'How Foxtrot Aviation Services streamlined RFP modeling and planning with INPUT SOFT Calculations on Demand',
   },
   {
     key: 'fp',
@@ -205,7 +235,7 @@ const pages = [
     kind: 'Solution',
     title: 'FlightPrint',
     lead: 'The operational impact of your schedule, before a single aircraft moves.',
-    hero: shot('rms-flightplan.jpg', 'FlightPrint flight plan: flights on a timeline with the tasks required for each turnaround'),
+    hero: shot('flightprint-plan.jpg', 'FlightPrint: flights on a timeline with the handling tasks for each turnaround, task filters and the workload curve', 901),
     cards: {
       eyebrow: 'Overview',
       heading: 'What FlightPrint gives you',
@@ -223,7 +253,7 @@ const pages = [
         {
           title: 'Upload your flight schedule in any format',
           text: ['The platform instantly builds a unified workload model, aligning your network planning and operations teams from the start.'],
-          media: shot('rms-schedule.jpg', 'Uploaded flight schedule with movements per airline and peak hours', 901),
+          media: shot('rms-schedule-seasonal.jpg', 'Uploaded seasonal flight schedule with aircraft types, times, days of operation and periods', 901),
         },
         {
           title: 'Apply specific handling rules',
@@ -233,12 +263,12 @@ const pages = [
         {
           title: 'Predict and block delay risks before they hit you',
           text: ['See exactly which flight banks will overload your ground handlers and create operational bottlenecks.'],
-          media: shot('rms-shiftplan.jpg', 'Workload curve showing peaks against available staff', 901),
+          media: shot('flightprint-banks.jpg', 'FlightPrint: flight banks across the week with the flight load curve showing peak periods', 899),
         },
         {
           title: 'Generate clear, data-driven dashboards',
           text: ['For confident, evidence-based negotiations with handlers and hubs or seamlessly sync everything with Power BI.'],
-          media: shot('analytics-dashboard.jpg', 'Dashboards with flights, FTE, worked hours and paid hours', 896),
+          media: shot('flightprint-report.jpg', 'FlightPrint report: flights, FTE, heads, worked and paid hours with charts by day and aircraft type', 900),
         },
       ],
     },
@@ -357,8 +387,8 @@ const casePages = [
     ],
     overview: [
       'Managing a global airline network of this scale requires strong strategic planning to drive cost efficiency and optimise resource utilisation.',
-      'INPUT SOFT’s relationship with IAG began through the IAGi Accelerator, the Group’s innovation programme designed to accelerate the testing and adoption of new technologies. Following a presentation at the IAGi Innovation Summit, the Airport Analytics Procurement Team recognised the potential to address complex airport planning challenges. This led to a collaboration with IAG Transform, the Group’s dedicated technology, procurement, and innovation division.',
-      'The Airport Analytics Procurement Team play a critical role in assessing schedules to identify and maximise cost-saving opportunities across key initiatives, while ensuring alignment with operational and resource requirements.',
+      'INPUT SOFT’s relationship with IAG began through the IAGi Accelerator, the Group’s innovation programme designed to accelerate the testing and adoption of new technologies. This led to a collaboration with IAG Transform, the Group’s dedicated technology, procurement, and innovation division.',
+      'The Airport Analytics Procurement Team plays a critical role in assessing schedules to identify and maximise cost-saving opportunities across key initiatives, while ensuring alignment with operational and resource requirements.',
     ],
     challenge: {
       text: [
@@ -523,7 +553,7 @@ const caseStudy = (p) => {
         <div class="case-banner__media"><img src="${c.img}" alt="${c.alt}" width="896" height="1200" loading="lazy"></div>
         <div class="case-banner__body">
           <span class="eyebrow">Case study</span>
-          <h2 class="h-lg" id="case-title">${c.title}</h2>
+          <h2 class="h-lg" id="case-title">${p.caseTitle || c.title}</h2>
           <a class="btn btn--secondary" href="${c.href}">Read the case study ${icon('arrow-right')}</a>
         </div>
       </div>
@@ -549,21 +579,37 @@ const csHero = (p) => `  <!-- ============ Case study hero ============ -->
     </div>
   </section>`;
 
-const csProfile = (p) => `  <!-- ============ Client profile ============ -->
+const csProfile = (p) => {
+  const get = (k) => (p.profile.find(([key]) => key === k) || [])[1] || '';
+  const [name, about] = get('Company').split(' — ');
+  const facts = [['plane', 'Industry', get('Industry')], ['globe', 'Region', get('Region')], ['forecast', 'Client since', get('Client since')]];
+  const [lead, ...rest] = p.overview;
+  return `  <!-- ============ Client profile ============ -->
   <section class="section" aria-labelledby="profile-title">
     <div class="container cs-profile">
-      <div class="cs-profile__facts rv">
-        <h2 class="eyebrow" id="profile-title">The client profile</h2>
-        <dl class="cs-facts">
-${p.profile.map(([k, v]) => `          <div><dt>${k}</dt><dd>${v}</dd></div>`).join('\n')}
+      <div class="cs-client rv">
+        <div class="cs-client__head">
+          <span class="eyebrow">The client profile</span>
+          <h2 class="h-lg" id="profile-title">${name}</h2>${about ? `\n          <p class="cs-client__about">${about.charAt(0).toUpperCase() + about.slice(1)}</p>` : ''}
+        </div>
+        <dl class="cs-client__facts">
+${facts.map(([ic, k, v]) => `          <div class="cs-fact">
+            <span class="icon-tile">${icon(ic)}</span>
+            <dt>${k}</dt>
+            <dd>${v}</dd>
+          </div>`).join('\n')}
         </dl>
       </div>
-      <div class="cs-profile__overview rv rv-d1">
+      <div class="cs-overview rv">
         <h2 class="h-lg">Operational overview</h2>
-        ${p.overview.map((t) => `<p>${t}</p>`).join('\n        ')}
+        <div class="cs-overview__body">
+          <p class="cs-overview__lead">${lead}</p>
+          ${rest.map((t) => `<p>${t}</p>`).join('\n          ')}
+        </div>
       </div>
     </div>
   </section>`;
+};
 
 const csList = (items, ic) => `<ul class="checklist">
 ${items.map((it) => `            <li>${icon(ic)}<span>${Array.isArray(it) ? `<strong>${it[0]}</strong> ${it[1]}` : it}</span></li>`).join('\n')}
@@ -647,7 +693,7 @@ const must = (html, from, to) => {
 
 const all = [
   ...pages.map((p) => ({ ...p, ogImage: p.hero.src, current: [`<a class="mega__item" href="${p.file}">`, `<a class="mobile-menu__sub" href="${p.file}">`], body: [hero(p), cards(p), details(p), impact(p), caseStudy(p)] })),
-  ...casePages.map((p) => ({ ...p, ogImage: p.photo.src, current: [`<a class="mega__case" href="${p.file}">`], body: [csHero(p), csProfile(p), csStory(p), csResults(p), csQuote(p)] })),
+  ...casePages.map((p) => ({ ...p, ogImage: p.photo.src, current: [`<a class="mega__case" href="${p.file}">`, `<a class="mobile-menu__sub" href="${p.file}">`], body: [csHero(p), csProfile(p), csStory(p), csResults(p), csQuote(p)] })),
 ];
 
 for (const p of all) {
