@@ -19,8 +19,8 @@ const pages = [
     metaDesc: 'Streamline RFP modeling and resource planning with INPUT SOFT RMS. Reduce modeling time by 60%, standardize pricing, and boost bid capacity.',
     kind: 'Software suite',
     title: 'Resource Management',
-    lead: 'INPUT SOFT RMS is a fully integrated resource management suite that optimizes airport operations through predictive planning, automated rostering, and real-time task execution. Seamlessly connected with airport systems and staff tools, it ensures smooth coordination and on-time performance.',
-    hero: shot('rms-shiftplan.jpg', 'Resource Management shift plan: staff shifts and tasks across the day with the workload curve', 901),
+    lead: 'INPUT SOFT Resource Management Software Suite plans, rosters, and controls all your resources in real time, from staff and GSE to fixed resources. Every turnaround is fully covered, even when the schedule changes.',
+    hero: shot('rms-realtime-insights.jpg', 'Real-time planning: live staff timeline with flights and tasks, delayed flights, and the Insights panel showing staff shortages by day and hour', 901),
     cards: {
       eyebrow: 'Software suite',
       heading: 'How can we help you?',
@@ -105,7 +105,7 @@ const pages = [
     metaDesc: 'An integrated platform that optimizes airport ramp operations and contract invoicing: accurate data capture, no revenue leakage, faster invoicing.',
     kind: 'Software suite',
     title: 'Data Management',
-    lead: 'INPUT SOFT Data Management Software Suite is an integrated platform that optimizes airport ramp operations and contract invoicing. Connected directly with the field, it ensures accurate data capture, eliminates revenue leakage, and speeds up invoicing.',
+    lead: 'INPUT SOFT Data Management Software Suite captures, analyzes, and invoices everything that happens on the ramp, from ground services to GSE usage. Every turnaround is billed accurately, with no service left out.',
     hero: shot('dm-flight-service.jpg', 'Data Management flight services: turnaround timeline with service statuses for every flight', 901),
     cards: {
       eyebrow: 'Software suite',
