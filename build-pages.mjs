@@ -7,6 +7,8 @@ const P = 'assets/img/product/';
 const G = 'assets/img/gen/';
 
 const shot = (file, alt, h = 902) => ({ type: 'shot', src: P + file, alt, w: 1600, h });
+// Simplified illustrations used instead of product screenshots below the hero (protects the interface)
+const ill = (file, alt) => ({ type: 'shot', src: 'assets/img/ill/' + file, alt, w: 1376, h: 768 });
 const phones = (...items) => ({ type: 'phones', items: items.map(([file, alt]) => ({ src: P + file, alt })) });
 
 /* ------------------------------------------------------------------ content */
@@ -40,7 +42,7 @@ const pages = [
             ['Instant schedule generation:', 'Assign tasks based on flight schedules, available resources and staff qualifications to ensure seamless operations.'],
             ['eGSE scheduling:', 'Schedule GSE and eGSE usage and charging based on workload and shift requirements for efficient resource management.'],
           ],
-          media: shot('rms-flightplan.jpg', 'Resource planning: flights on a timeline with the tasks and resources required for each turnaround'),
+          media: ill('rms-planning.jpg', 'Illustration: flights turned into a resource plan for staff, GSE and check-in desks'),
         },
         {
           title: 'Staff Rostering Module',
@@ -50,7 +52,7 @@ const pages = [
             ['Flexible planning:', 'Customize parameters for various “what-if” scenarios, enabling quick adjustments to evolving needs — with vacations, sick leave and personal requests taken into account.'],
             ['Seamless distribution:', 'Download reports or send roster schedules directly to employees via the INPUT SOFT app or WhatsApp.'],
           ],
-          media: shot('rms-roster.jpg', 'Staff roster with employees, contracts and assigned shifts', 900),
+          media: ill('rms-rostering.jpg', 'Illustration: a weekly staff roster with shifts and days off, ready to share'),
         },
         {
           title: 'Real-Time Planning Module',
@@ -60,7 +62,7 @@ const pages = [
             ['Seamless task assignment:', 'Automatically reassign tasks in case of delays and notify employees via the app or WhatsApp for fast communication.'],
             ['Optimized ground handling:', 'Save valuable time through real-time adjustments, improving operational efficiency and overall performance.'],
           ],
-          media: shot('rms-realtime.jpg', 'Real-time planning: live staff timeline with task statuses and delayed flights'),
+          media: ill('rms-realtime.jpg', 'Illustration: live timeline, a delayed flight and tasks reassigned between staff'),
         },
         {
           title: 'Gain total visibility over your operations',
@@ -69,7 +71,7 @@ const pages = [
             ['', 'Monitor key performance indicators like turnaround times, delay codes, and service metrics on fully customizable dashboards.'],
             ['', 'Easily sync your recorded data and performance history with external BI systems like Power BI for advanced reporting.'],
           ],
-          media: shot('rms-staff-portal.jpg', 'Staff portal dashboard with work hours, overtime and requests'),
+          media: ill('rms-dashboards.jpg', 'Illustration: performance dashboard with KPIs and charts, exportable to BI'),
         },
         {
           title: 'Keep your team connected in real time',
@@ -78,11 +80,7 @@ const pages = [
             ['Instant updates:', 'Get push notifications for task changes, flight delays, or reassignments as they happen.'],
             ['Task interaction:', 'Accept or decline updates with comments, syncing your response instantly with the platform.'],
           ],
-          media: phones(
-            ['app-roster.jpg', 'Mobile app: daily roster with tasks and flights'],
-            ['app-roster-task.jpg', 'Mobile app: task details with start and stop times'],
-            ['app-roster-month.jpg', 'Mobile app: monthly roster with shifts and hours'],
-          ),
+          media: ill('rms-mobile.jpg', 'Illustration: the mobile app with a task update to accept or decline'),
         },
       ],
     },
@@ -124,11 +122,7 @@ const pages = [
             'Log precise ground operations timestamps, flight statuses, delay codes, and actual passenger or cargo volumes right at the aircraft using the mobile iOS/Android app.',
             'Compile all verified field data into a centralized web dashboard to replace paper logs with a clear timeline for every flight. All the data and views are fully customizable.',
           ],
-          media: phones(
-            ['app-flights.jpg', 'Mobile app: list of flights with scheduled times and statuses'],
-            ['app-flight-service.jpg', 'Mobile app: arrival details with services to record'],
-            ['app-flight-service-gpu.jpg', 'Mobile app: a ground power unit service with start and stop times'],
-          ),
+          media: ill('dm-flight-services.jpg', 'Illustration: services logged on the phone and the turnaround timeline'),
         },
         {
           title: 'Invoicing Module',
@@ -136,7 +130,7 @@ const pages = [
             'Add airline contracts, like SGHA, to the directory. The system automatically matches ramp data with these contracts to calculate rates and generate ready-to-send invoices.',
             'Issue invoices and scan operational records automatically. The system flags missing invoices to stop revenue leakage, allows issuing credit notes, and tracks any work for audit purposes.',
           ],
-          media: shot('dm-invoicing-agreement.jpg', 'Invoicing agreement with contract terms, services and billing formulas', 901),
+          media: ill('dm-invoicing.jpg', 'Illustration: an SGHA contract and completed services turned into an invoice'),
         },
         {
           title: 'GSE Control Module',
@@ -144,7 +138,7 @@ const pages = [
             'Complete mandatory pre-shift GSE inspections and record engine hours, mileage, fuel levels and any other required information directly via mobile checklists before operating any asset.',
             'Analyze logged equipment data on the web platform to track vehicle availability, automatically predict maintenance needs based on real usage and export the GSE reports.',
           ],
-          media: shot('dm-gse-inspection.jpg', 'GSE control: inspection checklist for loading equipment with fuel level, leakage, wheels and brakes checks'),
+          media: ill('dm-gse.jpg', 'Illustration: a GSE pre-shift checklist and a maintenance forecast'),
         },
         {
           title: 'Mobile app: built for the ramp',
@@ -152,11 +146,7 @@ const pages = [
             'Eliminates delayed reporting and manual data re-entry by allowing ground staff to input checklists and service logs directly on mobile devices in real time.',
             'Instant updates: get push notifications for task changes, flight delays, or reassignments as they happen.',
           ],
-          media: phones(
-            ['app-home.jpg', 'Mobile app home screen with Task & Roster, Ground Support Equipment and Flights Services'],
-            ['app-gse-list.jpg', 'Mobile app: GSE list with inspection statuses'],
-            ['app-gse-check.jpg', 'Mobile app: GSE pre-shift checklist with mileage and engine hours'],
-          ),
+          media: ill('dm-mobile.jpg', 'Illustration: the ramp app with QR scanning and instant updates'),
         },
       ],
     },
@@ -199,17 +189,17 @@ const pages = [
         {
           title: 'Flight Schedule',
           text: ['A complete list of all arrivals and departures. We accept any standard daily or seasonal formats (such as Excel, CSV, or IATA SSIM codes).'],
-          media: shot('rms-schedule-list.jpg', 'Imported flight schedule: list of arrivals and departures with airline, flight number and linked flights', 900),
+          media: ill('schedule.jpg', 'Illustration: a flight schedule imported from XLS, CSV or SSIM files'),
         },
         {
           title: 'Planning Rules & Labor Parameters',
           text: ['Your specific ground handling constraints, including shift types, working hours, rest time rules, and mandatory break times.'],
-          media: shot('rms-rules.jpg', 'Planning rules with task timings and qualifications', 899),
+          media: ill('rules.jpg', 'Illustration: planning rules for shift length, breaks and rest time'),
         },
         {
           title: 'Employee Information',
           text: ['Current station roles, positions, qualifications, and employment types so the engine factors in actual operational compliance.'],
-          media: shot('rms-roster.jpg', 'Roster with employees, contracts and assigned shifts', 900),
+          media: ill('cod-employees.jpg', 'Illustration: employee cards with roles and qualifications'),
         },
       ],
     },
@@ -253,22 +243,22 @@ const pages = [
         {
           title: 'Upload your flight schedule in any format',
           text: ['The platform instantly builds a unified workload model, aligning your network planning and operations teams from the start.'],
-          media: shot('rms-schedule-seasonal.jpg', 'Uploaded seasonal flight schedule with aircraft types, times, days of operation and periods', 901),
+          media: ill('schedule.jpg', 'Illustration: a flight schedule imported from XLS, CSV or SSIM files'),
         },
         {
           title: 'Apply specific handling rules',
           text: ['Accurately calculate precise staffing and equipment needs for every single turn to avoid under- or over-resourcing.'],
-          media: shot('rms-rules.jpg', 'Handling rules with task timings and qualifications', 899),
+          media: ill('rules.jpg', 'Illustration: handling rules for shift length, breaks and rest time'),
         },
         {
           title: 'Predict and block delay risks before they hit you',
           text: ['See exactly which flight banks will overload your ground handlers and create operational bottlenecks.'],
-          media: shot('flightprint-banks.jpg', 'FlightPrint: flight banks across the week with the flight load curve showing peak periods', 899),
+          media: ill('fp-peaks.jpg', 'Illustration: workload curve with a peak above capacity at 18:00'),
         },
         {
           title: 'Generate clear, data-driven dashboards',
           text: ['For confident, evidence-based negotiations with handlers and hubs or seamlessly sync everything with Power BI.'],
-          media: shot('flightprint-report.jpg', 'FlightPrint report: flights, FTE, heads, worked and paid hours with charts by day and aircraft type', 900),
+          media: ill('fp-report.jpg', 'Illustration: a report with 35+ metrics that syncs to BI'),
         },
       ],
     },
