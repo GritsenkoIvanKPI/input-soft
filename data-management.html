@@ -207,39 +207,36 @@
   <section class="section" id="details" aria-label="Details">
     <div class="container">
       <div class="splits">
-        <article class="split">
-          <div class="split__body rv">
-            <h2 class="h-lg">Flight Services Module</h2>
-            <p>Log precise ground operations timestamps, flight statuses, delay codes, and actual passenger or cargo volumes right at the aircraft using the mobile iOS/Android app.</p>
-            <p>Compile all verified field data into a centralized web dashboard to replace paper logs with a clear timeline for every flight. All the data and views are fully customizable.</p>
-          </div>
-          <figure class="split__media sol-card sol-card--dms rv rv-d1">
-            <div class="phones">
-              <div class="phone"><img src="assets/img/product/app-flights.jpg" alt="Mobile app: list of flights with scheduled times and statuses" width="750" height="1626" loading="lazy"></div>
-              <div class="phone"><img src="assets/img/product/app-flight-service.jpg" alt="Mobile app: arrival details with services to record" width="750" height="1626" loading="lazy"></div>
-              <div class="phone"><img src="assets/img/product/app-flight-service-gpu.jpg" alt="Mobile app: a ground power unit service with start and stop times" width="750" height="1626" loading="lazy"></div>
-            </div>
+        <article class="split mods" data-mods>
+          <ul class="mods__list rv">
+            <li class="sol-nav mods__item is-active" data-mod="0">
+              <h2 class="mods__title"><button class="sol-nav__btn" type="button" aria-expanded="true">Flight Services Module</button></h2>
+              <div class="sol-nav__body"><div class="sol-nav__inner">
+                <p>Log precise ground operations timestamps, flight statuses, delay codes, and actual passenger or cargo volumes right at the aircraft using the mobile iOS/Android app.</p>
+                <p>Compile all verified field data into a centralized web dashboard to replace paper logs with a clear timeline for every flight. All the data and views are fully customizable.</p>
+              </div></div>
+            </li>
+            <li class="sol-nav mods__item" data-mod="1">
+              <h2 class="mods__title"><button class="sol-nav__btn" type="button" aria-expanded="false">Invoicing Module</button></h2>
+              <div class="sol-nav__body"><div class="sol-nav__inner">
+                <p>Add airline contracts, like SGHA, to the directory. The system automatically matches ramp data with these contracts to calculate rates and generate ready-to-send invoices.</p>
+                <p>Issue invoices and scan operational records automatically. The system flags missing invoices to stop revenue leakage, allows issuing credit notes, and tracks any work for audit purposes.</p>
+              </div></div>
+            </li>
+            <li class="sol-nav mods__item" data-mod="2">
+              <h2 class="mods__title"><button class="sol-nav__btn" type="button" aria-expanded="false">GSE Control Module</button></h2>
+              <div class="sol-nav__body"><div class="sol-nav__inner">
+                <p>Complete mandatory pre-shift GSE inspections and record engine hours, mileage, fuel levels and any other required information directly via mobile checklists before operating any asset.</p>
+                <p>Analyze logged equipment data on the web platform to track vehicle availability, automatically predict maintenance needs based on real usage and export the GSE reports.</p>
+              </div></div>
+            </li>
+          </ul>
+          <div class="mods__stage">
+            <figure class="split__media sol-card sol-card--dms rv rv-d1 mods__media">
+            <div class="sol-card__media"><img src="assets/img/product/dm-modules.jpg" alt="Flight services: flights with statuses and a turnaround timeline showing every ground service for each aircraft" width="1600" height="901" loading="lazy"></div>
           </figure>
-        </article>
-        <article class="split split--reverse">
-          <div class="split__body rv">
-            <h2 class="h-lg">Invoicing Module</h2>
-            <p>Add airline contracts, like SGHA, to the directory. The system automatically matches ramp data with these contracts to calculate rates and generate ready-to-send invoices.</p>
-            <p>Issue invoices and scan operational records automatically. The system flags missing invoices to stop revenue leakage, allows issuing credit notes, and tracks any work for audit purposes.</p>
+            <div class="mods__steps" aria-hidden="true"><span data-mod-step="0"></span><span data-mod-step="1"></span><span data-mod-step="2"></span></div>
           </div>
-          <figure class="split__media sol-card sol-card--dms rv rv-d1">
-            <div class="sol-card__media"><img src="assets/img/product/dm-invoicing-agreement.jpg" alt="Invoicing agreement with contract terms, services and billing formulas" width="1600" height="901" loading="lazy"></div>
-          </figure>
-        </article>
-        <article class="split">
-          <div class="split__body rv">
-            <h2 class="h-lg">GSE Control Module</h2>
-            <p>Complete mandatory pre-shift GSE inspections and record engine hours, mileage, fuel levels and any other required information directly via mobile checklists before operating any asset.</p>
-            <p>Analyze logged equipment data on the web platform to track vehicle availability, automatically predict maintenance needs based on real usage and export the GSE reports.</p>
-          </div>
-          <figure class="split__media sol-card sol-card--dms rv rv-d1">
-            <div class="sol-card__media"><img src="assets/img/product/dm-gse-inspection.jpg" alt="GSE control: inspection checklist for loading equipment with fuel level, leakage, wheels and brakes checks" width="1600" height="902" loading="lazy"></div>
-          </figure>
         </article>
         <article class="split split--reverse">
           <div class="split__body rv">

@@ -225,6 +225,33 @@
     }
   }
 
+  /* ---------- Modules: the open module follows the scroll ---------- */
+  $$('[data-mods]').forEach((block) => {
+    const items = $$('[data-mod]', block);
+    const marks = $$('[data-mod-step]', block);
+    const wide = window.matchMedia('(min-width: 1100px)');
+    const activate = (n) => {
+      items.forEach((li) => {
+        const on = li.dataset.mod === String(n);
+        li.classList.toggle('is-active', on);
+        $('.sol-nav__btn', li).setAttribute('aria-expanded', String(on));
+      });
+    };
+    items.forEach((li) => {
+      $('.sol-nav__btn', li).addEventListener('click', () => {
+        activate(li.dataset.mod);
+        const mark = marks[Number(li.dataset.mod)];
+        if (wide.matches && mark) mark.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      });
+    });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting && wide.matches) activate(entry.target.dataset.modStep); });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      marks.forEach((m) => io.observe(m));
+    }
+  });
+
   /* ---------- Steps: tabs with auto-advance ---------- */
   const steps = $('[data-steps]');
   if (steps) {
