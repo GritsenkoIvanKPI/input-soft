@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') return send(res, 405, { error: 'Method not allowed' });
     requireAuth(req);
     const body = await readBody(req);
-    const result = await publish(body);
+    const result = await publish(body, req);
     return send(res, 200, { ...result, local: isLocal() });
   });
 }

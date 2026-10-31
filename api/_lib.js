@@ -171,8 +171,35 @@ const local = {
   },
 };
 
-export const storage = () => (TOKEN ? github : local);
-export const isLocal = () => !TOKEN;
+// On Vercel without a GitHub token: read the published content from the website itself (read-only).
+const remote = (origin) => ({
+  async head() { return 'site'; },
+  async snapshot() {
+    const get = async (path) => {
+      const res = await fetch(`${origin}/${path}`, { cache: 'no-store' });
+      if (!res.ok) throw Object.assign(new Error(`Could not read ${path} from the website (${res.status}).`), { status: 502 });
+      return res.text();
+    };
+    const manifest = JSON.parse(await get('content/manifest.json'));
+    const files = { 'content/site.json': await get('content/site.json') };
+    await Promise.all(manifest.pages.map(async (f) => { files[contentPath(f)] = await get(contentPath(f)); }));
+    return { files, images: manifest.images || [], paths: [] };
+  },
+  async changedSince() { return []; },
+  async commit() {
+    throw Object.assign(new Error('Publishing is not switched on yet. Add GITHUB_TOKEN in Vercel → Settings → Environment Variables, then redeploy.'), { status: 503 });
+  },
+});
+
+const originOf = (req) => `https://${req.headers['x-forwarded-host'] || req.headers.host}`;
+export const storage = (req) => (TOKEN ? github : process.env.VERCEL ? remote(originOf(req)) : local);
+export const isLocal = () => !TOKEN && !process.env.VERCEL;
+export const isReadOnly = () => !TOKEN && Boolean(process.env.VERCEL);
+
+// List of pages and images, published with the site so the admin can read it without GitHub.
+export function manifest(pages, images) {
+  return `${JSON.stringify({ pages: pages.map((p) => p.file).sort(), images: [...new Set(images)].sort() }, null, 2)}\n`;
+}
 
 export function parseSnapshot(files) {
   const site = JSON.parse(files['content/site.json']);
@@ -184,8 +211,8 @@ export function parseSnapshot(files) {
  * Applies the admin's changes on top of the latest content, renders every page and commits it all at once.
  * changes: { site?, pages: { [file]: pageData }, deleted: [file], uploads: [{ path, base64 }] }
  */
-export async function publish({ base, message, changes }) {
-  const store = storage();
+export async function publish({ base, message, changes }, req) {
+  const store = storage(req);
   const head = await store.head();
   const touched = [
     ...(changes.site ? ['content/site.json'] : []),
@@ -227,6 +254,7 @@ export async function publish({ base, message, changes }) {
     ...Object.values(changes.pages || {}).map((p) => ({ path: contentPath(p.file), content: `${JSON.stringify(p, null, 2)}\n` })),
     ...renderSite(site, pages).map(({ file, html }) => ({ path: file, content: html })),
     ...uploads,
+    { path: 'content/manifest.json', content: manifest(pages, [...snap.images, ...uploads.map((u) => u.path)]) },
   ];
   const deletes = (changes.deleted || []).flatMap((f) => [contentPath(f), f]);
   const sha = await store.commit({ head, writes, deletes, message: message || 'Update content from the admin panel' });

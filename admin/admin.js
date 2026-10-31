@@ -244,6 +244,7 @@ async function load() {
   const data = await api('content');
   S.head = data.head;
   S.local = data.local;
+  S.readOnly = data.readOnly;
   S.images = data.images || [];
   S.base = { site: clone(data.site), pages: new Map(data.pages.map((p) => [p.file, clone(p)])) };
   S.site = clone(data.site);
@@ -280,6 +281,7 @@ function buildApp() {
       h('img', { src: '/assets/img/brand/logo-white.png', alt: 'INPUT SOFT', width: 120, height: 12 }),
       h('span', { class: 'topbar__tag' }, 'Admin')),
     S.local ? h('span', { class: 'badge badge--local', title: 'Publishing writes the files on this computer instead of GitHub.' }, 'Local mode') : null,
+    S.readOnly ? h('span', { class: 'badge badge--warn', title: 'Add GITHUB_TOKEN in Vercel to switch on publishing.' }, 'Publishing not set up yet') : null,
     h('div', { class: 'topbar__spacer' }),
     app.status,
     app.publish,
@@ -825,6 +827,7 @@ async function openPublish() {
   await dialog({
     title: 'Publish changes',
     body: h('div', { class: 'fields' },
+      S.readOnly ? h('p', { class: 'note note--warn' }, 'Publishing is not switched on yet: the GitHub token still needs to be added in Vercel. Your changes stay saved in this browser until then.') : null,
       h('p', null, 'These changes go live on the website about a minute after you publish:'),
       h('ul', { class: 'changes' }, list.map((c) => h('li', null, h('strong', null, c.label), h('span', null, c.note)))),
       uploads.length ? h('p', { class: 'field__help' }, `${uploads.length} new ${uploads.length === 1 ? 'image' : 'images'} (${(size * 0.75 / 1e6).toFixed(1)} MB)`) : null,

@@ -2,6 +2,7 @@
 // Usage: node build.mjs [output-dir]
 // The admin panel (/admin) renders with the same code, so local builds and published pages match.
 import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises';
+import { manifest } from './api/_lib.js';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { renderSite } from './lib/render.js';
@@ -22,4 +23,16 @@ if (import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
     await writeFile(join(out, file), html);
     console.log('built', file);
   }
+  // content/manifest.json: page and image list the admin reads when GitHub is not connected
+  const images = [];
+  const walk = async (dir) => {
+    for (const e of await readdir(dir, { withFileTypes: true })) {
+      const p = `${dir}/${e.name}`;
+      if (e.isDirectory()) await walk(p);
+      else if (/\.(jpg|jpeg|png|webp|svg)$/i.test(e.name)) images.push(p);
+    }
+  };
+  await walk('assets/img');
+  await writeFile('content/manifest.json', manifest(pages, images));
+  console.log('built content/manifest.json');
 }
