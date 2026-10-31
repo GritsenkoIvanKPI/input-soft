@@ -1,0 +1,124 @@
+{
+  "kind": "case",
+  "file": "case-study-iag-transform.html",
+  "showInMenu": true,
+  "order": 2,
+  "menu": {
+    "title": "IAG Transform",
+    "desc": "Hub capacity validation with FlightPrint"
+  },
+  "seo": {
+    "title": "Case Study: IAG Transform | INPUT SOFT",
+    "description": "How IAG Transform automates multi-carrier schedule modelling and hub capacity validation with FlightPrint, cutting data preparation time by up to 80%."
+  },
+  "theme": "fp",
+  "formOption": "FlightPrint",
+  "solution": {
+    "name": "FlightPrint",
+    "href": "flightprint.html"
+  },
+  "title": "How IAG Transform automates hub capacity validation and schedule modeling with FlightPrint",
+  "photo": {
+    "src": "assets/img/gen/case-hub-planning.jpg",
+    "alt": "Network planners reviewing hub schedules in an operations room",
+    "w": 896,
+    "h": 1200
+  },
+  "profile": {
+    "company": "International Airlines Group (IAG)",
+    "about": "One of the world’s leading airline groups, operating a diverse portfolio of global carriers including British Airways, Iberia, Vueling, Aer Lingus, and LEVEL.",
+    "industry": "Airline Group",
+    "region": "Global",
+    "clientSince": "February 2026 (using FlightPrint, part of INPUT SOFT RMS)"
+  },
+  "overview": [
+    "Managing a global airline network of this scale requires strong strategic planning to drive cost efficiency and optimise resource utilisation.",
+    "INPUT SOFT’s relationship with IAG began through the IAGi Accelerator, the Group’s innovation programme designed to accelerate the testing and adoption of new technologies. This led to a collaboration with IAG Transform, the Group’s dedicated technology, procurement, and innovation division.",
+    "The Airport Analytics Procurement Team plays a critical role in assessing schedules to identify and maximise cost-saving opportunities across key initiatives, while ensuring alignment with operational and resource requirements."
+  ],
+  "challenge": {
+    "paragraphs": [
+      "Evaluating schedules across multiple resource areas to understand demand versus capacity at global hubs is a core focus for the analysis team. However, the sheer number of outstations, combined with tight planning timelines, has constrained the depth and speed of analysis.",
+      "As a result, schedules have often been reviewed separately for each operational company within the Group before being consolidated, limiting the ability to quickly identify efficiencies across different facilities within the airports."
+    ],
+    "listTitle": "",
+    "list": [
+      {
+        "bold": "",
+        "text": "Significant time spent manually compiling and formatting data from multiple external sources within Power BI"
+      },
+      {
+        "bold": "",
+        "text": "Limited ability to overlay schedules dynamically, restricting visibility of resource constraints across key operational areas"
+      },
+      {
+        "bold": "",
+        "text": "Challenges in developing a consolidated, network-wide view of airport resource requirements"
+      },
+      {
+        "bold": "",
+        "text": "Reduced visibility of potential operational risks and cost-saving opportunities without a fully integrated, strategic perspective"
+      }
+    ]
+  },
+  "solutionBlock": {
+    "paragraphs": [
+      "IAG Transform integrated FlightPrint into its strategic planning processes to automate multi-carrier schedule modelling and validate hub capacity."
+    ],
+    "listTitle": "The platform enables the team to:",
+    "list": [
+      {
+        "bold": "Automate data integration:",
+        "text": "Seamlessly combine internal airline schedules with total airport traffic data, removing the need for manual compilation from multiple external sources"
+      },
+      {
+        "bold": "Assess true hub capacity:",
+        "text": "Evaluate the physical constraints of each airport by analysing over 35 data points supplied by FlightPrint spanning passenger flow, gate utilisation, and ramp operations"
+      },
+      {
+        "bold": "Run scenario simulations:",
+        "text": "Perform rapid capacity modelling to assess the impact of schedule changes, aircraft swaps, or new routes on ground operations well in advance of live operations"
+      }
+    ]
+  },
+  "results": {
+    "heading": "What the team achieved",
+    "table": [],
+    "note": "",
+    "winsHeading": "",
+    "wins": [
+      {
+        "pre": "Up to",
+        "value": "80%",
+        "icon": "",
+        "text": "Up to 80% reduction in time spent on data preparation, enabling analysts to begin evaluation immediately without manual formatting"
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "gauge",
+        "text": "Instant traffic modelling and capacity simulations at airports quickly, replacing days of manual spreadsheet analysis"
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "layers",
+        "text": "A more accurate and holistic view of total demand, incorporating the wider airport ecosystem and understanding any resource constraints"
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "chart",
+        "text": "Data-driven, objective insights to better support strategic planning and cost saving initiatives at outstations"
+      }
+    ]
+  },
+  "quote": {
+    "show": true,
+    "paragraphs": [
+      "The biggest impact for us is increased confidence and efficiency. With more reliable data and significantly less time spent on manual tasks, our team can now move away from data preparation and fully focus on value-added analysis to make better-informed decisions."
+    ],
+    "name": "Alison Swan",
+    "role": "Group Senior Analytics Manager, IAG Transform"
+  }
+}

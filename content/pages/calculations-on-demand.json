@@ -1,0 +1,144 @@
+{
+  "kind": "solution",
+  "file": "calculations-on-demand.html",
+  "showInMenu": true,
+  "order": 4,
+  "menu": {
+    "title": "Calculations on Demand",
+    "desc": "Resource modelling, delivered within 48 hours",
+    "icon": "timer"
+  },
+  "seo": {
+    "title": "Calculations on Demand | INPUT SOFT",
+    "description": "Precise resource modelling for RFPs, SLA negotiations, budgeting and seasonal changes, with a comprehensive report delivered within 48 hours."
+  },
+  "theme": "cod",
+  "formOption": "Calculations on Demand",
+  "hero": {
+    "crumb": "Service",
+    "title": "Calculations on Demand",
+    "lead": "Calculations on Demand gives you clear, data-driven insights to refine resource planning and boost operational efficiency. Simply send us your operational data, and we’ll deliver a complete, action-ready report within 48 hours to power your next strategic decision.",
+    "image": {
+      "src": "assets/img/product/calc-analytics.jpg",
+      "alt": "Calculation report with flights, worked hours and paid hours by aircraft type",
+      "w": 1600,
+      "h": 1000
+    }
+  },
+  "cards": {
+    "eyebrow": "Use cases",
+    "heading": "When do you need Calculations on Demand?",
+    "items": [
+      {
+        "icon": "forecast",
+        "title": "Seasonal schedule changes",
+        "text": "Instantly adapt staff qualifications and equipment fleet size when airline schedules shift or a new season begins."
+      },
+      {
+        "icon": "file",
+        "title": "SLA negotiations & RFPs",
+        "text": "Cut RFP preparation time by 60%. Enter commercial negotiations with total confidence, backed by precise data."
+      },
+      {
+        "icon": "calculator",
+        "title": "Budgeting & board prep",
+        "text": "Get real data and precise workload models to justify your operational costs and resource requests to shareholders."
+      }
+    ]
+  },
+  "details": {
+    "eyebrow": "Getting started",
+    "heading": "What we need to start your calculations",
+    "lead": "To build your precise operational model, our team just needs three primary data sets. To make the process as seamless as possible, we provide ready-to-use templates you can easily fill out.",
+    "numbered": true,
+    "rows": [
+      {
+        "layout": "split",
+        "title": "Flight Schedule",
+        "paragraphs": [
+          "A complete list of all arrivals and departures. We accept any standard daily or seasonal formats (such as Excel, CSV, or IATA SSIM codes)."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/fp-schedule.jpg",
+            "alt": "Imported flight schedule overview: flights, movements, passengers and peak hour, with flights per airline over time and the schedule list",
+            "w": 1600,
+            "h": 901
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Planning Rules & Labor Parameters",
+        "paragraphs": [
+          "Your specific ground handling constraints, including shift types, working hours, rest time rules, and mandatory break times."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/fp-rules.jpg",
+            "alt": "Planning rules by airline with task start and end times, staff quantity, colours and qualifications",
+            "w": 1600,
+            "h": 899
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Employee Information",
+        "paragraphs": [
+          "Current station roles, positions, qualifications, and employment types so the engine factors in actual operational compliance."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/cod-staff.jpg",
+            "alt": "Employee information: staff list with hire dates, job titles and qualifications, and the edit staff form",
+            "w": 1600,
+            "h": 900
+          }
+        }
+      }
+    ]
+  },
+  "impact": {
+    "eyebrow": "Results",
+    "heading": "We don’t just deliver numbers — <br class=\"br-lg\">we drive strategic efficiency <br class=\"br-lg\">that boosts your bottom line",
+    "wide": true,
+    "items": [
+      {
+        "pre": "Up to",
+        "value": "100K",
+        "icon": "",
+        "title": "Substantial cost reduction",
+        "text": "Save up to 100K per month in payroll for your new potential stations with our calculations and predictions."
+      },
+      {
+        "pre": "",
+        "value": "60%",
+        "icon": "",
+        "title": "Accelerated RFP & SLA preparation",
+        "text": "Cut your contract planning time by 60%. Get all the required data and precise operational modeling within 48 hours to enter commercial negotiations or launch new stations with total confidence."
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "chart",
+        "title": "Visualized data control",
+        "text": "Receive clear, interactive dashboards highlighting peak flight schedule loads and precise resource workload distribution to eliminate operational bottlenecks."
+      }
+    ]
+  },
+  "caseStudy": {
+    "show": true,
+    "page": "case-study-foxtrot-aviation-services.html",
+    "title": "How Foxtrot Aviation Services streamlined RFP modeling and planning with INPUT SOFT Calculations on Demand"
+  }
+}

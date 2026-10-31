@@ -1,0 +1,162 @@
+{
+  "kind": "solution",
+  "file": "data-management.html",
+  "showInMenu": true,
+  "order": 2,
+  "menu": {
+    "title": "Data Management",
+    "desc": "Flight services, invoicing and GSE control",
+    "icon": "database"
+  },
+  "seo": {
+    "title": "Data Management Software Suite | INPUT SOFT",
+    "description": "An integrated platform that optimizes airport ramp operations and contract invoicing: accurate data capture, no revenue leakage, faster invoicing."
+  },
+  "theme": "dms",
+  "formOption": "Data Management",
+  "hero": {
+    "crumb": "Software suite",
+    "title": "Data Management",
+    "lead": "INPUT SOFT Data Management Software Suite captures, analyzes, and invoices everything that happens on the ramp, from ground services to GSE usage. Every turnaround is billed accurately, with no service left out.",
+    "image": {
+      "src": "assets/img/product/dm-flight-service.jpg",
+      "alt": "Data Management flight services: turnaround timeline with service statuses for every flight",
+      "w": 1600,
+      "h": 901
+    }
+  },
+  "cards": {
+    "eyebrow": "Software suite",
+    "heading": "How can we help you?",
+    "items": [
+      {
+        "icon": "plane",
+        "title": "Flight services",
+        "text": "Digital tracking of turnaround operations that eliminates paper logs and captures precise timestamps, passenger data, and cargo details."
+      },
+      {
+        "icon": "calculator",
+        "title": "Invoicing",
+        "text": "Automated invoicing engine that matches completed ramp services against airline contracts and SGHA terms to calculate exact charges."
+      },
+      {
+        "icon": "wrench",
+        "title": "GSE control",
+        "text": "Centralized management hub that monitors equipment availability, tracks usage metrics, and forecasts technical maintenance based on real-world data."
+      }
+    ]
+  },
+  "details": {
+    "eyebrow": "",
+    "heading": "",
+    "lead": "",
+    "numbered": false,
+    "rows": [
+      {
+        "layout": "modules",
+        "title": "",
+        "modules": [
+          {
+            "title": "Flight Services Module",
+            "paragraphs": [
+              "Log precise ground operations timestamps, flight statuses, delay codes, and actual passenger or cargo volumes right at the aircraft using the mobile iOS/Android app.",
+              "Compile all verified field data into a centralized web dashboard to replace paper logs with a clear timeline for every flight. All the data and views are fully customizable."
+            ]
+          },
+          {
+            "title": "Invoicing Module",
+            "paragraphs": [
+              "Add airline contracts, like SGHA, to the directory. The system automatically matches ramp data with these contracts to calculate rates and generate ready-to-send invoices.",
+              "Issue invoices and scan operational records automatically. The system flags missing invoices to stop revenue leakage, allows issuing credit notes, and tracks any work for audit purposes."
+            ]
+          },
+          {
+            "title": "GSE Control Module",
+            "paragraphs": [
+              "Complete mandatory pre-shift GSE inspections and record engine hours, mileage, fuel levels and any other required information directly via mobile checklists before operating any asset.",
+              "Analyze logged equipment data on the web platform to track vehicle availability, automatically predict maintenance needs based on real usage and export the GSE reports."
+            ]
+          }
+        ],
+        "paragraphs": [],
+        "checklist": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/dm-modules.jpg",
+            "alt": "Flight services: flights with statuses and a turnaround timeline showing every ground service for each aircraft",
+            "w": 1600,
+            "h": 901
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Mobile app: built for the ramp",
+        "paragraphs": [
+          "Eliminates delayed reporting and manual data re-entry by allowing ground staff to input checklists and service logs directly on mobile devices in real time.",
+          "Instant updates: get push notifications for task changes, flight delays, or reassignments as they happen."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "phones",
+          "phones": [
+            {
+              "src": "assets/img/product/app-home.jpg",
+              "alt": "Mobile app home screen with Task & Roster, Ground Support Equipment and Flights Services"
+            },
+            {
+              "src": "assets/img/product/app-gse-list.jpg",
+              "alt": "Mobile app: GSE list with inspection statuses"
+            },
+            {
+              "src": "assets/img/product/app-gse-check.jpg",
+              "alt": "Mobile app: GSE pre-shift checklist with mileage and engine hours"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "impact": {
+    "eyebrow": "Results",
+    "heading": "Measurable impact of INPUT SOFT DMS",
+    "wide": false,
+    "items": [
+      {
+        "pre": "",
+        "value": "100%",
+        "icon": "",
+        "title": "Eliminate revenue leakage",
+        "text": "Capture 100% of services delivered on the ramp, ensuring that no completed task goes unbilled or unnoticed."
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "check-circle",
+        "title": "Guarantee compliance tracking",
+        "text": "Achieve full visibility and accurate auditing for all airline contract agreements, SGHA terms, and service levels."
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "calculator",
+        "title": "Reduce billing errors",
+        "text": "Automate invoice generation directly from verified operational data to eliminate manual calculation mistakes."
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "wrench",
+        "title": "Prevent costly equipment failures",
+        "text": "Optimize your existing asset investments and maximize fleet readiness through usage intelligence and timely maintenance forecasting."
+      }
+    ]
+  },
+  "caseStudy": {
+    "show": false,
+    "page": "",
+    "title": ""
+  }
+}

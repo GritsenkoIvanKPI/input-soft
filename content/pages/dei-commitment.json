@@ -1,0 +1,74 @@
+{
+  "kind": "legal",
+  "file": "dei-commitment.html",
+  "seo": {
+    "title": "DEI Commitment | INPUT SOFT",
+    "description": "INPUT SOFT’s commitment to diversity, equity and inclusion: the UN Equality Means Business model and the Women’s Empowerment Principles.",
+    "ogImage": "assets/img/gen/hero-apron.jpg"
+  },
+  "crumb": "Company",
+  "title": "Diversity, Equity, and Inclusion Commitment",
+  "lead": "INPUT SOFT team commits to establishing an equitable and inclusive environment where all members feel safe, supported, and valued.",
+  "sections": [
+    {
+      "id": "equality",
+      "title": "Equality Means Business",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We strictly support the EQUALITY MEANS BUSINESS model introduced by the United Nations. And equality in our business is determined by everything: gender, age, and personal beliefs."
+        },
+        {
+          "type": "paragraph",
+          "text": "As our CEO is a woman, the founding team sincerely understands that supporting women helps to attract and retain new talent, enables innovation for market growth, improves processes and increases efficiency."
+        }
+      ]
+    },
+    {
+      "id": "weps",
+      "title": "Women’s Empowerment Principles (WEPs)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We are supporting The Women’s Empowerment Principles (WEPs), which are a set of Principles offering guidance to businesses on how to promote gender equality and women’s empowerment in the workplace, marketplace and community, established by UN Global Compact and UN Women."
+        },
+        {
+          "type": "paragraph",
+          "text": "Support for the seven WEPs Principles has gathered global momentum – thousands of companies worldwide (and INPUT SOFT among them) are now WEPs champions – and therewith also contribute to the Sustainable Development Goals."
+        }
+      ]
+    },
+    {
+      "id": "principles",
+      "title": "The seven principles",
+      "blocks": [
+        {
+          "type": "principles",
+          "items": [
+            "High-Level Corporate Leadership",
+            "Treat all Women and Men Fairly at Work without Discrimination",
+            "Employee Health, Well-Being and Safety",
+            "Education and training for career advancement",
+            "Enterprise development, supply chain and marketing practices",
+            "Community initiatives and advocacy",
+            "Measurement and Reporting"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "You can learn more about the Women’s Empowerment Principles (WEPs), established by UN Global Compact and UN Women, <a href=\"https://www.weps.org/\" target=\"_blank\" rel=\"noopener\">here</a>."
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "title": "Questions about DEI",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You can contact us with questions about DEI (Diversity, Equity & Inclusion) in our company by writing to <a href=\"mailto:info@inputsoft.net?subject=DEI%20Commitment\">info@inputsoft.net</a> with the subject line “DEI Commitment”."
+        }
+      ]
+    }
+  ]
+}

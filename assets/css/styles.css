@@ -3765,6 +3765,57 @@ textarea.input {
   background: var(--brand-yellow);
 }
 
+/* DEI page: the seven WEPs principles */
+.principles {
+  display: grid;
+  gap: var(--sp-3);
+  margin-block: var(--sp-2) var(--sp-3);
+  list-style: none;
+}
+
+/* two columns only where the cards stay wide enough for the titles */
+@media (min-width: 720px) and (max-width: 1023px), (min-width: 1200px) {
+  .principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .principle:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.principle {
+  display: grid;
+  align-content: start;
+  gap: var(--sp-2);
+  padding: var(--sp-5);
+  border-radius: var(--r-md);
+  background: var(--surface-1);
+  box-shadow: inset 0 0 0 1px var(--line), var(--shadow-1);
+}
+
+@media (max-width: 400px) {
+  .principle {
+    padding: var(--sp-4);
+  }
+}
+
+.principle__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--brand-yellow);
+}
+
+.principle__title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--fg);
+}
+
 /* ==========================================================================
    Cookie consent: banner + preference center (behaviour in assets/js/consent.js)
    ========================================================================== */

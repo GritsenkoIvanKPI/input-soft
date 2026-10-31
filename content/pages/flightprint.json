@@ -1,0 +1,169 @@
+{
+  "kind": "solution",
+  "file": "flightprint.html",
+  "showInMenu": true,
+  "order": 3,
+  "menu": {
+    "title": "FlightPrint",
+    "desc": "The operational impact of your schedule",
+    "icon": "plane"
+  },
+  "seo": {
+    "title": "FlightPrint | INPUT SOFT",
+    "description": "The operational impact of your schedule, before a single aircraft moves: workload peaks and resource demand, 35+ metrics and BI integration."
+  },
+  "theme": "fp",
+  "formOption": "FlightPrint",
+  "hero": {
+    "crumb": "Solution",
+    "title": "FlightPrint",
+    "lead": "The operational impact of your schedule, before a single aircraft moves.",
+    "image": {
+      "src": "assets/img/product/flightprint-plan.jpg",
+      "alt": "FlightPrint: flights on a timeline with the handling tasks for each turnaround, task filters and the workload curve",
+      "w": 1600,
+      "h": 901
+    }
+  },
+  "cards": {
+    "eyebrow": "Overview",
+    "heading": "What FlightPrint gives you",
+    "items": [
+      {
+        "icon": "chart",
+        "title": "What we calculate",
+        "text": "Workload peaks and resource demand for RAMP/PAX processing based on your flight schedule and SLA/engagement standards."
+      },
+      {
+        "icon": "globe",
+        "title": "Usage areas",
+        "text": "Hub feasibility validation, network planning, seasonal schedule adjustments, and data-driven ground handling negotiations."
+      },
+      {
+        "icon": "check-circle",
+        "title": "What you get",
+        "text": "Customizable dashboards with 35+ metrics, BI integration, and smart reports that help you identify and fix risks before go-live."
+      }
+    ]
+  },
+  "details": {
+    "eyebrow": "Process",
+    "heading": "How it works",
+    "lead": "",
+    "numbered": true,
+    "rows": [
+      {
+        "layout": "split",
+        "title": "Upload your flight schedule in any format",
+        "paragraphs": [
+          "The platform instantly builds a unified workload model, aligning your network planning and operations teams from the start."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/fp-schedule.jpg",
+            "alt": "Uploaded flight schedule overview: flights, movements, passengers and peak hour, with flights per airline over time and the schedule list",
+            "w": 1600,
+            "h": 901
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Apply specific handling rules",
+        "paragraphs": [
+          "Accurately calculate precise staffing and equipment needs for every single turn to avoid under- or over-resourcing."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/fp-rules.jpg",
+            "alt": "Handling rules by airline with task start and end times, staff quantity, colours and qualifications",
+            "w": 1600,
+            "h": 899
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Predict and block delay risks before they hit you",
+        "paragraphs": [
+          "See exactly which flight banks will overload your ground handlers and create operational bottlenecks."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/fp-plan.jpg",
+            "alt": "FlightPrint flight plan: flights on a timeline with handling tasks and the workload curve showing peaks",
+            "w": 1600,
+            "h": 902
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Generate clear, data-driven dashboards",
+        "paragraphs": [
+          "For confident, evidence-based negotiations with handlers and hubs or seamlessly sync everything with Power BI."
+        ],
+        "checklist": [],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/rm-reports.jpg",
+            "alt": "FlightPrint report: flights, FTE, heads, worked and paid hours with charts by day and aircraft type",
+            "w": 1600,
+            "h": 900
+          }
+        }
+      }
+    ]
+  },
+  "impact": {
+    "eyebrow": "Results",
+    "heading": "Key benefits",
+    "wide": false,
+    "items": [
+      {
+        "pre": "",
+        "value": "35+",
+        "icon": "",
+        "title": "Full visibility",
+        "text": "Access 35+ metrics for full visibility across ramp, gate, and pax handling to replace manual estimates."
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "file",
+        "title": "Accurate contracts",
+        "text": "Align handling agreements with actual needs based on validated, modelled demand to ensure contract accuracy."
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "forecast",
+        "title": "Validated capacity",
+        "text": "Validate seasonal capacity well before go-live to spot hub pressure points and operational risks early."
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "layers",
+        "title": "Unified data",
+        "text": "Unify data for airline network planners, ops, and handlers to drive explainable slot planning & leadership decisions."
+      }
+    ]
+  },
+  "caseStudy": {
+    "show": true,
+    "page": "case-study-iag-transform.html",
+    "title": ""
+  }
+}

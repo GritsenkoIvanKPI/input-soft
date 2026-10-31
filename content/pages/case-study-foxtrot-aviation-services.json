@@ -1,0 +1,160 @@
+{
+  "kind": "case",
+  "file": "case-study-foxtrot-aviation-services.html",
+  "showInMenu": true,
+  "order": 1,
+  "menu": {
+    "title": "Foxtrot Aviation Services",
+    "desc": "RFP modeling and planning with INPUT SOFT RMS"
+  },
+  "seo": {
+    "title": "How Foxtrot Aviation Streamlined RFP Modeling | INPUT SOFT",
+    "description": "How FoxTrot Aviation Services cut RFP modeling time by up to 60% and standardized pricing across 32 airport locations with INPUT SOFT Calculations on Demand."
+  },
+  "theme": "cod",
+  "formOption": "Calculations on Demand",
+  "solution": {
+    "name": "Calculations on Demand",
+    "href": "calculations-on-demand.html"
+  },
+  "title": "How Foxtrot Aviation Services streamlined RFP modeling and planning with INPUT SOFT RMS",
+  "photo": {
+    "src": "assets/img/gen/case-ramp-agent.jpg",
+    "alt": "Ground handling agent checking tasks on a tablet next to an aircraft",
+    "w": 896,
+    "h": 1200
+  },
+  "profile": {
+    "company": "FoxTrot Aviation Services",
+    "about": "",
+    "industry": "Aviation ground services (fleet & facility appearance, line service support, janitorial)",
+    "region": "USA (32 airport locations)",
+    "clientSince": "January 2025 (using our “Calculations on Demand” service based on INPUT SOFT RMS)"
+  },
+  "overview": [
+    "Since 2010, FoxTrot Aviation has delivered critical support across the U.S. for commercial and private aviation partners.",
+    "They specialize in high-stakes fleet and facility services, including on-airport janitorial and line support, ensuring consistent operational execution for airlines and MRO facilities nationwide."
+  ],
+  "challenge": {
+    "paragraphs": [
+      "With a rapidly expanding footprint across 32 locations, Foxtrot’s operations team faced increasing complexity during RFP cycles — balancing cost precision, staffing needs, and GSE planning across diverse airports."
+    ],
+    "listTitle": "Key challenges included:",
+    "list": [
+      {
+        "bold": "",
+        "text": "Heavy reliance on spreadsheets and manual formulas"
+      },
+      {
+        "bold": "",
+        "text": "Manual and time-consuming RFP modeling prone to errors"
+      },
+      {
+        "bold": "",
+        "text": "Limited visibility into true resource utilization"
+      },
+      {
+        "bold": "",
+        "text": "Inconsistent labor and equipment planning across regions"
+      },
+      {
+        "bold": "",
+        "text": "Friction between finance and operations during proposal preparation"
+      }
+    ]
+  },
+  "solutionBlock": {
+    "paragraphs": [
+      "In January 2025, Foxtrot Aviation adopted INPUT SOFT Calculations On Demand service to bring automation, accuracy, and speed to their planning and bidding processes."
+    ],
+    "listTitle": "With this service tool, FoxTrot was able to:",
+    "list": [
+      {
+        "bold": "",
+        "text": "Reduce RFP modeling time from days to just a few hours"
+      },
+      {
+        "bold": "",
+        "text": "Standardize cost structures and pricing methodology across all regions"
+      },
+      {
+        "bold": "",
+        "text": "Visualize labor and GSE utilization through clear, easy-to-read reports"
+      },
+      {
+        "bold": "",
+        "text": "Simulate multiple planning scenarios (“what-if” simulations) in record time"
+      },
+      {
+        "bold": "",
+        "text": "Empower true data driven decision-making for both finance and operations teams"
+      }
+    ]
+  },
+  "results": {
+    "heading": "Key results",
+    "table": [
+      {
+        "metric": "RFP modeling time",
+        "before": "Several days",
+        "after": "Hours",
+        "impact": "Up to 60% reduction in time"
+      },
+      {
+        "metric": "Bid capacity",
+        "before": "Limited by resources",
+        "after": "Expanded without new hires",
+        "impact": "Increased number of bids submitted"
+      },
+      {
+        "metric": "Pricing consistency",
+        "before": "Varied by location",
+        "after": "Standardized across 32 sites",
+        "impact": "Improved accuracy and transparency"
+      },
+      {
+        "metric": "Proposal revisions",
+        "before": "Frequent manual edits",
+        "after": "Streamlined with automated updates",
+        "impact": "Minimized errors and rework"
+      }
+    ],
+    "note": "Beyond time savings, INPUT SOFT RMS helped Foxtrot’s leadership team gain greater confidence in cost accuracy and competitiveness, directly contributing to a higher shortlisting rate in recent bids.",
+    "winsHeading": "FoxTrot Aviation Services key wins",
+    "wins": [
+      {
+        "pre": "",
+        "value": "60%",
+        "icon": "",
+        "text": "Saved 60% of the time usually spent on RFPs"
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "calculator",
+        "text": "Standardized pricing and resource models"
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "check-circle",
+        "text": "Higher accuracy and more certainty in every bid"
+      },
+      {
+        "pre": "",
+        "value": "",
+        "icon": "globe",
+        "text": "Scalable planning framework for national growth"
+      }
+    ]
+  },
+  "quote": {
+    "show": true,
+    "paragraphs": [
+      "Calculations On Demand transformed how we approach RFPs. What used to take days of manual calculation and coordination now takes hours, and we’re more confident in the accuracy of our numbers.",
+      "INPUT SOFT RMS tool has become a core part of our bid strategy as we expand nationally."
+    ],
+    "name": "Christopher T. Stump",
+    "role": "Principal, FoxTrot Aviation Services"
+  }
+}

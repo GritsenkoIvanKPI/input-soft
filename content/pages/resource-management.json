@@ -1,0 +1,262 @@
+{
+  "kind": "solution",
+  "file": "resource-management.html",
+  "showInMenu": true,
+  "order": 1,
+  "menu": {
+    "title": "Resource Management",
+    "desc": "Resource planning, staff rostering and real-time planning",
+    "icon": "users"
+  },
+  "seo": {
+    "title": "Streamline RFP Modeling & Resource Planning | INPUT SOFT RMS",
+    "description": "Streamline RFP modeling and resource planning with INPUT SOFT RMS. Reduce modeling time by 60%, standardize pricing, and boost bid capacity."
+  },
+  "theme": "rms",
+  "formOption": "Resource Management",
+  "hero": {
+    "crumb": "Software suite",
+    "title": "Resource Management",
+    "lead": "INPUT SOFT Resource Management Software Suite plans, rosters, and controls all your resources in real time, from staff and GSE to fixed resources. Every turnaround is fully covered, even when the schedule changes.",
+    "image": {
+      "src": "assets/img/product/rms-realtime-insights.jpg",
+      "alt": "Real-time planning: live staff timeline with flights and tasks, delayed flights, and the Insights panel showing staff shortages by day and hour",
+      "w": 1600,
+      "h": 901
+    }
+  },
+  "cards": {
+    "eyebrow": "Software suite",
+    "heading": "How can we help you?",
+    "items": [
+      {
+        "icon": "forecast",
+        "title": "Resource planning",
+        "text": "Automated planning of staff, equipment, and GSE based on requirements and flight schedules."
+      },
+      {
+        "icon": "users",
+        "title": "Staff rostering",
+        "text": "Intelligent shift rostering that stays compliant, adjusts for absences or changes, and reduces manual effort."
+      },
+      {
+        "icon": "timer",
+        "title": "Real-time planning",
+        "text": "Dynamic task updates, reassignments, and mobile notifications for responsive daily execution."
+      }
+    ]
+  },
+  "details": {
+    "eyebrow": "",
+    "heading": "",
+    "lead": "",
+    "numbered": false,
+    "rows": [
+      {
+        "layout": "split",
+        "title": "Resource Planning Module",
+        "paragraphs": [],
+        "checklist": [
+          {
+            "bold": "Fully automated planning:",
+            "text": "Automatically allocate human, technical (GSE) and airport resources, such as check-in desks, parking stands and baggage belts."
+          },
+          {
+            "bold": "Predictive scheduling:",
+            "text": "Our algorithms calculate the optimal number of shifts and staff, ensuring the right personnel are in place at the right time."
+          },
+          {
+            "bold": "Instant schedule generation:",
+            "text": "Assign tasks based on flight schedules, available resources and staff qualifications to ensure seamless operations."
+          },
+          {
+            "bold": "eGSE scheduling:",
+            "text": "Schedule GSE and eGSE usage and charging based on workload and shift requirements for efficient resource management."
+          }
+        ],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/rm-planning.jpg",
+            "alt": "Resource planning: shift plan with staff, shifts, qualifications and tasks on a timeline, with the workload curve and planning totals",
+            "w": 1600,
+            "h": 901
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Staff Rostering Module",
+        "paragraphs": [],
+        "checklist": [
+          {
+            "bold": "Effortless rostering:",
+            "text": "Automatically generate staff rosters based on flight schedules and shift requirements."
+          },
+          {
+            "bold": "Smart task allocation:",
+            "text": "Create work schedules, tasks and ready-to-go rosters with a single click."
+          },
+          {
+            "bold": "Flexible planning:",
+            "text": "Customize parameters for various “what-if” scenarios, enabling quick adjustments to evolving needs — with vacations, sick leave and personal requests taken into account."
+          },
+          {
+            "bold": "Seamless distribution:",
+            "text": "Download reports or send roster schedules directly to employees via the INPUT SOFT app or WhatsApp."
+          }
+        ],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/rm-rostering.jpg",
+            "alt": "Staff roster with employees, contracts, daily shifts, leave and total hours",
+            "w": 1600,
+            "h": 900
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Real-Time Planning Module",
+        "paragraphs": [],
+        "checklist": [
+          {
+            "bold": "Flight data feed:",
+            "text": "Integration with existing databases (AODB, AOCC, etc.) or a direct connection to the satellite ADS-B data feed for real-time updates."
+          },
+          {
+            "bold": "Instant flight updates:",
+            "text": "Receive immediate notifications on schedule changes, ensuring seamless operations."
+          },
+          {
+            "bold": "Seamless task assignment:",
+            "text": "Automatically reassign tasks in case of delays and notify employees via the app or WhatsApp for fast communication."
+          },
+          {
+            "bold": "Optimized ground handling:",
+            "text": "Save valuable time through real-time adjustments, improving operational efficiency and overall performance."
+          }
+        ],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/rm-realtime.jpg",
+            "alt": "Real-time planning: live staff timeline with flight details, delayed flights and the task change log",
+            "w": 1600,
+            "h": 902
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Gain total visibility over your operations",
+        "paragraphs": [],
+        "checklist": [
+          {
+            "bold": "",
+            "text": "Visual dashboards turn your daily operational data into clear statistics, so you can track performance trends and evaluate execution quality across all flights."
+          },
+          {
+            "bold": "",
+            "text": "Monitor key performance indicators like turnaround times, delay codes, and service metrics on fully customizable dashboards."
+          },
+          {
+            "bold": "",
+            "text": "Easily sync your recorded data and performance history with external BI systems like Power BI for advanced reporting."
+          }
+        ],
+        "modules": [],
+        "media": {
+          "type": "image",
+          "image": {
+            "src": "assets/img/product/rm-reports.jpg",
+            "alt": "Reports dashboard with flights, FTE, worked and paid hours, and charts by day and aircraft type",
+            "w": 1600,
+            "h": 900
+          }
+        }
+      },
+      {
+        "layout": "split",
+        "title": "Keep your team connected in real time",
+        "paragraphs": [],
+        "checklist": [
+          {
+            "bold": "Live rosters:",
+            "text": "View daily or monthly shifts and tasks in a clear, mobile-friendly format on iOS and Android."
+          },
+          {
+            "bold": "Instant updates:",
+            "text": "Get push notifications for task changes, flight delays, or reassignments as they happen."
+          },
+          {
+            "bold": "Task interaction:",
+            "text": "Accept or decline updates with comments, syncing your response instantly with the platform."
+          }
+        ],
+        "modules": [],
+        "media": {
+          "type": "phones",
+          "phones": [
+            {
+              "src": "assets/img/product/app-roster.jpg",
+              "alt": "Mobile app: daily roster with tasks and flights"
+            },
+            {
+              "src": "assets/img/product/app-roster-task.jpg",
+              "alt": "Mobile app: task details with start and stop times"
+            },
+            {
+              "src": "assets/img/product/app-roster-month.jpg",
+              "alt": "Mobile app: monthly roster with shifts and hours"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "impact": {
+    "eyebrow": "Results",
+    "heading": "Measurable impact of INPUT SOFT RMS",
+    "wide": false,
+    "items": [
+      {
+        "pre": "Up to",
+        "value": "$110K",
+        "icon": "",
+        "title": "Cost recovery",
+        "text": "Save up to $110K per month by identifying resource leakage and optimizing daily allocation."
+      },
+      {
+        "pre": "Up to",
+        "value": "20%",
+        "icon": "",
+        "title": "Operational productivity",
+        "text": "Drive up to a 20% increase in staff utilization through high-precision scheduling and reduced idle time."
+      },
+      {
+        "pre": "",
+        "value": "100K+",
+        "icon": "",
+        "title": "Enterprise-scale performance",
+        "text": "Built for major hubs, the system processes 100K+ flights per planning cycle with zero lag."
+      },
+      {
+        "pre": "",
+        "value": "250K+",
+        "icon": "",
+        "title": "High-speed calculation",
+        "text": "Automate the assignment of 250K+ individual tasks in a single calculation, turning hours of manual planning into seconds."
+      }
+    ]
+  },
+  "caseStudy": {
+    "show": false,
+    "page": "",
+    "title": ""
+  }
+}

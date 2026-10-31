@@ -1,0 +1,63 @@
+{
+  "seo": {
+    "ogImage": "assets/img/gen/hero-apron.jpg"
+  },
+  "nav": {
+    "solutionsLabel": "Solutions",
+    "solutionsColumn": "Solutions",
+    "casesColumn": "Case studies",
+    "links": [
+      { "text": "About Us", "href": "#about" },
+      { "text": "Contact", "href": "#contact" }
+    ],
+    "cta": "Request a demo"
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "email": "info@inputsoft.net",
+    "home": {
+      "title": "Simplify your airport ground operations",
+      "lead": "Ready to see the difference? Schedule a personalized demo and discover how we can streamline your resource and data management."
+    },
+    "inner": {
+      "title": "Simplify your ground handling",
+      "lead": "Contact our team to learn how you can streamline resource and data management for your operations."
+    },
+    "form": {
+      "title": "Get in touch with our team",
+      "text": "Fill out the form, and our experts will contact you shortly to discuss your needs.",
+      "options": ["Resource Management", "Data Management", "Calculations on Demand", "FlightPrint", "Other"],
+      "consent": "I understand that data from this form will be used to answer my questions, organize a software demonstration, or help me. See our <a href=\"privacy-policy.html\">Privacy Policy</a>.",
+      "submit": "Submit request",
+      "ok": "Thank you! Our specialists will contact you shortly.",
+      "error": "Please fill in all required fields and accept the privacy terms."
+    }
+  },
+  "footer": {
+    "tagline": "Management Platform for Airport Operations — resource and data management for airports, airlines and ground handlers.",
+    "socials": [
+      { "network": "linkedin", "href": "https://www.linkedin.com/company/inputsoftnet" },
+      { "network": "x", "href": "https://x.com/inputsoftware" },
+      { "network": "instagram", "href": "https://www.instagram.com/input.soft/" }
+    ],
+    "solutionsTitle": "Solutions",
+    "companyTitle": "Company",
+    "companyLinks": [
+      { "text": "Home", "href": "index.html" },
+      { "text": "About Us", "href": "#about" },
+      { "text": "Contact", "href": "#contact" },
+      { "text": "DEI commitment", "href": "dei-commitment.html" }
+    ],
+    "officesTitle": "Offices",
+    "offices": [
+      { "country": "USA", "address": "16192 Coastal Highway<br>Lewes, Delaware, 19958" },
+      { "country": "Ukraine", "address": "Yaroslavska St, 58<br>Kyiv, 04071" }
+    ],
+    "securityTitle": "Security",
+    "copyright": "© 2026 INPUT SOFT. All rights reserved",
+    "legalLinks": [
+      { "text": "Privacy Policy", "href": "privacy-policy.html" },
+      { "text": "DEI commitment", "href": "dei-commitment.html" }
+    ]
+  }
+}

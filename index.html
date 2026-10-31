@@ -255,9 +255,8 @@
           <p class="text-muted">For airports, airlines and ground handlers.</p>
         </div>
 
-        <!-- To add a solution: add an <li class="sol-nav"> here and a matching <article class="sol-card"> in .solutions__stack (same data-sol key). -->
         <ul class="solutions__list">
-          <li class="sol-nav is-active" data-sol="rms">
+          <li class="sol-nav is-active" data-sol="sol-0">
             <button class="sol-nav__btn" type="button">Resource Management</button>
             <div class="sol-nav__body"><div class="sol-nav__inner">
               <p>Plan staff, GSE and fixed resources ahead, roster your team automatically and keep every turnaround on track with real-time task tracking and reassignment, all connected to your airport systems.</p>
@@ -265,7 +264,7 @@
               <a class="link" href="resource-management.html">Explore Resource Management <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
             </div></div>
           </li>
-          <li class="sol-nav" data-sol="dms">
+          <li class="sol-nav" data-sol="sol-1">
             <button class="sol-nav__btn" type="button">Data Management</button>
             <div class="sol-nav__body"><div class="sol-nav__inner">
               <p>Accurate data capture from the ramp, contract-based invoicing and equipment control — eliminating paper logs and revenue leakage.</p>
@@ -273,7 +272,7 @@
               <a class="link" href="data-management.html">Explore Data Management <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
             </div></div>
           </li>
-          <li class="sol-nav" data-sol="cod">
+          <li class="sol-nav" data-sol="sol-2">
             <button class="sol-nav__btn" type="button">Calculations on Demand</button>
             <div class="sol-nav__body"><div class="sol-nav__inner">
               <p>Precise resource management insights for RFPs, SLA negotiations, budgeting, and more, with a comprehensive report delivered within 48 hours of receiving all necessary data.</p>
@@ -281,7 +280,7 @@
               <a class="link" href="calculations-on-demand.html">Explore Calculations on Demand <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
             </div></div>
           </li>
-          <li class="sol-nav" data-sol="fp">
+          <li class="sol-nav" data-sol="sol-3">
             <button class="sol-nav__btn" type="button">FlightPrint</button>
             <div class="sol-nav__body"><div class="sol-nav__inner">
               <p>The operational impact of your schedule, before a single aircraft moves — workload peaks and resource demand for ramp and passenger processing.</p>
@@ -298,7 +297,7 @@
       </div>
 
       <div class="solutions__stack">
-        <article class="sol-card sol-card--rms rv" data-sol-card="rms">
+        <article class="sol-card sol-card--rms rv" data-sol-card="sol-0">
           <div class="sol-card__head">
             <h3 class="h-md">Resource Management</h3>
             <p>Plan staff, GSE and fixed resources ahead, roster your team automatically and keep every turnaround on track with real-time task tracking and reassignment, all connected to your airport systems.</p>
@@ -307,7 +306,7 @@
           </div>
           <div class="sol-card__media"><img src="assets/img/product/rms-shiftplan.jpg" alt="Resource Management shift plan with tasks assigned across the day" width="1600" height="901" loading="lazy"></div>
         </article>
-        <article class="sol-card sol-card--dms rv" data-sol-card="dms">
+        <article class="sol-card sol-card--dms rv" data-sol-card="sol-1">
           <div class="sol-card__head">
             <h3 class="h-md">Data Management</h3>
             <p>Accurate data capture from the ramp, contract-based invoicing and equipment control.</p>
@@ -316,7 +315,7 @@
           </div>
           <div class="sol-card__media"><img src="assets/img/product/dm-flight-service.jpg" alt="Data Management flight services timeline with turnaround statuses" width="1600" height="901" loading="lazy"></div>
         </article>
-        <article class="sol-card sol-card--cod rv" data-sol-card="cod">
+        <article class="sol-card sol-card--cod rv" data-sol-card="sol-2">
           <div class="sol-card__head">
             <h3 class="h-md">Calculations on Demand</h3>
             <p>Precise resource management insights for RFPs, SLA negotiations, budgeting, and more, with a comprehensive report delivered within 48 hours of receiving all necessary data.</p>
@@ -325,7 +324,7 @@
           </div>
           <div class="sol-card__media"><img src="assets/img/product/calc-analytics.jpg" alt="Calculation report with flights, FTE, worked hours and paid hours by aircraft type" width="1600" height="1000" loading="lazy"></div>
         </article>
-        <article class="sol-card sol-card--fp rv" data-sol-card="fp">
+        <article class="sol-card sol-card--fp rv" data-sol-card="sol-3">
           <div class="sol-card__head">
             <h3 class="h-md">FlightPrint</h3>
             <p>The operational impact of your schedule, before a single aircraft moves.</p>
@@ -382,7 +381,7 @@
     </div>
   </section>
 
-  <!-- ============ 5. Getting started (light) ============ -->
+  <!-- ============ 5. Getting started ============ -->
   <section class="section" id="how-it-works" aria-labelledby="steps-title">
     <div class="container">
       <div class="section-head section-head--split rv">
@@ -485,10 +484,6 @@
   </section>
 
   <!-- ============ Our clients ============ -->
-  <!-- To add a logo: save a white or single-colour PNG/SVG in assets/img/clients/ and replace a placeholder with
-         <div class="client"><img src="assets/img/clients/NAME.svg" alt="Client name" loading="lazy"></div>
-       Add class="is-tall" to the <img> for square or stacked logos. Delete any placeholders left over. -->
-  <!-- Hidden until the client logos are approved: remove the "hidden" attribute below to show the section. -->
   <section class="section section--tight" id="clients" aria-labelledby="clients-title" hidden>
     <div class="container">
       <div class="clients__head rv">
@@ -514,7 +509,6 @@
         <h2 class="h-xl" id="impact-title">Measurable impact on the ramp</h2>
       </div>
 
-      <!-- To add a case study: duplicate a .bento__media tile and point its .case-chip to the new page. -->
       <div class="bento">
         <div class="metric rv">
           <div>
@@ -527,7 +521,7 @@
         <div class="metric rv rv-d1">
           <div>
             <p class="metric__value"><span data-count="250">250</span>K<span class="accent">+</span></p>
-            <p class="metric__label">individual tasks assigned in a single calculation&nbsp;— hours of planning turned into seconds</p>
+            <p class="metric__label">individual tasks assigned in a single calculation — hours of planning turned into seconds</p>
           </div>
           <span class="metric__source"><svg class="icon"><use href="#i-gauge"/></svg>Resource Management</span>
         </div>
@@ -570,7 +564,7 @@
         <div class="metric rv rv-d2">
           <div>
             <p class="metric__value"><span data-count="100">100</span><span class="accent">%</span></p>
-            <p class="metric__label">of services delivered on the ramp captured&nbsp;— no completed task goes unbilled</p>
+            <p class="metric__label">of services delivered on the ramp captured — no completed task goes unbilled</p>
           </div>
           <span class="metric__source"><svg class="icon"><use href="#i-database"/></svg>Data Management</span>
         </div>

@@ -1,0 +1,518 @@
+{
+  "kind": "home",
+  "file": "index.html",
+  "seo": {
+    "title": "INPUT SOFT | Aviation Software Solutions",
+    "description": "A web platform for companies in the aviation industry: helps optimize resources, reduce costs, collect and analyze data from all ground handling operations.",
+    "ogDescription": "Management Platform for Airport Operations — resource and data management for airports, airlines and ground handlers.",
+    "ogImage": "assets/img/gen/hero-apron.jpg"
+  },
+  "sections": {
+    "hero": {
+      "title": "Management Platform <br>for Airport Operations",
+      "image": {
+        "src": "assets/img/gen/hero-apron.jpg",
+        "alt": "",
+        "w": 1376,
+        "h": 768
+      },
+      "announce": {
+        "show": true,
+        "pill": "New",
+        "text": "Meet Tango AI",
+        "more": "and next-gen capabilities",
+        "href": "#innovation"
+      },
+      "lead": "Receive all services and features with one provider — resource and data management for airports, airlines and ground handlers.",
+      "primaryCta": "Request a demo",
+      "secondaryCta": {
+        "text": "Explore solutions",
+        "href": "#solutions"
+      },
+      "pill": {
+        "muted": "Sustainable. Automated. Efficient.",
+        "text": "See how it works",
+        "href": "#how-it-works"
+      }
+    },
+    "featured": {
+      "show": true,
+      "label": "Featured in",
+      "logos": [
+        {
+          "src": "assets/img/logos/forbes.png",
+          "alt": "Forbes",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/reuters.png",
+          "alt": "Reuters",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/fastcompany.png",
+          "alt": "Fast Company",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/skift.png",
+          "alt": "Skift",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/business-traveller.png",
+          "alt": "Business Traveller",
+          "tall": true
+        },
+        {
+          "src": "assets/img/logos/fte.png",
+          "alt": "Future Travel Experience",
+          "tall": true
+        },
+        {
+          "src": "assets/img/logos/lastampa.png",
+          "alt": "La Stampa",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/repubblica.png",
+          "alt": "la Repubblica",
+          "tall": false
+        }
+      ]
+    },
+    "features": {
+      "heading": "Discover the power of digitalization in airports",
+      "lead": "Optimize resources, reduce costs, collect and analyze data from all ground handling processes.",
+      "items": [
+        {
+          "icon": "forecast",
+          "title": "Planning and forecasting",
+          "text": "Efficient scheduling of human, GSE and fixed resources. AI-based scenarios for improved utilization of work shifts."
+        },
+        {
+          "icon": "scan",
+          "title": "Data collection",
+          "text": "Real-time tracking of ground handling services and GSE via QR/NFC scanning — every task and status captured directly from the ramp."
+        },
+        {
+          "icon": "calculator",
+          "title": "Accounting and budgeting",
+          "text": "Automatic calculation of the cost of received or provided ground handling services. Simple budgeting and invoicing."
+        },
+        {
+          "icon": "chart",
+          "title": "Reporting and analytics",
+          "text": "Operational dashboards and historical performance metrics, with options for BI integration."
+        }
+      ]
+    },
+    "solutions": {
+      "eyebrow": "Solutions",
+      "heading": "Software suites for <br>ground operations",
+      "sub": "For airports, airlines and ground handlers.",
+      "note": "All modules can be used independently, combined, or customized into tailored packages.",
+      "items": [
+        {
+          "name": "Resource Management",
+          "theme": "rms",
+          "href": "resource-management.html",
+          "text": "Plan staff, GSE and fixed resources ahead, roster your team automatically and keep every turnaround on track with real-time task tracking and reassignment, all connected to your airport systems.",
+          "cardText": "",
+          "tags": [
+            "Resource Planning",
+            "Staff Rostering",
+            "Real-time Planning"
+          ],
+          "image": {
+            "src": "assets/img/product/rms-shiftplan.jpg",
+            "alt": "Resource Management shift plan with tasks assigned across the day",
+            "w": 1600,
+            "h": 901
+          }
+        },
+        {
+          "name": "Data Management",
+          "theme": "dms",
+          "href": "data-management.html",
+          "text": "Accurate data capture from the ramp, contract-based invoicing and equipment control — eliminating paper logs and revenue leakage.",
+          "cardText": "Accurate data capture from the ramp, contract-based invoicing and equipment control.",
+          "tags": [
+            "Flight Services",
+            "Invoicing",
+            "GSE Control"
+          ],
+          "image": {
+            "src": "assets/img/product/dm-flight-service.jpg",
+            "alt": "Data Management flight services timeline with turnaround statuses",
+            "w": 1600,
+            "h": 901
+          }
+        },
+        {
+          "name": "Calculations on Demand",
+          "theme": "cod",
+          "href": "calculations-on-demand.html",
+          "text": "Precise resource management insights for RFPs, SLA negotiations, budgeting, and more, with a comprehensive report delivered within 48 hours of receiving all necessary data.",
+          "cardText": "",
+          "tags": [
+            "Budgeting",
+            "SLA & RFPs",
+            "Seasonal changes"
+          ],
+          "image": {
+            "src": "assets/img/product/calc-analytics.jpg",
+            "alt": "Calculation report with flights, FTE, worked hours and paid hours by aircraft type",
+            "w": 1600,
+            "h": 1000
+          }
+        },
+        {
+          "name": "FlightPrint",
+          "theme": "fp",
+          "href": "flightprint.html",
+          "text": "The operational impact of your schedule, before a single aircraft moves — workload peaks and resource demand for ramp and passenger processing.",
+          "cardText": "The operational impact of your schedule, before a single aircraft moves.",
+          "tags": [
+            "35+ metrics",
+            "BI integration",
+            "Hub validation"
+          ],
+          "image": {
+            "src": "assets/img/product/rms-flightplan.jpg",
+            "alt": "FlightPrint flight plan: flights on a timeline with the tasks and resources required for each turnaround",
+            "w": 1600,
+            "h": 902
+          }
+        }
+      ]
+    },
+    "innovation": {
+      "show": true,
+      "eyebrow": "Next-gen capabilities",
+      "heading": "Intelligent Ground Operations with AI",
+      "lead": "Three new capabilities that turn operational data into decisions — before disruptions hit the ramp.",
+      "items": [
+        {
+          "icon": "message",
+          "title": "Tango AI",
+          "text": "An AI chat assistant that accelerates everyday tasks inside the system, helping users interpret data and turn raw numbers into clear decisions.",
+          "image": {
+            "src": "assets/img/product/ai-tango.jpg",
+            "alt": "Tango, the AI assistant in RMS, greeting the user, suggesting questions and answering a request for a productivity report",
+            "w": 809,
+            "h": 1123
+          }
+        },
+        {
+          "icon": "trend",
+          "title": "Predictive Algorithm",
+          "text": "Forecasts flight delays and anticipates passenger, baggage, and cargo volumes, giving teams time to reallocate resources before disruptions hit the ramp.",
+          "image": {
+            "src": "assets/img/product/ai-predictive.jpg",
+            "alt": "Schedule overview with flights, passengers, cargo and baggage volumes and peak load by time",
+            "w": 1200,
+            "h": 900
+          }
+        },
+        {
+          "icon": "book",
+          "title": "AI Knowledge Base",
+          "text": "Lets staff search internal documentation and find the right procedures instantly, eliminating manual searches through endless manuals.",
+          "image": {
+            "src": "assets/img/product/ai-knowledge-base.jpg",
+            "alt": "INPUT SOFT Knowledge Base start screen with search",
+            "w": 1200,
+            "h": 1500
+          }
+        }
+      ]
+    },
+    "steps": {
+      "eyebrow": "How it works",
+      "heading": "We are simplifying the process of getting started",
+      "lead": "Whichever solution you choose, you only need four steps to get started — and our team guides you through each of them during demo and implementation.",
+      "items": [
+        {
+          "title": "Upload your parameters and flight schedule",
+          "text": "Enter your parameters, rules and work shift limitations, then upload a flight schedule — or we will connect you to any available schedule platform.",
+          "image": {
+            "src": "assets/img/product/rms-rules.jpg",
+            "alt": "Planning rules and parameters set-up",
+            "w": 1600,
+            "h": 899
+          },
+          "phone": {
+            "src": "",
+            "alt": ""
+          }
+        },
+        {
+          "title": "Automatically receive plans, rosters and records",
+          "text": "Get a ready-made flight plan, shift plan and roster for all your employees, or capture every service directly from the ramp. Change any parameter and calculate any number of what-if scenarios.",
+          "image": {
+            "src": "assets/img/product/rms-roster.jpg",
+            "alt": "Automatically generated roster for all employees",
+            "w": 1600,
+            "h": 900
+          },
+          "phone": {
+            "src": "",
+            "alt": ""
+          }
+        },
+        {
+          "title": "Control your operations in real time",
+          "text": "Receive real-time flight schedule updates about any delays and share updated assignments and tasks with your employees in our app or via WhatsApp.",
+          "image": {
+            "src": "assets/img/product/rms-realtime.jpg",
+            "alt": "Real-Time Planning: live staff timeline, task statuses and delayed flights",
+            "w": 1600,
+            "h": 902
+          },
+          "phone": {
+            "src": "assets/img/product/app-roster.jpg",
+            "alt": "Mobile app: an employee's roster with today's tasks and flights",
+            "w": 750,
+            "h": 1626
+          }
+        },
+        {
+          "title": "Review analytics and make decisions based on actual data",
+          "text": "Receive analytical reports with FTE, heads, paid and worked hours and more. Download them, send them automatically to colleagues or other software, or tailor them with our experts.",
+          "image": {
+            "src": "assets/img/product/analytics-reports.jpg",
+            "alt": "Analytical report with FTE, heads, worked and paid hours per flight, shift utilization and number of shifts",
+            "w": 1600,
+            "h": 900
+          },
+          "phone": {
+            "src": "",
+            "alt": ""
+          }
+        }
+      ]
+    },
+    "specs": {
+      "eyebrow": "Why INPUT SOFT",
+      "heading": "Key specifications",
+      "items": [
+        {
+          "icon": "infinity",
+          "title": "Unlimited users",
+          "text": "An unlimited number of users and employees."
+        },
+        {
+          "icon": "devices",
+          "title": "Web, iOS and Android",
+          "text": "User-friendly web platform plus apps for personal phones and tablets."
+        },
+        {
+          "icon": "cpu",
+          "title": "AI/ML calculations",
+          "text": "Automatic calculation by pre-set scenarios and our own AI/ML algorithms."
+        },
+        {
+          "icon": "layers",
+          "title": "One provider",
+          "text": "All services and all features on a single platform."
+        },
+        {
+          "icon": "cloud",
+          "title": "Cloud agnostic",
+          "text": "Runs on AWS, Azure or Google Cloud."
+        },
+        {
+          "icon": "exchange",
+          "title": "Message hub",
+          "text": "Send and receive AIDX, MVT, LDM and other Type B messages, parsed and linked to flights automatically."
+        },
+        {
+          "icon": "qr",
+          "title": "QR code/NFC tag data tracking",
+          "text": "Automatic recording of every service and GSE condition check directly from the ramp."
+        },
+        {
+          "icon": "satellite",
+          "title": "Satellite data",
+          "text": "Used by the Real-Time Planning module for live operations."
+        },
+        {
+          "icon": "gauge",
+          "title": "High-speed processing",
+          "text": "Large-scale datasets processed in seconds, not hours."
+        },
+        {
+          "icon": "globe",
+          "title": "Remote station scaling",
+          "text": "Easily scale to manage remote stations from one place."
+        },
+        {
+          "icon": "leaf",
+          "title": "Lower costs and footprint",
+          "text": "Lower infrastructure costs and a lower carbon footprint."
+        },
+        {
+          "icon": "headset",
+          "title": "Support in your time zone",
+          "text": "Customer support tailored to your time zone."
+        }
+      ]
+    },
+    "clients": {
+      "show": false,
+      "heading": "Trusted by",
+      "sub": "Aviation businesses that rely on INPUT SOFT every day.",
+      "logos": []
+    },
+    "impact": {
+      "eyebrow": "Key metrics",
+      "heading": "Measurable impact on the ramp",
+      "metrics": [
+        {
+          "pre": "Up to",
+          "before": "",
+          "number": "20",
+          "after": "",
+          "accent": "%",
+          "label": "improvement in employee utilization through high-precision scheduling",
+          "icon": "users",
+          "source": "Resource Management",
+          "yellow": false
+        },
+        {
+          "pre": "",
+          "before": "",
+          "number": "250",
+          "after": "K",
+          "accent": "+",
+          "label": "individual tasks assigned in a single calculation — hours of planning turned into seconds",
+          "icon": "gauge",
+          "source": "Resource Management",
+          "yellow": false
+        },
+        {
+          "pre": "Up to",
+          "before": "",
+          "number": "60",
+          "after": "",
+          "accent": "%",
+          "label": "less time on RFP and SLA preparation, with results delivered within 48 hours",
+          "icon": "timer",
+          "source": "Calculations on Demand",
+          "yellow": false
+        },
+        {
+          "pre": "Up to",
+          "before": "$",
+          "number": "110",
+          "after": "",
+          "accent": "K",
+          "label": "saved per month on staff costs compared to planning in Excel or other legacy tools",
+          "icon": "trend",
+          "source": "Resource Management",
+          "yellow": true
+        },
+        {
+          "pre": "",
+          "before": "",
+          "number": "100",
+          "after": "",
+          "accent": "%",
+          "label": "of services delivered on the ramp captured — no completed task goes unbilled",
+          "icon": "database",
+          "source": "Data Management",
+          "yellow": false
+        }
+      ],
+      "cases": [
+        {
+          "label": "Case study",
+          "title": "How Foxtrot Aviation Services streamlined RFP modeling",
+          "href": "case-study-foxtrot-aviation-services.html",
+          "image": {
+            "src": "assets/img/gen/case-ramp-agent.jpg",
+            "alt": "Ground handling agent checking tasks on a tablet next to an aircraft",
+            "w": 896,
+            "h": 1200
+          }
+        },
+        {
+          "label": "Case study",
+          "title": "How IAG Transform automates hub capacity validation",
+          "href": "case-study-iag-transform.html",
+          "image": {
+            "src": "assets/img/gen/case-hub-planning.jpg",
+            "alt": "Network planners reviewing hub schedules in an operations room",
+            "w": 896,
+            "h": 1200
+          }
+        }
+      ]
+    },
+    "about": {
+      "image": {
+        "src": "assets/img/gen/about-turnaround.jpg",
+        "alt": "Aerial view of an aircraft turnaround at dusk with ground support equipment around the aircraft",
+        "w": 896,
+        "h": 1200
+      },
+      "quoteLabel": "Our mission",
+      "quote": "Replace legacy, paper-based processes with a unified, sustainable and highly efficient digital ecosystem.",
+      "eyebrow": "About INPUT SOFT",
+      "heading": "Built by aviation experts, for aviation operations",
+      "paragraphs": [
+        "INPUT SOFT is built by people who worked in ground handling long before writing software for it. We have run ramp operations, planned resources, written handling procedures and audited quality ourselves, so we know the daily pain points, manual workarounds and limits of legacy systems firsthand.",
+        "That is why we build software around how operations actually run, and shape every module together with the teams who use it."
+      ],
+      "facts": [
+        {
+          "value": "50+",
+          "label": "years of aviation experience in our team"
+        },
+        {
+          "value": "2022",
+          "label": "year INPUT SOFT was founded"
+        }
+      ],
+      "backersLabel": "We are backed by",
+      "backers": [
+        {
+          "src": "assets/img/logos/google-startups.png",
+          "alt": "Google for Startups",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/amadeus.png",
+          "alt": "Amadeus",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/techstars.png",
+          "alt": "Techstars",
+          "tall": false
+        },
+        {
+          "src": "assets/img/logos/sigma.png",
+          "alt": "Sigma Software",
+          "tall": true
+        },
+        {
+          "src": "assets/img/logos/usf.png",
+          "alt": "Ukrainian Startup Fund",
+          "tall": true
+        },
+        {
+          "src": "assets/img/logos/eu.png",
+          "alt": "Funded by the European Union",
+          "tall": true
+        },
+        {
+          "src": "assets/img/logos/seeds-of-bravery.png",
+          "alt": "Seeds of Bravery",
+          "tall": true
+        }
+      ]
+    }
+  }
+}
