@@ -45,8 +45,7 @@
     "companyLinks": [
       { "text": "Home", "href": "index.html" },
       { "text": "About Us", "href": "#about" },
-      { "text": "Contact", "href": "#contact" },
-      { "text": "DEI commitment", "href": "dei-commitment.html" }
+      { "text": "Contact", "href": "#contact" }
     ],
     "officesTitle": "Offices",
     "offices": [
