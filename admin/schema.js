@@ -18,7 +18,7 @@ const checklist = (key = 'checklist', label = 'Checklist') => ({
   item: { label: 'Point', summary: (c) => c.bold || c.text, fields: [{ key: 'bold', type: 'text', label: 'Bold start (optional)', placeholder: 'e.g. Fully automated planning:' }, { key: 'text', type: 'textarea', label: 'Text' }] },
 });
 const seo = [
-  { key: 'seo.title', type: 'text', label: 'Browser tab and Google title' },
+  { key: 'seo.title', type: 'text', label: 'Browser tab and Google title', help: 'Not shown on the page itself.' },
   { key: 'seo.description', type: 'textarea', label: 'Google description', help: 'About 150 characters. Shown under the title in search results.' },
 ];
 const menuSettings = (what) => [
@@ -42,7 +42,7 @@ const benefit = (withTitle) => ({
 const home = [
   { id: 'settings', title: 'Page settings', desc: 'Search engine title and descriptions', path: [], fields: [
     ...seo,
-    { key: 'seo.ogDescription', type: 'textarea', label: 'Description when shared on social media' },
+    { key: 'seo.ogDescription', type: 'textarea', label: 'Description when shared on social media', help: 'Shown on the link card in LinkedIn, Facebook, WhatsApp and similar. Leave empty to use the Google description.' },
   ] },
   { id: 'hero', title: 'Hero', desc: 'Main heading, announcement and buttons', path: ['sections', 'hero'], fields: [
     heading('title', 'Main heading'),
@@ -301,7 +301,7 @@ export const PAGE_SCHEMAS = { home, solution, case: caseStudy, legal };
 
 // Empty values used when an editor adds a new item to a list.
 export function emptyItem(item) {
-  if (item.type) return '';
+  if (!item.fields) return ''; // a plain text item
   const o = {};
   for (const f of item.fields) {
     if (f.key === '.') Object.assign(o, { src: '', alt: '' });

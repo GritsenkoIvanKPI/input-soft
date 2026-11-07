@@ -163,7 +163,7 @@ function dialog({ title, body, actions, wide }) {
     requestAnimationFrame(() => {
       wrap.classList.add('is-open');
       const first = wrap.querySelector('input, select, textarea, .btn--primary');
-      if (first) first.focus();
+      if (first) first.focus({ preventScroll: true });
     });
   });
 }
@@ -299,6 +299,10 @@ function buildApp() {
   document.body.classList.add('is-app');
   new ResizeObserver(fitPreview).observe(app.stage);
   window.cmsSelect = onPreviewSelect;
+  // Focusing hidden controls (like the file picker) must not shift the whole admin.
+  const pin = () => { if (window.innerWidth > 760 && (window.scrollX || window.scrollY)) window.scrollTo(0, 0); };
+  window.addEventListener('scroll', pin, { passive: true });
+  document.addEventListener('focusin', () => requestAnimationFrame(pin));
   window.addEventListener('beforeunload', (e) => { if (changes().length) { saveDraft(); e.preventDefault(); } });
   document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); if (changes().length) openPublish(); }
@@ -367,12 +371,18 @@ const viewKey = () => (S.view.type === 'page' ? S.view.file : `site:${S.view.par
 
 function renderEditor() {
   const keepScroll = app.editor.scrollTop;
-  if (S.view.type === 'site') renderSitePart();
-  else renderPageEditor();
+  try {
+    if (S.view.type === 'site') renderSitePart();
+    else renderPageEditor();
+  } catch (ex) {
+    console.error(ex);
+    app.editor.replaceChildren(h('div', { class: 'note note--warn' }, `This page could not be shown in the editor: ${ex.message}`));
+  }
   app.editor.scrollTop = keepScroll;
 }
 
 function changed() {
+  updateSeoPreview();
   refreshChrome();
   saveDraft();
   schedulePreview();
@@ -423,7 +433,8 @@ function renderSitePart() {
 
 function sectionCard(sec, target, key) {
   const open = S.open.has(key);
-  const body = h('div', { class: 'card__body', hidden: !open }, open ? fields(sec.fields, target, key) : null);
+  const content = () => (sec.id === 'settings' && S.view.type === 'page' ? [seoPreview(), fields(sec.fields, target, key)] : [fields(sec.fields, target, key)]);
+  const body = h('div', { class: 'card__body', hidden: !open }, open ? content() : null);
   const btn = h('button', {
     class: 'card__head', type: 'button', 'aria-expanded': String(open),
     onclick: () => {
@@ -432,7 +443,7 @@ function sectionCard(sec, target, key) {
       btn.setAttribute('aria-expanded', String(now));
       card.classList.toggle('is-open', now);
       body.hidden = !now;
-      if (now && !body.childElementCount) body.append(fields(sec.fields, target, key));
+      if (now && !body.childElementCount) body.append(...content());
       if (now) scrollPreviewTo(sec.id);
     },
   },
@@ -442,9 +453,62 @@ function sectionCard(sec, target, key) {
   return card;
 }
 
+/* ------------------------------------------------- search and share preview */
+// Title and descriptions are not visible on the page itself, so Page settings shows
+// how they look in Google and on a shared link card.
+const plain = (s) => String(s || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+
+function seoValues() {
+  const p = S.pages.get(S.view.file) || {};
+  const seo = p.seo || {};
+  const heroImg = p.kind === 'home' ? p.sections?.hero?.image : p.hero?.image;
+  return {
+    url: `inputsoft.net${p.file && p.file !== 'index.html' ? ` › ${p.file.replace(/\.html$/, '')}` : ''}`,
+    title: plain(seo.title) || 'No title yet',
+    desc: plain(seo.description) || 'No description yet',
+    shareDesc: plain(seo.ogDescription || seo.description),
+    img: imgUrl(seo.ogImage || heroImg?.src || p.photo?.src || S.site.seo?.ogImage),
+  };
+}
+
+function seoPreview() {
+  const v = seoValues();
+  return h('div', { class: 'seo-preview' },
+    h('p', { class: 'seo-preview__note' }, 'These texts are not shown on the page itself. This is how they appear in Google and when someone shares the link.'),
+    h('div', { class: 'seo-card' },
+      h('span', { class: 'seo-card__label' }, 'Google'),
+      h('span', { class: 'seo-card__url', 'data-seo': 'url' }, v.url),
+      h('span', { class: 'seo-card__title', 'data-seo': 'title' }, v.title),
+      h('span', { class: 'seo-card__desc', 'data-seo': 'desc' }, v.desc)),
+    h('div', { class: 'share-card' },
+      h('span', { class: 'seo-card__label' }, 'Shared link'),
+      h('div', { class: 'share-card__box' },
+        h('img', { src: v.img, alt: '', 'data-seo': 'img' }),
+        h('div', { class: 'share-card__text' },
+          h('span', { class: 'share-card__site' }, 'inputsoft.net'),
+          h('span', { class: 'share-card__title', 'data-seo': 'title' }, v.title),
+          h('span', { class: 'share-card__desc', 'data-seo': 'shareDesc' }, v.shareDesc)))));
+}
+
+function updateSeoPreview() {
+  if (S.view.type !== 'page' || !app.editor.querySelector('.seo-preview')) return;
+  const v = seoValues();
+  app.editor.querySelectorAll('[data-seo]').forEach((el) => {
+    const k = el.dataset.seo;
+    if (k === 'img') { if (el.getAttribute('src') !== v.img) el.src = v.img; } else el.textContent = v[k];
+  });
+}
+
 /* ================================================================= fields */
 function fields(list, obj, key) {
-  return h('div', { class: 'fields' }, list.filter((f) => !f.showIf || f.showIf(obj)).map((f) => field(f, obj, `${key}.${f.key}`)));
+  return h('div', { class: 'fields' }, list.filter((f) => !f.showIf || f.showIf(obj)).map((f) => {
+    try {
+      return field(f, obj, `${key}.${f.key}`);
+    } catch (ex) {
+      console.error(ex);
+      return h('p', { class: 'note note--warn' }, `“${f.label || f.key}” could not be shown (${ex.message}).`);
+    }
+  }));
 }
 
 let uid = 0;
@@ -522,7 +586,8 @@ function field(f, obj, key) {
     case 'image':
       return imageField(f, obj, key, id);
     case 'group': {
-      if (get() == null) setPath(obj, f.key, emptyItem(f));
+      const cur = get();
+      if (cur == null || typeof cur !== 'object') setPath(obj, f.key, emptyItem(f));
       return h('fieldset', { class: 'group' }, h('legend', { class: 'group__label' }, f.label), fields(f.fields, get(), key));
     }
     case 'list':
@@ -1060,7 +1125,7 @@ function onPreviewSelect(id) {
   renderEditor();
   const card = app.editor.querySelector(`[data-section="${id}"]`);
   if (card) {
-    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    app.editor.scrollTo({ top: card.getBoundingClientRect().top - app.editor.getBoundingClientRect().top + app.editor.scrollTop - 12, behavior: 'smooth' });
     card.classList.add('is-flash');
     setTimeout(() => card.classList.remove('is-flash'), 1200);
   }

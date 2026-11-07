@@ -676,9 +676,15 @@ body.is-loading:not(:has(.login))::after {
 }
 
 .field {
+  position: relative;
   display: grid;
   gap: 6px;
   min-width: 0;
+}
+
+.field .sr-only {
+  top: 0;
+  left: 0;
 }
 
 .field__label {
@@ -947,6 +953,103 @@ textarea.input {
   gap: 6px;
 }
 
+/* search and share preview (Page settings) */
+.seo-preview {
+  display: grid;
+  gap: 10px;
+  margin: 4px 0 18px;
+}
+
+.seo-preview__note {
+  margin: 0;
+  color: var(--fg-3);
+  font-size: 12px;
+}
+
+.seo-card,
+.share-card {
+  display: grid;
+  gap: 3px;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  background: #fff;
+  color: #202124;
+  font-family: Arial, sans-serif;
+}
+
+.seo-card__label {
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a8f98;
+}
+
+.seo-card__url {
+  font-size: 12px;
+  color: #4d5156;
+}
+
+.seo-card__title {
+  font-size: 18px;
+  line-height: 1.3;
+  color: #1a0dab;
+}
+
+.seo-card__desc {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4d5156;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.share-card__box {
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #dadde1;
+}
+
+.share-card__box img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.91 / 1;
+  object-fit: cover;
+  background: #eef0f3;
+}
+
+.share-card__text {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  background: #f2f3f5;
+}
+
+.share-card__site {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #65676b;
+}
+
+.share-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #050505;
+}
+
+.share-card__desc {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 13px;
+  color: #65676b;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 /* lists */
 .list__head {
   display: flex;
@@ -1169,7 +1272,7 @@ textarea.input {
 
 .preview__stage {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .preview__wrap {
