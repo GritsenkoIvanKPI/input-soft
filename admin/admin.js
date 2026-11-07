@@ -298,7 +298,7 @@ function buildApp() {
   document.body.append(top, h('div', { class: 'workspace' }, app.sidebar, app.editor, preview));
   document.body.classList.add('is-app');
   new ResizeObserver(fitPreview).observe(app.stage);
-  window.addEventListener('message', onPreviewMessage);
+  window.cmsSelect = onPreviewSelect;
   window.addEventListener('beforeunload', (e) => { if (changes().length) { saveDraft(); e.preventDefault(); } });
   document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); if (changes().length) openPublish(); }
@@ -936,17 +936,16 @@ const PREVIEW_INJECT = `<style>
       if (t && (href[0] === '#' || href.indexOf('index.html#') === 0)) t.scrollIntoView({behavior:'smooth'});
     }
     var s = e.target.closest('[data-cms-section]');
-    if (s && !e.target.closest('button, input, select, textarea, label')) parent.postMessage({cms:'select', section:s.getAttribute('data-cms-section')}, location.origin);
+    if (s && !e.target.closest('button, input, select, textarea, label') && parent.cmsSelect) parent.cmsSelect(s.getAttribute('data-cms-section'));
   }, true);
-  window.addEventListener('message', function(e){
-    if (!e.data || e.data.cms !== 'scroll') return;
-    var s = document.querySelector('[data-cms-section="' + e.data.section + '"]');
-    if (e.data.section === 'top') { window.scrollTo({top:0, behavior:'smooth'}); return; }
+  window.cmsScroll = function(section){
+    var s = document.querySelector('[data-cms-section="' + section + '"]');
+    if (section === 'top') { window.scrollTo({top:0, behavior:'smooth'}); return; }
     if (!s) return;
     window.scrollTo({top: s.getBoundingClientRect().top + window.scrollY - 72, behavior:'smooth'});
     s.classList.add('cms-flash');
     setTimeout(function(){ s.classList.remove('cms-flash'); }, 1200);
-  });
+  };
 })();
 </script>`;
 
@@ -971,7 +970,23 @@ function schedulePreview() {
   previewTimer = setTimeout(() => refreshPreview(false), 300);
 }
 
+// Two frames: the next version loads in the hidden one, then they swap, so the preview never flashes.
+// Every refresh gets a number; a frame that finishes loading after a newer refresh started is ignored,
+// so fast clicks and typing can never leave the wrong frame on screen.
+let previewGen = 0;
+let shownGen = 0;
+let pendingScroll = null;
+
+function showFrame(i) {
+  app.active = i;
+  app.frames.forEach((f, k) => {
+    f.classList.toggle('is-active', k === i);
+    if (k === i) f.removeAttribute('tabindex'); else f.setAttribute('tabindex', '-1');
+  });
+}
+
 function refreshPreview(reset) {
+  clearTimeout(previewTimer);
   const page = previewPage();
   if (!page) return;
   app.previewTitle.textContent = `${pageName(page)} · /${page.file === 'index.html' ? '' : page.file}`;
@@ -984,41 +999,46 @@ function refreshPreview(reset) {
     app.previewError.textContent = `The preview could not be drawn: ${ex.message}. Check the last field you changed.`;
     return;
   }
-  const current = app.frames[app.active];
-  const next = app.frames[1 - app.active];
+  const gen = ++previewGen;
+  const shown = app.frames[app.active];
+  const nextIdx = 1 - app.active;
+  const next = app.frames[nextIdx];
   let y = 0;
   if (!reset) {
-    try { y = current.contentWindow.scrollY || 0; } catch { y = 0; }
+    try { y = shown.contentWindow.scrollY || 0; } catch { y = 0; }
   }
+  if (reset && S.view.type === 'site') pendingScroll = SITE_PARTS.find((p) => p.id === S.view.part).previewSection;
   next.onload = () => {
+    if (gen !== previewGen) return; // a newer version is on its way
     try {
       next.contentDocument.documentElement.style.scrollBehavior = 'auto';
       next.contentWindow.scrollTo(0, y);
     } catch { /* ignore */ }
-    setTimeout(() => {
-      next.classList.add('is-active');
-      next.removeAttribute('tabindex');
-      current.classList.remove('is-active');
-      current.setAttribute('tabindex', '-1');
-      app.active = 1 - app.active;
-      if (reset && S.view.type === 'site') {
-        const part = SITE_PARTS.find((p) => p.id === S.view.part);
-        scrollPreviewTo(part.previewSection);
+    requestAnimationFrame(() => {
+      if (gen !== previewGen) return;
+      showFrame(nextIdx);
+      shownGen = gen;
+      if (pendingScroll) {
+        const sec = pendingScroll;
+        pendingScroll = null;
+        scrollPreviewTo(sec);
       }
-    }, 60);
+    });
   };
   next.srcdoc = html;
 }
 
 function scrollPreviewTo(section) {
+  // If a new version is still loading, scroll it once it is shown.
+  const loading = shownGen !== previewGen;
   const f = app.frames[app.active];
-  if (f && f.contentWindow) f.contentWindow.postMessage({ cms: 'scroll', section }, location.origin);
+  try {
+    if (f.contentWindow && f.contentWindow.cmsScroll) f.contentWindow.cmsScroll(section);
+  } catch { /* ignore */ }
+  if (loading) pendingScroll = section;
 }
 
-function onPreviewMessage(e) {
-  if (e.origin !== location.origin && e.origin !== 'null') return;
-  if (!e.data || e.data.cms !== 'select') return;
-  const id = e.data.section;
+function onPreviewSelect(id) {
   if (id === 'contact' || id === 'footer') {
     go({ type: 'site', part: id });
     return;
