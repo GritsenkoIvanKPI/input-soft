@@ -986,7 +986,9 @@ async function reloadKeepingDraft(overlap) {
 
 /* =============================================================== preview */
 const PREVIEW_INJECT = `<style>
-.rv,.load{opacity:1!important;transform:none!important}
+/* skip entrance animations without touching positions (some elements are centred with transforms) */
+.load{animation-duration:1ms!important;animation-delay:0s!important}
+.rv{transition:none!important}
 .cc-banner,.cc-prefs{display:none!important}
 [data-cms-section]{cursor:pointer}
 [data-cms-section].cms-hover{outline:2px dashed rgba(250,184,34,.6);outline-offset:-2px}
