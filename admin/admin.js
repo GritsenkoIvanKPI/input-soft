@@ -700,6 +700,8 @@ function listField(f, obj, key) {
         arr.push(emptyItem(spec));
         if (!primitive) S.expanded.add(`${key}[${arr.length - 1}]`);
         commit();
+        const sec = /#([^.[]+)/.exec(key);
+        if (sec && S.view.type === 'page') pendingScroll = { section: sec[1], end: true };
       },
     }, svg('plus'), f.addLabel || 'Add item') : null);
 }
@@ -989,6 +991,8 @@ const PREVIEW_INJECT = `<style>
 [data-cms-section]{cursor:pointer}
 [data-cms-section].cms-hover{outline:2px dashed rgba(250,184,34,.6);outline-offset:-2px}
 [data-cms-section].cms-flash{outline:2px solid #FAB822;outline-offset:-2px}
+.cms-empty{color:rgba(250,184,34,.75);font-style:italic}
+.cms-empty--img{display:grid;place-items:center;width:100%;aspect-ratio:16/9;border:2px dashed rgba(250,184,34,.5);border-radius:10px;background:rgba(250,184,34,.06);font:500 14px/1.4 Geist,sans-serif;font-style:normal}
 </style>
 <script>
 (function(){
@@ -1012,11 +1016,13 @@ const PREVIEW_INJECT = `<style>
     var s = e.target.closest('[data-cms-section]');
     if (s && !e.target.closest('button, input, select, textarea, label') && parent.cmsSelect) parent.cmsSelect(s.getAttribute('data-cms-section'));
   }, true);
-  window.cmsScroll = function(section){
+  window.cmsScroll = function(section, end){
     var s = document.querySelector('[data-cms-section="' + section + '"]');
     if (section === 'top') { window.scrollTo({top:0, behavior:'smooth'}); return; }
     if (!s) return;
-    window.scrollTo({top: s.getBoundingClientRect().top + window.scrollY - 72, behavior:'smooth'});
+    var r = s.getBoundingClientRect();
+    var top = end ? r.bottom + window.scrollY - window.innerHeight + 40 : r.top + window.scrollY - 72;
+    window.scrollTo({top: Math.max(0, top), behavior:'smooth'});
     s.classList.add('cms-flash');
     setTimeout(function(){ s.classList.remove('cms-flash'); }, 1200);
   };
@@ -1081,7 +1087,7 @@ function refreshPreview(reset) {
   if (!reset) {
     try { y = shown.contentWindow.scrollY || 0; } catch { y = 0; }
   }
-  if (reset && S.view.type === 'site') pendingScroll = SITE_PARTS.find((p) => p.id === S.view.part).previewSection;
+  if (reset && S.view.type === 'site') pendingScroll = { section: SITE_PARTS.find((p) => p.id === S.view.part).previewSection };
   next.onload = () => {
     if (gen !== previewGen) return; // a newer version is on its way
     try {
@@ -1095,23 +1101,23 @@ function refreshPreview(reset) {
       // empty the copy that just went out of view, so only one page is kept in memory
       app.frames[1 - nextIdx].srcdoc = '<!doctype html><title>.</title>';
       if (pendingScroll) {
-        const sec = pendingScroll;
+        const { section, end } = pendingScroll;
         pendingScroll = null;
-        scrollPreviewTo(sec);
+        scrollPreviewTo(section, end);
       }
     });
   };
   next.srcdoc = html;
 }
 
-function scrollPreviewTo(section) {
+function scrollPreviewTo(section, end) {
   // If a new version is still loading, scroll it once it is shown.
   const loading = shownGen !== previewGen;
   const f = app.frames[app.active];
   try {
-    if (f.contentWindow && f.contentWindow.cmsScroll) f.contentWindow.cmsScroll(section);
+    if (f.contentWindow && f.contentWindow.cmsScroll) f.contentWindow.cmsScroll(section, end);
   } catch { /* ignore */ }
-  if (loading) pendingScroll = section;
+  if (loading) pendingScroll = { section, end };
 }
 
 function onPreviewSelect(id) {
