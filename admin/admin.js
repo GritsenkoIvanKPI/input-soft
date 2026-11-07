@@ -678,10 +678,10 @@ function listField(f, obj, key) {
         onclick: () => {
           const now = !S.expanded.has(k);
           if (now) S.expanded.add(k); else S.expanded.delete(k);
+          if (now && !body.childElementCount) body.append(fields(spec.fields, item, k));
           head.firstChild.setAttribute('aria-expanded', String(now));
           wrap.classList.toggle('is-open', now);
           body.hidden = !now;
-          if (now && !body.childElementCount) body.append(fields(spec.fields, item, k));
         },
       }, h('span', { class: 'item__num' }, String(i + 1).padStart(2, '0')), h('span', { class: 'item__summary' }, summaryOf(item, spec, i)), svg('chevron-down', 'i item__chev')),
       itemActions(arr, i, commit, false, () => S.expanded.add(`${key}[${i + 1}]`)));
@@ -1167,6 +1167,36 @@ function linkTargets() {
   return dl;
 }
 
+/* ======================================================= update notice */
+// When a newer version of the admin is published, offer a reload (drafts are kept).
+async function adminVersion() {
+  const parts = await Promise.all(['/admin/admin.js', '/admin/schema.js', '/lib/render.js'].map(async (u) => {
+    const r = await fetch(u, { method: 'HEAD', cache: 'no-store' });
+    return r.headers.get('etag') || r.headers.get('last-modified') || r.headers.get('content-length') || '';
+  }));
+  return parts.join('|');
+}
+
+function watchForUpdates() {
+  let first = null;
+  const check = async () => {
+    try {
+      const v = await adminVersion();
+      if (first === null) { first = v; return; }
+      if (v !== first && !$('.update-bar')) {
+        saveDraft();
+        document.body.append(h('div', { class: 'update-bar', role: 'status' },
+          h('span', null, 'A new version of the admin is available.'),
+          h('button', { class: 'btn btn--primary btn--sm', type: 'button', onclick: () => location.reload() }, 'Reload'),
+          h('span', { class: 'update-bar__note' }, 'Your unpublished changes are kept.')));
+      }
+    } catch { /* offline: try again later */ }
+  };
+  check();
+  setInterval(check, 60000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+}
+
 /* ================================================================== start */
 async function start() {
   if (!S.token) await showLogin();
@@ -1187,6 +1217,7 @@ async function start() {
   renderEditor();
   fitPreview();
   refreshPreview(true);
+  watchForUpdates();
 }
 
 start();

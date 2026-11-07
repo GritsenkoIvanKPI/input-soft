@@ -1474,6 +1474,28 @@ textarea.input {
   white-space: nowrap;
 }
 
+/* ------------------------------------------------------------- update bar */
+.update-bar {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 16px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  box-shadow: inset 0 0 0 1px rgba(250, 184, 34, 0.45), var(--shadow-float);
+  transform: translateX(-50%);
+  font-size: 13px;
+}
+
+.update-bar__note {
+  color: var(--fg-3);
+  font-size: 12px;
+}
+
 /* ----------------------------------------------------------------- toasts */
 .toasts {
   position: fixed;
