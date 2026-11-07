@@ -220,7 +220,7 @@ function saveDraft() {
     const empty = !siteDirty() && !Object.keys(pages).length && !S.deleted.size;
     try {
       if (empty) localStorage.removeItem(DRAFT_KEY);
-      else localStorage.setItem(DRAFT_KEY, JSON.stringify({ head: S.head, site: siteDirty() ? S.site : null, pages, deleted: [...S.deleted], uploads: [...S.uploads] }));
+      else localStorage.setItem(DRAFT_KEY, JSON.stringify({ head: S.head, site: siteDirty() ? S.site : null, pages, deleted: [...S.deleted], uploads: [...S.uploads].filter(([, u]) => u.base64).map(([k, u]) => [k, { base64: u.base64, size: u.size }]) }));
     } catch {
       if (!draftWarned) toast('Your changes are too large to keep as a draft in this browser. Publish soon so they are not lost.', 'error');
       draftWarned = true;
@@ -235,7 +235,7 @@ function restoreDraft() {
   if (d.site) S.site = d.site;
   for (const [file, p] of Object.entries(d.pages || {})) S.pages.set(file, p);
   for (const f of d.deleted || []) { S.deleted.add(f); S.pages.delete(f); }
-  for (const [k, v] of d.uploads || []) S.uploads.set(k, v);
+  for (const [k, v] of d.uploads || []) if (v && v.base64) S.uploads.set(k, { ...v, url: blobUrl(v.base64, k) });
   return changes().length > 0;
 }
 
@@ -649,6 +649,14 @@ function itemActions(arr, i, commit, compact, onDuplicate) {
 }
 
 /* ----------------------------------------------------------------- images */
+// Turns saved image data back into a lightweight address the preview can show.
+function blobUrl(base64, path) {
+  const bin = atob(base64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return URL.createObjectURL(new Blob([bytes], { type: /\.png$/.test(path) ? 'image/png' : 'image/jpeg' }));
+}
+
 const imgUrl = (src) => (S.uploads.has(src) ? S.uploads.get(src).url : src ? `/${src}` : '');
 
 function imageField(f, obj, key, id) {
@@ -722,7 +730,7 @@ async function processUpload(file) {
   const name = `${slug(file.name.replace(/\.[^.]+$/, '')) || 'image'}-${Math.random().toString(36).slice(2, 6)}.${ext}`;
   const path = `assets/img/uploads/${name}`;
   const url = await new Promise((r) => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(blob); });
-  S.uploads.set(path, { base64: url.split(',')[1], url, size: blob.size });
+  S.uploads.set(path, { base64: url.split(',')[1], url: URL.createObjectURL(blob), size: blob.size });
   return { src: path, w: canvas.width, h: canvas.height };
 }
 
@@ -855,7 +863,7 @@ async function openPublish() {
 
 function usedUploads() {
   const json = JSON.stringify([S.site, ...allPages()]);
-  return [...S.uploads].filter(([path]) => json.includes(path));
+  return [...S.uploads].filter(([path, u]) => u.base64 && json.includes(path));
 }
 
 function findMissingAlt() {
@@ -886,10 +894,11 @@ async function publish(message) {
   };
   const res = await api('publish', { method: 'POST', body: JSON.stringify(body) });
   S.head = res.sha === 'local' ? S.head : res.sha;
-  for (const [path] of usedUploads()) S.images.push(path);
+  const published = new Set(usedUploads().map(([path]) => path));
+  for (const path of published) S.images.push(path);
   S.base = { site: clone(S.site), pages: new Map(allPages().map((p) => [p.file, clone(p)])) };
   S.deleted.clear();
-  S.uploads.clear();
+  for (const [path, u] of S.uploads) if (published.has(path)) delete u.base64;
   localStorage.removeItem(DRAFT_KEY);
   renderEditor();
   refreshChrome();
@@ -1018,6 +1027,8 @@ function refreshPreview(reset) {
       if (gen !== previewGen) return;
       showFrame(nextIdx);
       shownGen = gen;
+      // empty the copy that just went out of view, so only one page is kept in memory
+      app.frames[1 - nextIdx].srcdoc = '<!doctype html><title>.</title>';
       if (pendingScroll) {
         const sec = pendingScroll;
         pendingScroll = null;
