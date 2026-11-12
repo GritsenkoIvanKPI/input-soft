@@ -1,0 +1,21 @@
+# Files that are NOT published on Cloudflare (see wrangler.jsonc).
+.git
+.github
+.gitignore
+.assetsignore
+.puppeteerrc.cjs
+.env*
+.dev.vars*
+.vercel
+.wrangler
+node_modules
+wrangler.jsonc
+package.json
+package-lock.json
+*.mjs
+*.md
+temporary screenshots
+# server code (bundled into the worker, not served as files)
+worker.js
+server
+api

@@ -64,7 +64,9 @@ const S = {
   token: sessionStorage.getItem(TOKEN_KEY),
   head: null,
   local: false,
-  base: { site: null, pages: new Map() },
+  base: { site: null, pages: new Map(), forms: null },
+  forms: null,
+  mail: { configured: false, from: '' },
   site: null,
   pages: new Map(),
   deleted: new Set(),
@@ -90,9 +92,11 @@ const pageName = (p) => {
 const isNew = (file) => !S.base.pages.has(file);
 const pageDirty = (file) => isNew(file) || !same(S.base.pages.get(file), S.pages.get(file));
 const siteDirty = () => !same(S.base.site, S.site);
+const formsDirty = () => !same(S.base.forms, S.forms);
 const changes = () => {
   const list = [];
   if (siteDirty()) list.push({ label: 'Site-wide settings', note: 'header, contact block or footer' });
+  if (formsDirty()) list.push({ label: 'Form submissions', note: 'email settings' });
   for (const p of allPages()) if (pageDirty(p.file)) list.push({ label: pageName(p), note: isNew(p.file) ? 'new page' : 'edited', file: p.file });
   for (const f of S.deleted) list.push({ label: pageName(S.base.pages.get(f)), note: 'deleted', file: f });
   return list;
@@ -217,10 +221,10 @@ function saveDraft() {
   draftTimer = setTimeout(() => {
     const pages = {};
     for (const p of allPages()) if (pageDirty(p.file)) pages[p.file] = p;
-    const empty = !siteDirty() && !Object.keys(pages).length && !S.deleted.size;
+    const empty = !siteDirty() && !formsDirty() && !Object.keys(pages).length && !S.deleted.size;
     try {
       if (empty) localStorage.removeItem(DRAFT_KEY);
-      else localStorage.setItem(DRAFT_KEY, JSON.stringify({ head: S.head, site: siteDirty() ? S.site : null, pages, deleted: [...S.deleted], uploads: [...S.uploads].filter(([, u]) => u.base64).map(([k, u]) => [k, { base64: u.base64, size: u.size }]) }));
+      else localStorage.setItem(DRAFT_KEY, JSON.stringify({ head: S.head, site: siteDirty() ? S.site : null, forms: formsDirty() ? S.forms : null, pages, deleted: [...S.deleted], uploads: [...S.uploads].filter(([, u]) => u.base64).map(([k, u]) => [k, { base64: u.base64, size: u.size }]) }));
     } catch {
       if (!draftWarned) toast('Your changes are too large to keep as a draft in this browser. Publish soon so they are not lost.', 'error');
       draftWarned = true;
@@ -233,6 +237,7 @@ function restoreDraft() {
   try { d = JSON.parse(localStorage.getItem(DRAFT_KEY)); } catch { d = null; }
   if (!d) return false;
   if (d.site) S.site = d.site;
+  if (d.forms) S.forms = d.forms;
   for (const [file, p] of Object.entries(d.pages || {})) S.pages.set(file, p);
   for (const f of d.deleted || []) { S.deleted.add(f); S.pages.delete(f); }
   for (const [k, v] of d.uploads || []) if (v && v.base64) S.uploads.set(k, { ...v, url: blobUrl(v.base64, k) });
@@ -244,10 +249,13 @@ async function load() {
   const data = await api('content');
   S.head = data.head;
   S.local = data.local;
+  S.mail = data.mail || S.mail;
   S.readOnly = data.readOnly;
   S.images = data.images || [];
-  S.base = { site: clone(data.site), pages: new Map(data.pages.map((p) => [p.file, clone(p)])) };
+  const forms = { recipients: [], subject: '', ...(data.forms || {}) };
+  S.base = { site: clone(data.site), pages: new Map(data.pages.map((p) => [p.file, clone(p)])), forms: clone(forms) };
   S.site = clone(data.site);
+  S.forms = clone(forms);
   S.pages = new Map(data.pages.map((p) => [p.file, clone(p)]));
   S.deleted = new Set();
   S.uploads = new Map();
@@ -281,7 +289,7 @@ function buildApp() {
       h('img', { src: '/assets/img/brand/logo-white.png', alt: 'INPUT SOFT', width: 120, height: 12 }),
       h('span', { class: 'topbar__tag' }, 'Admin')),
     S.local ? h('span', { class: 'badge badge--local', title: 'Publishing writes the files on this computer instead of GitHub.' }, 'Local mode') : null,
-    S.readOnly ? h('span', { class: 'badge badge--warn', title: 'Add GITHUB_TOKEN in Vercel to switch on publishing.' }, 'Publishing not set up yet') : null,
+    S.readOnly ? h('span', { class: 'badge badge--warn', title: 'Add GITHUB_TOKEN on the server to switch on publishing.' }, 'Publishing not set up yet') : null,
     h('div', { class: 'topbar__spacer' }),
     app.status,
     app.publish,
@@ -353,6 +361,13 @@ function renderSidebar() {
       dirty: !same(getPath(S.base.site, part.path.join('.')), getPath(S.site, part.path.join('.'))),
       onclick: () => go({ type: 'site', part: part.id }),
     }))),
+    group('Settings', [navItem({
+      label: 'Form submissions',
+      meta: S.forms?.recipients?.filter(Boolean).join(', ') || 'Email for website requests',
+      active: S.view.type === 'forms',
+      dirty: formsDirty(),
+      onclick: () => go({ type: 'forms' }),
+    })]),
   );
 }
 
@@ -367,12 +382,13 @@ function go(view) {
 }
 
 /* ================================================================= editor */
-const viewKey = () => (S.view.type === 'page' ? S.view.file : `site:${S.view.part}`);
+const viewKey = () => (S.view.type === 'page' ? S.view.file : S.view.type === 'forms' ? 'forms' : `site:${S.view.part}`);
 
 function renderEditor() {
   const keepScroll = app.editor.scrollTop;
   try {
-    if (S.view.type === 'site') renderSitePart();
+    if (S.view.type === 'forms') renderForms();
+    else if (S.view.type === 'site') renderSitePart();
     else renderPageEditor();
   } catch (ex) {
     console.error(ex);
@@ -429,6 +445,59 @@ function renderSitePart() {
         onclick: () => { setPath(S.site, part.path.join('.'), clone(getPath(S.base.site, part.path.join('.')))); renderEditor(); changed(); },
       }, svg('undo'), 'Undo all changes')) : null),
     h('div', { class: 'sections' }, h('div', { class: 'card card--flat' }, fields(part.fields, target, key))));
+}
+
+const EMAIL_RE = /^[^\s@<>"',;]+@[^\s@<>"',;]+\.[a-z]{2,}$/i;
+
+const FORM_FIELDS = [
+  { key: 'recipients', type: 'list', label: 'Send requests to', addLabel: 'Add email address', max: 10,
+    help: 'Every request from the contact form and the “Request a demo” form goes to all of these addresses. Reply to the email to answer the person directly.',
+    item: { type: 'email', label: 'Email address' } },
+  { key: 'subject', type: 'text', label: 'Email subject', placeholder: 'New request from inputsoft.net', help: 'The company name and chosen solution are added after it.' },
+];
+
+function renderForms() {
+  if (!Array.isArray(S.forms.recipients)) S.forms.recipients = [];
+  const status = S.local
+    ? h('p', { class: 'note' }, 'Local mode: emails are printed in the terminal instead of being sent.')
+    : S.mail.configured
+      ? h('p', { class: 'note note--ok' }, `Email sending is connected. Requests are sent from ${S.mail.from}.`)
+      : h('p', { class: 'note note--warn' }, 'Email sending is not connected yet: the email service key (RESEND_API_KEY) still needs to be added on the server. Until then, website requests cannot be emailed.');
+  const testBtn = h('button', {
+    class: 'btn btn--ghost btn--sm', type: 'button',
+    onclick: async () => {
+      const recipients = S.forms.recipients.filter(Boolean);
+      const bad = recipients.find((r) => !EMAIL_RE.test(r));
+      if (!recipients.length) return toast('Add at least one email address first.', 'error');
+      if (bad) return toast(`“${bad}” is not a valid email address.`, 'error');
+      testBtn.disabled = true;
+      testBtn.classList.add('is-busy');
+      try {
+        const res = await api('lead-test', { method: 'POST', body: JSON.stringify({ forms: S.forms }) });
+        toast(res.simulated ? 'Test email printed in the terminal (local mode).' : `Test email sent to ${recipients.join(', ')}. Check the inbox (and spam folder).`, 'ok');
+      } catch (ex) {
+        toast(ex.message, 'error');
+      } finally {
+        testBtn.disabled = false;
+        testBtn.classList.remove('is-busy');
+      }
+    },
+  }, svg('mail'), 'Send a test email');
+  app.editor.replaceChildren(
+    h('div', { class: 'editor__head' },
+      h('p', { class: 'editor__kind' }, 'Settings'),
+      h('h1', { class: 'editor__title' }, 'Form submissions'),
+      h('p', { class: 'editor__desc' }, 'Where requests from the website forms are sent by email.'),
+      status,
+      formsDirty() ? h('div', { class: 'editor__actions' }, h('button', {
+        class: 'btn btn--ghost btn--sm', type: 'button',
+        onclick: () => { S.forms = clone(S.base.forms); renderEditor(); changed(); },
+      }, svg('undo'), 'Undo all changes')) : null),
+    h('div', { class: 'sections' },
+      h('div', { class: 'card card--flat' },
+        fields(FORM_FIELDS, S.forms, 'forms'),
+        h('div', { class: 'forms-test' }, testBtn, h('p', { class: 'field__help' }, 'Sends an example request to the addresses above, before you publish.'))),
+      h('p', { class: 'field__help' }, 'New addresses are used for website requests after you publish. The addresses are not shown on the website.')));
 }
 
 function sectionCard(sec, target, key) {
@@ -661,7 +730,11 @@ function listField(f, obj, key) {
     if (primitive) {
       const id = nextId();
       let control;
-      if (spec.type === 'text') control = h('input', { class: 'input', id, value: item, 'aria-label': `${spec.label} ${i + 1}`, oninput: (e) => { arr[i] = e.target.value; changed(); } });
+      if (spec.type === 'email') {
+        const check = (el) => el.classList.toggle('is-invalid', Boolean(el.value.trim()) && !EMAIL_RE.test(el.value.trim()));
+        control = h('input', { class: 'input', id, type: 'email', value: item, placeholder: 'name@company.com', autocomplete: 'off', 'aria-label': `${spec.label} ${i + 1}`, oninput: (e) => { arr[i] = e.target.value.trim(); check(e.target); changed(); } });
+        check(control);
+      } else if (spec.type === 'text') control = h('input', { class: 'input', id, value: item, 'aria-label': `${spec.label} ${i + 1}`, oninput: (e) => { arr[i] = e.target.value; changed(); } });
       else {
         control = h('textarea', { class: 'input', id, rows: 2, 'aria-label': `${spec.label} ${i + 1}`, oninput: (e) => { arr[i] = fromEditor(e.target.value); changed(); } });
         control.value = toEditor(item);
@@ -913,6 +986,12 @@ async function openPublish() {
       text: S.local ? 'Publish to local files' : 'Publish now', primary: true,
       run: async () => {
         if (size > 3.6e6) { err.textContent = 'Too many new images in one go. Publish the text changes first, or fewer images at a time.'; return false; }
+        if (formsDirty()) {
+          const recipients = (S.forms.recipients || []).filter(Boolean);
+          const bad = recipients.find((r) => !EMAIL_RE.test(r));
+          if (!recipients.length) { err.textContent = 'Form submissions: add at least one email address.'; return false; }
+          if (bad) { err.textContent = `Form submissions: “${bad}” is not a valid email address.`; return false; }
+        }
         try {
           await publish(message.value.trim());
           return true;
@@ -954,6 +1033,7 @@ async function publish(message) {
     message: message || `Update ${changes().map((c) => c.label).join(', ')} from the admin panel`,
     changes: {
       site: siteDirty() ? S.site : null,
+      forms: formsDirty() ? S.forms : null,
       pages,
       deleted: [...S.deleted],
       uploads: usedUploads().map(([path, u]) => ({ path, base64: u.base64 })),
@@ -963,7 +1043,7 @@ async function publish(message) {
   S.head = res.sha === 'local' ? S.head : res.sha;
   const published = new Set(usedUploads().map(([path]) => path));
   for (const path of published) S.images.push(path);
-  S.base = { site: clone(S.site), pages: new Map(allPages().map((p) => [p.file, clone(p)])) };
+  S.base = { site: clone(S.site), pages: new Map(allPages().map((p) => [p.file, clone(p)])), forms: clone(S.forms) };
   S.deleted.clear();
   for (const [path, u] of S.uploads) if (published.has(path)) delete u.base64;
   localStorage.removeItem(DRAFT_KEY);
@@ -1090,6 +1170,7 @@ function refreshPreview(reset) {
     try { y = shown.contentWindow.scrollY || 0; } catch { y = 0; }
   }
   if (reset && S.view.type === 'site') pendingScroll = { section: SITE_PARTS.find((p) => p.id === S.view.part).previewSection };
+  if (reset && S.view.type === 'forms') pendingScroll = { section: 'contact' };
   next.onload = () => {
     if (gen !== previewGen) return; // a newer version is on its way
     try {

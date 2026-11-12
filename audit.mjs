@@ -104,6 +104,8 @@ for (const [name, w, h] of DEVICES) {
   await p.evaluateOnNewDocument(() => { try { localStorage.setItem('inputsoft-cookie-consent', JSON.stringify({ analytics: false, marketing: false, personalization: false, v: 1 })); } catch {} });
   await p.goto(SITE, { waitUntil: 'networkidle0' });
   await p.evaluate(() => document.fonts.ready);
+  // the form's spam-trap field is off-screen on purpose
+  await p.evaluate(() => document.querySelectorAll('.form-hp').forEach((el) => el.remove()));
   const states = [
     ['page (all accordions open)', 'body', () => {
       document.querySelectorAll('.rv').forEach((e) => e.classList.add('is-in'));

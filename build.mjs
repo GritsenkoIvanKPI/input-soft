@@ -2,7 +2,7 @@
 // Usage: node build.mjs [output-dir]
 // The admin panel (/admin) renders with the same code, so local builds and published pages match.
 import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises';
-import { manifest } from './api/_lib.js';
+import { manifest } from './lib/manifest.js';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { renderSite } from './lib/render.js';

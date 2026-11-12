@@ -19,15 +19,13 @@ const TYPES = {
 // Local admin: the /api functions run here too. Without GITHUB_TOKEN they read and write the local files.
 // Local password: ADMIN_PASSWORD env var, or "admin" when not set.
 process.env.ADMIN_PASSWORD ||= 'admin';
-const API = new Set(['login', 'content', 'publish']);
+const { nodeHandler } = await import('./server/node.js');
 
 createServer(async (req, res) => {
   try {
     let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-    const api = /^\/api\/([a-z]+)$/.exec(path);
-    if (api && API.has(api[1])) {
-      const mod = await import(`./api/${api[1]}.js`);
-      await mod.default(req, res);
+    if (path.startsWith('/api/')) {
+      await nodeHandler(req, res);
       return;
     }
     if (path.endsWith('/')) path += 'index.html';

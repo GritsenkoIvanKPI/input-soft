@@ -2726,6 +2726,15 @@ textarea.input {
   width: 100%;
 }
 
+/* Spam trap: invisible to people, still in the page for bots. */
+.form-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-status {
   display: none;
   gap: var(--sp-3);

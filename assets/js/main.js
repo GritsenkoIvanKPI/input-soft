@@ -334,10 +334,13 @@
   const initForm = (form) => {
     const ok = $('[data-form-ok]', form);
     const err = $('[data-form-error]', form);
+    const invalidText = $('span', err).textContent;
+    const startedAt = performance.now();
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       ok.classList.remove('is-visible');
       err.classList.remove('is-visible');
+      $('span', err).textContent = invalidText;
       if (!form.checkValidity()) {
         err.classList.add('is-visible');
         const firstInvalid = $(':invalid', form);
@@ -346,16 +349,34 @@
       }
       const submit = $('[type="submit"]', form);
       submit.disabled = true;
+      form.setAttribute('aria-busy', 'true');
       try {
-        // Connect to the CRM / form backend here, e.g.:
-        // await fetch(form.dataset.endpoint, { method: 'POST', body: new FormData(form) });
-        await new Promise((r) => setTimeout(r, 500));
+        const data = Object.fromEntries(new FormData(form));
+        const res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...data,
+            consent: form.querySelector('[name="consent"]').checked,
+            elapsed: Math.round(performance.now() - startedAt),
+            form: form.closest('[data-modal]') ? 'Request a demo' : 'Contact form',
+            page: window.location.href,
+          }),
+        });
+        const result = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(result.error || 'Request failed');
         form.reset();
         ok.classList.add('is-visible');
+        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: data.solution || '' });
       } catch {
+        // Show a clear fallback so the request is never lost silently.
+        const mail = $('.cta__contacts a[href^="mailto:"]');
+        const address = mail ? mail.textContent.trim() : 'info@inputsoft.net';
+        $('span', err).textContent = `Sorry, your request could not be sent. Please try again or email us at ${address}.`;
         err.classList.add('is-visible');
       } finally {
         submit.disabled = false;
+        form.removeAttribute('aria-busy');
       }
     });
   };

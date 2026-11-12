@@ -1,0 +1,18 @@
+// Cloudflare Workers configuration. Every push to main is deployed automatically by Cloudflare.
+// worker.js runs the API (admin panel and contact form); all other requests are served from the files.
+{
+  "name": "inputsoft-website",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    // The ready site files live in the repository root; .assetsignore keeps tooling and server code out.
+    "directory": "./",
+    "binding": "ASSETS",
+    // /privacy-policy serves privacy-policy.html (old Webflow addresses keep working)
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none",
+    // Only these go through the worker; everything else is served straight from the files.
+    "run_worker_first": ["/api/*", "/content/forms.json"]
+  },
+  "observability": { "enabled": true }
+}
